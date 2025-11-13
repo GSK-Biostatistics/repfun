@@ -1,0 +1,51 @@
+---
+title: "Data-Compare"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Data-Compare}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+```
+
+## Build Data Frames for Compare
+
+```{r build}
+  iris1 <- iris %>% dplyr::mutate(ID=dplyr::row_number())
+  iris2 <- iris %>% dplyr::mutate(ID=dplyr::row_number()) %>% 
+    dplyr::mutate(Petal.Length=Petal.Length+1)
+```
+
+## Compare the Data Frames
+
+```{r compare}
+irisdiffs <- repfun::ru_datacompare(iris1, iris2, idvars=c('Species','ID'), maxprint=20)
+```
+
+## Display the Results
+
+```{r results}
+irisdiffs
+```
+
+
+

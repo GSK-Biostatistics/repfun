@@ -1,0 +1,69 @@
+---
+title: "Add-Supplemental-to-Domain"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Add-Supplemental-to-Domain}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<style>
+body {
+    position: absolute;
+    left: 0px;}
+</style>
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+```
+
+## Define data library
+
+```{r define}
+sdtmdata <- repfun::ru_libname('../data')
+```
+
+## Read SDTM DM and SUPPDM domains
+
+```{r getdata}
+sdtm.dm <- sdtmdata$dm()
+sdtm.suppdm <- sdtmdata$suppdm()
+```
+
+## Show Supplemental Data to Append
+
+```{r showsupp}
+sdtm.suppdm %>% distinct(QNAM,QLABEL) -> usupp
+knitr::kable(usupp, caption = "Supplemental Variables to be Added")
+```
+
+## Combine DM and SUPPDM data sets
+
+```{r addsupp}
+suppae <- repfun::ru_addsupp(dsetin=sdtm.dm,dsetinsupp=sdtm.suppdm)
+```
+
+## Display the Results
+
+```{r results}
+lbls <- sapply(suppae,function(x){attr(x,"label")})
+knitr::kable(head(suppae,10), col.names=paste(names(lbls),lbls,sep=" "), 
+             caption = "Add Supplemental Data to DM Domain")
+```
+

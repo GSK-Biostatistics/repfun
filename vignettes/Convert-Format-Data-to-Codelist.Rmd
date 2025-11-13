@@ -1,0 +1,48 @@
+---
+title: "Convert-Format-Data-to-Codelist"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Convert-Format-Data-to-Codelist}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+```
+
+## Invoke Setup Function 
+
+```{r define}
+repfun::rs_setup(R_RFMTDIR=paste0("../inst/formats"))
+```
+
+## Convert RFMTDIR Format Data Set to List
+
+```{r makelist}
+list <- repfun::ru_data2codelist(rfenv$rfmtdata$formats())
+```
+
+## Display the Results
+
+```{r results}
+message(paste0('First Code Value: ',list$SEXS$START[[1]])) # Code value 1
+message(paste0('First Decode Value: ',list$SEXS$LABEL[[1]])) # Decode value 1
+message(paste0('Second Code Value: ',list$SEXS$START[[2]])) # Code value 2
+message(paste0('Second Decode Value: ',list$SEXS$LABEL[[2]])) # Decode value 2
+```

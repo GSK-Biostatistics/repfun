@@ -1,0 +1,51 @@
+---
+title: "Add-Labels"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Add-Labels}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+```{r setup, message=FALSE}
+library(repfun)
+```
+
+## Before Adding Labels
+
+```{r before}
+knitr::kable(head(mtcars,5), caption = "Before Invoking repfun::ru_labels()")
+```
+
+## After Adding Labels Using Base Method
+
+```{r after_base}
+df <- repfun::ru_labels(mtcars,varlabels=list(mpg='Miles Per Gallon',cyl='Number of Cylinders'))
+knitr::kable(head(df,5), col.names=sapply(df,function(x){attr(x,"label")}),
+             caption = "After Invoking repfun::ru_labels() - style = 'base'")
+```
+
+## After Adding Labels Using Hmisc Method
+
+```{r after_hmisc}
+df2 <- repfun::ru_labels(mtcars,varlabels=list(mpg='Miles Per Gallon',
+                                       cyl='Number of Cylinders'),style='hmisc')
+knitr::kable(head(df,5), col.names=sapply(df2,function(x){attr(x,"label")}),
+             caption = "After Invoking repfun::ru_labels() - style = 'hmisc'")
+
+```
+
+

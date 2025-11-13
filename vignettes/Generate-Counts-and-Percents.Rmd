@@ -1,0 +1,180 @@
+---
+title: "Generate-Counts-and-Percents"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Generate-Counts-and-Percents}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<style>
+body {
+    position: absolute;
+    left: 50px;}
+</style>
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+library(kableExtra)
+```
+
+## Set Up the Reporting Environment
+
+```{r envir}
+repfun::rs_setup(D_POPDATA=get(load("../data/adsl.rda")) %>% dplyr::filter(SAFFL =='Y'), 
+         D_SUBJID=c("STUDYID","USUBJID"),
+         R_ADAMDATA="../data")
+```
+
+## Update ADSL and ADAE
+
+```{r update, out.width="70%"}
+rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3)),
+                     SEXN=ifelse(SEX=='F',1,ifelse(SEX=='M',2,NA)),
+                     RACEN=ifelse(RACE=='AMERICAN INDIAN OR ALASKA NATIVE',1,
+                                  ifelse(RACE=='BLACK OR AFRICAN AMERICAN',2,
+                                         ifelse(RACE=='WHITE',3,NA))),
+                     AGEGR1N=ifelse(AGEGR1=='18-64',1,ifelse(AGEGR1=='>64',2,NA))) %>% 
+              repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)','SEXN'='Sex (n)',
+                                       'RACEN'='Race (n)','AGEGR1N'='Pooled Age Group 1 (n)')) -> G_POPDATA
+
+G_POPDATA %>% dplyr::select(STUDYID,USUBJID,SAFFL,TRT01AN,TRT01A) -> G_POPDATA1
+adae <- rfenv$adamdata$adae.rda() %>% dplyr::filter(TRTEMFL=='Y') %>% 
+  dplyr::inner_join(G_POPDATA1, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
+```
+
+## Generate Counts and Percents for AE Body System and Preferred Term
+
+```{r cntper1}
+aeprod <- repfun::ru_freq(adae,
+                  dsetindenom=G_POPDATA1,
+                  countdistinctvars=c('STUDYID','USUBJID'),
+                  groupbyvarsnumer=c('TRT01AN','TRT01A','AEBODSYS','AEDECOD'),
+                  anyeventvars = c('AEBODSYS','AEDECOD'),
+                  anyeventvalues = c('ANY EVENT','ANY EVENT'),
+                  groupbyvarsdenom=c('TRT01AN'),
+                  resultstyle="NUMERPCT",
+                  totalforvar=c('TRT01AN'),
+                  totalid=99,
+                  totaldecode='Total',
+                  codedecodevarpairs=c("TRT01AN", "TRT01A"),
+                  varcodelistpairs=c(""),
+                  codelistnames=list(),
+                  resultpctdps=2) %>% dplyr::select(TRT01AN,TRT01A,AEBODSYS,AEDECOD,NUMERCNT,
+                                             DENOMCNT,PERCENT,tt_result) %>% 
+                                      dplyr::arrange(TRT01AN,TRT01A,AEBODSYS,AEDECOD)
+```
+
+## Display the Results for AE Body System and Preferred Term
+
+```{r results1}
+lbls <- sapply(aeprod,function(x){attr(x,"label")})
+knitr::kable(head(aeprod,20), col.names=paste(names(lbls),lbls,sep=": "), 
+             caption = "Counts and Percents for AEs by Body System and Preferred Term") %>%
+    kable_styling(full_width = T) %>% column_spec(c(3,4,8), width_min = c('2in','2in','2in'))
+```
+
+## Generate Counts and Percents for AE Preferred Term Only
+
+```{r cntper2}
+aeprod2 <- repfun::ru_freq(adae,
+                   dsetindenom=G_POPDATA1,
+                   countdistinctvars=c('STUDYID','USUBJID'),
+                   groupbyvarsnumer=c('TRT01AN','TRT01A','AEDECOD'),
+                   anyeventvars = c('AEDECOD'),
+                   anyeventvalues = c('ANY EVENT'),
+                   groupbyvarsdenom=c('TRT01AN'),
+                   resultstyle="NUMERPCT",
+                   totalforvar=c('TRT01AN'),
+                   totalid=99,
+                   totaldecode='Total',
+                   codedecodevarpairs=c("TRT01AN", "TRT01A"),
+                   varcodelistpairs=c(""),
+                   codelistnames=list(),
+                   resultpctdps=2) %>% dplyr::select(TRT01AN,TRT01A,AEDECOD,NUMERCNT,
+                                              DENOMCNT,PERCENT,tt_result) %>% 
+                                       dplyr::arrange(TRT01AN,TRT01A,AEDECOD)
+```
+
+## Display the Results for AE Preferred Term Counts and Percents
+
+```{r results2}
+lbls <- sapply(aeprod2,function(x){attr(x,"label")})
+knitr::kable(head(aeprod2,20), col.names=paste(names(lbls),lbls,sep=": "), 
+             caption = "Counts and Percents for AEs by Preferred Term Only") %>%
+  kable_styling(full_width = T) %>% column_spec(c(3,7), width_min = c('2in','2in'))
+```
+
+## Generate Counts and Percents for Demographic Data
+
+```{r cntper3}
+G_POPDATA %>% dplyr::select(STUDYID,USUBJID,SAFFL,TRT01AN,TRT01A,SEXN,SEX,
+                     RACEN,RACE,AGEGR1N,AGEGR1) -> G_POPDATA2
+dflst <- list()
+basechar <- data.frame()
+i <- 1
+for(v in c('AGEGR1','SEX','RACE')){
+  lbl <- attr(G_POPDATA[[v]],'label')
+  dflst[[v]] <- repfun::ru_freq(G_POPDATA2, dsetindenom=G_POPDATA2, 
+                        countdistinctvars=c("STUDYID", "USUBJID"),
+                        groupbyvarsnumer=c("STUDYID", "TRT01AN", paste0(v,'N')),
+                        anyeventvars = NULL, anyeventvalues = NULL, groupminmaxvar=NULL,
+                        totalforvar=c("TRT01AN"), totalid = 99, totaldecode = 'Total',
+                        groupbyvarsdenom=c("STUDYID", "TRT01AN"), resultstyle="NUMERPCT", 
+                        codedecodevarpairs=c("TRT01AN", "TRT01A", paste0(v,'N'), v),
+                        varcodelistpairs=c(""), codelistnames=list(), resultpctdps=0) %>% 
+    {. ->> LBLS} %>%
+    dplyr::mutate(tt_avid=i, tt_avnm=lbl) %>%
+    rename(tt_svid=as.name(paste0(v,'N')), tt_svnm=as.name(v)) %>%
+    dplyr::select(tt_avid,tt_avnm,TRT01AN,TRT01A,tt_svid,tt_svnm,NUMERCNT,
+           DENOMCNT,PERCENT,tt_result) %>%
+    dplyr::mutate(tt_avnm=paste0(tt_avnm,', n (%)'))
+  row.names(dflst[[v]]) <- NULL
+  basechar <- bind_rows(basechar,dflst[[v]])
+  i <- i+1
+  }
+  basechar <- basechar %>% dplyr::arrange(TRT01AN,TRT01A,tt_avid,tt_avnm,tt_svid,tt_svnm)
+  for (v in names(basechar)){
+    if (v %in% names(LBLS)){
+      attr(basechar[[v]],"label") <- attr(LBLS[[v]],"label")
+    }
+  }
+  basechar <- repfun::ru_labels(basechar,varlabels=list('tt_svid'='Variable Order',
+                                                'tt_svnm'='Variable Name',
+                                                'tt_avid'='Value Order',
+                                                'tt_avnm'='Value Name')) %>% 
+              dplyr::arrange(tt_avid,tt_svid)
+```
+
+## Display the Results for Counts and Percents of Demographic Data
+
+```{r results3}
+lbls <- sapply(basechar,function(x){attr(x,"label")})
+knitr::kable(head(basechar,20), col.names=paste(names(lbls),lbls,sep=": "), 
+             caption = "Counts and Percents for Demographic Data") %>%
+  kable_styling(full_width = T) %>% 
+  column_spec(c(2,4,6,10), width_min = c('2in','2in','3in','2in'))
+```
+
+## Clean up Temporary Files
+
+```{r cleanup}
+#unlink("../docs/articles/Generate-Counts-and-Percents_files", recursive = TRUE)
+```
+

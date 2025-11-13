@@ -1,0 +1,82 @@
+---
+title: "Add-Big-N-to-DataFrame"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Add-Big-N-to-DataFrame}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+suppressMessages(library(dplyr))
+library(kableExtra)
+```
+
+## Set Up the Reporting Environment
+
+```{r envir}
+repfun::rs_setup(D_POP='SAFFL',
+         D_POPLBL='Safety',
+         D_POPDATA=get(load("../data/adsl.rda")) %>%
+           dplyr::filter(SAFFL =='Y'), D_SUBJID=c("STUDYID","USUBJID"),
+         R_ADAMDATA="../data")
+
+G_POPDATA <- rfenv$G_POPDATA %>%
+  mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
+  select(STUDYID,USUBJID,SAFFL,TRT01AN,TRT01A) %>%
+  repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
+
+adae <- rfenv$adamdata$adae.rda() %>% filter(TRTEMFL=='Y') %>%
+        repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"))
+```
+
+## Add Big N to ADAE
+
+```{r update, out.width="70%"}
+addbign <- repfun::ru_addbignvar(adae,
+                         G_POPDATA,
+                         groupbyvars=c("TRT01AN", "TRT01A"),
+                         countdistinctvars=c("STUDYID", "USUBJID"),
+                         totalforvar=c("TRT01AN"),
+                         totalid = 99,
+                         totaldecode = 'Total',
+                         codedecodevarpairs=c("TRT01AN", "TRT01A"),
+                         varcodelistpairs=c(""),
+                         codelistnames=list(),
+                         addbigntovarvalue=TRUE,
+                         splitchar="~") %>% select(STUDYID,USUBJID,TRT01AN,TRT01A,
+                                                   AEBODSYS,AEDECOD) %>% 
+           arrange(STUDYID, USUBJID, TRT01AN, TRT01A, AEBODSYS, AEDECOD)
+```
+
+## Display the Results of Adding Big N to ADAE
+
+```{r results1}
+lbls <- sapply(addbign,function(x){attr(x,"label")})
+knitr::kable(
+  head(addbign,20), col.names=paste(names(lbls),lbls,sep=": "), 
+  caption = "Big N Added to ADAE (Attached to TRT01A - The last groupbyvars column)") %>% 
+  kable_styling(full_width = T) %>% column_spec(c(2,4,5,6), width_min = '2in')
+```
+
+## Clean up Temporary Files
+
+```{r cleanup}
+#unlink("../docs/articles/Add-Big-N-to-DataFrame_files", recursive = TRUE)
+```

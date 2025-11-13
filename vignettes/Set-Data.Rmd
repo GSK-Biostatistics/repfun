@@ -1,0 +1,41 @@
+---
+title: "Set-Data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Set-Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+```
+
+## Append data frames with different columns
+
+```{r build}
+  fun <- repfun::ru_setdata(mtcars,airquality)
+  fun[['Row.names']] <- as.character(fun$Row.names)
+```
+
+## Display the Results
+
+```{r results}
+knitr::kable(fun, caption = "Combining Data Frames with Different Columns")
+```

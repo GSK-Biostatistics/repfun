@@ -1,0 +1,43 @@
+Package: repfun
+Title: Create TLFs using R functions styled after SAS macros
+Version: 0.0.0.9000
+Authors@R: 
+    c(person("Yongwei", "Wang", , "yongwei.x.wang@viivhealthcare.com", role = c("aut", "cre")),
+      person("Chris", "Rook", , "christopher.x.rook@gsk.com", role = c("aut")))
+Description: A clinical reporting toolkit of R functions that are written to mimic the style of SAS reporting 
+             macros.  The purpose is to generate TLFs (tables, listings and figures) to support clinical trials.
+License: Apache License (== 2.0)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    arrow,
+    data.table,
+    glue,
+    jsonlite,
+    rlang,
+    xportr,
+    Hmisc,
+    r2rtf,
+    haven,
+    dplyr,
+    tidyr,
+    magrittr,
+    stringr
+Depends: 
+    R (>= 3.5)
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    rprojroot,
+    DT,
+    kableExtra,
+    admiral,
+    tibble,
+    lubridate,
+    ggplot2 (>= 4.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+LazyData: true
+URL: https://gsk-biostatistics.github.io/repfun

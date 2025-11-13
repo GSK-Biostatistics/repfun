@@ -1,0 +1,46 @@
+---
+title: "Library-Setup"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Library-Setup}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+```
+
+## Define Libnames
+
+```{r libname}
+adamdata <- repfun::ru_libname('../data')
+```
+
+## Use Libname to Access and Subset Data
+
+```{r subset}
+adsl <- adamdata$adsl.rda() %>% dplyr::filter(SAFFL=='Y') -> adsl1
+```
+
+## Display the Result
+
+```{r display}
+knitr::kable(head(adsl[,c(1:10)],10), caption = "Libname Style Access to ADSL")
+```

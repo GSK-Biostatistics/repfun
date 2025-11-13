@@ -1,0 +1,76 @@
+---
+title: "Global-Reporting-Setup"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Global-Reporting-Setup}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+```
+
+## Set Up the Global Environment
+
+```{r global}
+tmpdr <- tempdir()
+suppressMessages(
+  repfun::rs_setup(
+    D_CENTID="SITEID",
+    D_DATADATE=Sys.Date(),
+    D_DSPLYNUM=1,
+    D_DSPLYTYP=T,
+    D_FONTSIZE=10,
+    D_FOOT1='1.) Only treatment emergent events related to lipids are displayed.',
+    D_FOOT2='2.) Subjects are only counted once within each body system and preferred term.',
+    D_KEEPPOPVARS=c('STUDYID','USUBJID','SAFFL'),
+    D_OUTFILE=paste0("../inst/t_ru_list_1.rtf"),
+    D_PGMPTH="./Global-Reporting-Setup.Rmd",
+    D_STUDYID='ABCXYZPDQ',
+    D_POP="SAFFL",
+    D_POPDATA=get(load("../data/adsl.rda")) %>% dplyr::filter(SAFFL=='Y'),
+    D_POPLBL="Safety",
+    D_SUBJID=c("STUDYID","USUBJID"),
+    D_TITLE1=paste0('Table 1: Summary of Treatment Emergent Adverse Events'),
+    D_USERID=Sys.getenv("DOMINO_USER_NAME"),
+    R_DICTION="../inst/formats",
+    R_MACDIRS=c("."),
+    R_DDDATA=paste0(tmpdr,'/t_ru_list_1.rds'),
+    R_OTHERDATA="../data",
+    R_INPUTDATA="../data",
+    R_RAWDATA="../data",
+    R_SDTMDATA="../data",
+    R_ADAMDATA="../data/",
+    D_RTFYN="Y",
+    D_DEBUG=0)
+    )
+```
+
+## Use Libname to Access and Subset Data
+
+```{r subset}
+adae <- rfenv$adamdata$adae.rda() %>% dplyr::filter(TRTEMFL=='Y') -> adsl1
+```
+
+## Display the Result, add Study ID to Title
+
+```{r display}
+knitr::kable(head(adae[,c(1:10)],10), caption = paste0("TEAEs for Study: ", rfenv$G_STUDYID))
+```

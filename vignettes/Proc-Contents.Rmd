@@ -1,0 +1,42 @@
+---
+title: "Proc-Contents"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Proc-Contents}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+```{r setup}
+library(repfun)
+```
+
+## Generate a Proc Contents style report of a data frame in R
+
+```{r contents2file}
+fnam <- paste0(base::tempdir(),"/test-ru_contents.txt")
+sink(fnam)
+  repfun::ru_contents(airquality)
+sink()
+```
+
+## Display the result
+
+```{r contents2out}
+cat(readLines(fnam), sep = '\n')
+```
+
+

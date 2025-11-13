@@ -1,0 +1,42 @@
+---
+title: "Add-Remove-Decode-Variables"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Add-Remove-Decode-Variables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+```{r setup}
+library(repfun)
+```
+
+## Add Decode Variables to the Incoming List
+
+```{r add}
+add_decode <- repfun::ru_groupbyvars(c("TRTCD", "TRTGRP", "ATOXGRN", "AEDECOD", "AEBODSYS"), 
+                             c("TRTCD", "TRTGRP", "ATOXGRN", "ATOXGR"), TRUE)
+print(add_decode)
+```
+
+## Remove Decode Variables from the Incoming List
+
+```{r rem}
+rem_decode <- repfun::ru_groupbyvars(c("TRTCD", "TRTGRP", "ATOXGRN", "AEDECOD", "AEBODSYS"), 
+                             c("TRTCD", "TRTGRP", "ATOXGRN", "ATOXGR"), FALSE)
+print(rem_decode)
+```
+

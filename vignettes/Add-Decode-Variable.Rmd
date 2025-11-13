@@ -1,0 +1,70 @@
+---
+title: "Add-Decode-Variable"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Add-Decode-Variable}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+```
+
+## Define data library
+
+```{r define}
+rfmtdir <- repfun::ru_libname('../inst/formats')
+```
+
+## Read in Format Data Set
+
+```{r getdata}
+fmtdata <- rfmtdir$formats()
+```
+
+## Make List from Format Data Set
+
+```{r makelist}
+fmtlist <- repfun::ru_data2codelist(fmtdata,
+                            codelistvarname="FMTNAME",
+                            codevarname="START",
+                            decodevarname="LABEL",
+                            typevarname="TYPE")
+```
+
+## Apply the List to Create a Decode Variable on ADSL
+
+```{r decode}
+rfenv$G_DEBUG <- 0
+adsl <- get(load('../data/adsl.rda'))
+addvar <- repfun::ru_fillcodedcode(adsl, 
+                           codedecodevarpairs=c("SEX", "SEXDCD"), 
+                           varcodelistpairs=c("SEX", "SEXS"), 
+                           codelistnames=fmtlist)  %>% 
+          dplyr::select(SEX,SEXDCD) %>%
+          repfun::ru_labels(varlabels=list('SEXDCD'='Sex Decode'))
+```
+
+## Display the Results
+
+```{r results}
+lbls <- sapply(addvar,function(x){attr(x,"label")})
+knitr::kable(head(addvar,10), col.names=paste(names(lbls),lbls,sep=": "), 
+             caption = "Add Decode Variable for ADSL$SEX")
+```
