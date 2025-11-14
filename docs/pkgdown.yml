@@ -1,4 +1,4 @@
-pandoc: '3.2'
+pandoc: 3.6.3
 pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
@@ -29,7 +29,7 @@ articles:
   SAS-Type-Variable-Expansion: SAS-Type-Variable-Expansion.html
   Set-Data: Set-Data.html
   Stack-Variables: Stack-Variables.html
-last_built: 2025-11-06T15:55Z
+last_built: 2025-11-14T13:58Z
 urls:
-  reference: https://glowing-adventure-mrjp2gp.pages.github.io/reference
-  article: https://glowing-adventure-mrjp2gp.pages.github.io/articles
+  reference: https://gsk-biostatistics.github.io/repfun/reference
+  article: https://gsk-biostatistics.github.io/repfun/articles

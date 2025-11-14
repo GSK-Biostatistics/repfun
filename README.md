@@ -16,10 +16,10 @@ This repository contains an R package of reporting functions that mimic (HARP) S
 
 ## How to Use This Repository
 
-1. Download and install the package using the zip file (outputs branch) or via library remotes (see below).
+1. Download and install the package using the zip file (misc branch) or via library remotes (see below).
 2. Load the library in an R session.
 3. Review the function documentation under References (https://gsk-biostatistics.github.io/repfun/reference/index.html).
-3. Identify a use case that fits your needs from the Articles (https://gsk-biostatistics.github.io/tfrmt/articles/index.html).
+3. Identify a use case that fits your needs from the Articles (https://gsk-biostatistics.github.io/repfun/articles/index.html).
 5. Copy and modify the Vignette code for your study.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -31,11 +31,12 @@ This repository contains an R package of reporting functions that mimic (HARP) S
 - This package contains reporting functions that mimic (HARP) SAS macros.
 - View the function documentation at: https://gsk-biostatistics.github.io/repfun/reference/index.html
 - Install the package using: 
-    library(remotes); install_github("gsk-tech/RepFuncs") [After setting user environment variable GITHUB_PAT.]
-    or install.packages('/your/path/repfun_0.0.0.9000.tar.gz',repos=NULL,type='source') (see outputs branch)
-    or download the following zip file and install as above: https://github.com/gsk-tech/repfun/blob/outputs/repfun_0.0.0.9000.tar.gz
+    library(remotes); install_github("devtools::install_github("GSK-Biostatistics/repfun")") [After setting user environment variable GITHUB_PAT.]
+    or install.packages('/your/path/repfun_0.0.0.9000.tar.gz',repos=NULL,type='source') (see misc branch)
+    or download the following zip file and install as above: https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.tar.gz
 - Use the package by loading it: library(repfun)
 - View use cases at: https://gsk-biostatistics.github.io/repfun/articles/
+- View package documentation at: https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.pdf
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

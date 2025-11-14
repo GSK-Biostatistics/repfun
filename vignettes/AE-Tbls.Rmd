@@ -134,11 +134,11 @@ DT::datatable(
 
 ### Table 1 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_1.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_1.rtf" target="_blank" download>Download</a>
 
 ### Table 1 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_1.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_1.pdf" target="_blank" download>View</a>
 
 <!-- ************************************************************************************************************************************************** -->
 <!-- ************************************************************************************************************************************************** -->
@@ -200,11 +200,11 @@ datatable(
 
 ### Table 2 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_2.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_2.rtf" target="_blank" download>Download</a>
 
 ### Table 2 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_2.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_2.pdf" target="_blank" download>View</a>
 
 <!-- ************************************************************************************************************************************************** -->
 <!-- ************************************************************************************************************************************************** -->
@@ -266,11 +266,11 @@ datatable(
 
 ### Table 3 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_3.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_3.rtf" target="_blank" download>Download</a>
 
 ### Table 3 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_3.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_3.pdf" target="_blank" download>View</a>
 
 
 <!-- ************************************************************************************************************************************************** -->
@@ -304,11 +304,11 @@ repfun::ru_list(dsetin=df[0,],
 
 ### Table 4 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_4.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_4.rtf" target="_blank" download>Download</a>
 
 ### Table 4 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_4.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_4.pdf" target="_blank" download>View</a>
 
 
 <!-- ************************************************************************************************************************************************** -->
@@ -384,11 +384,11 @@ datatable(
 
 ### Table 5 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_5.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_5.rtf" target="_blank" download>Download</a>
 
 ### Table 5 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_5.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_5.pdf" target="_blank" download>View</a>
 
 
 <!-- ************************************************************************************************************************************************** -->
@@ -451,11 +451,11 @@ datatable(
 
 ### Table 6 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_6.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_6.rtf" target="_blank" download>Download</a>
 
 ### Table 6 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_6.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_6.pdf" target="_blank" download>View</a>
 
 <!-- ************************************************************************************************************************************************** -->
 <!-- ************************************************************************************************************************************************** -->
@@ -525,11 +525,11 @@ datatable(
 
 ### Table 7 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_7.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_7.rtf" target="_blank" download>Download</a>
 
 ### Table 7 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_7.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_7.pdf" target="_blank" download>View</a>
 
 <!-- ************************************************************************************************************************************************** -->
 <!-- ************************************************************************************************************************************************** -->
@@ -593,11 +593,11 @@ datatable(
 
 ### Table 8 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_8.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_8.rtf" target="_blank" download>Download</a>
 
 ### Table 8 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_8.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_8.pdf" target="_blank" download>View</a>
 
 
 <!-- ************************************************************************************************************************************************** -->
@@ -655,11 +655,11 @@ datatable(
 
 ### Table 9 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_9.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_9.rtf" target="_blank" download>Download</a>
 
 ### Table 9 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_9.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_9.pdf" target="_blank" download>View</a>
 
 
 <!-- ************************************************************************************************************************************************** -->
@@ -733,11 +733,11 @@ datatable(
 
 ### Table 10 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_10.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_10.rtf" target="_blank" download>Download</a>
 
 ### Table 10 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_10.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_10.pdf" target="_blank" download>View</a>
 
 <!-- ************************************************************************************************************************************************** -->
 <!-- ************************************************************************************************************************************************** -->
@@ -789,11 +789,11 @@ datatable(
 
 ### Table 11 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_11.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_11.rtf" target="_blank" download>Download</a>
 
 ### Table 11 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_11.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_11.pdf" target="_blank" download>View</a>
 
 <!-- ************************************************************************************************************************************************** -->
 <!-- ************************************************************************************************************************************************** -->
@@ -848,11 +848,11 @@ datatable(
 
 ### Table 12 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_12.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_12.rtf" target="_blank" download>Download</a>
 
 ### Table 12 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_12.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_12.pdf" target="_blank" download>View</a>
 
 <!-- ************************************************************************************************************************************************** -->
 <!-- ************************************************************************************************************************************************** -->
@@ -921,11 +921,11 @@ datatable(
 
 ### Table 13 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_13.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_13.rtf" target="_blank" download>Download</a>
 
 ### Table 13 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_13.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_13.pdf" target="_blank" download>View</a>
 
 <!-- ************************************************************************************************************************************************** -->
 <!-- ************************************************************************************************************************************************** -->
@@ -994,11 +994,11 @@ datatable(
 
 ### Table 14 RTF 
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_14.rtf" target="_blank" download>Download</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_14.rtf" target="_blank" download>Download</a>
 
 ### Table 14 PDF
 
-<a href="https://github.com/gsk-tech/repfun/tree/outputs/inst/t_ru_list_14.pdf" target="_blank" download>View</a>
+<a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_14.pdf" target="_blank" download>View</a>
 
 ## Clean up Temporary Files
 

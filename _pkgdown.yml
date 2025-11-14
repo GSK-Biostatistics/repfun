@@ -3,7 +3,7 @@ template:
   bootstrap: 5
   opengraph:
     image:
-      src: https://github.com/gsk-tech/repfun/blob/outputs/man/figures/repfun.png
+      src: https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun.png
       alt: "Logo"
 articles:
 - title: TLF Use Cases

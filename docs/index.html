@@ -13,7 +13,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Create TLFs using R functions styled after SAS macros">
 <meta name="description" content="A clinical reporting toolkit of R functions that are written to mimic the style of SAS reporting macros. The purpose is to generate TLFs (tables, listings and figures) to support clinical trials.">
 <meta property="og:description" content="A clinical reporting toolkit of R functions that are written to mimic the style of SAS reporting macros. The purpose is to generate TLFs (tables, listings and figures) to support clinical trials.">
-<meta property="og:image" content="https://github.com/gsk-tech/repfun/blob/outputs/man/figures/repfun.png">
+<meta property="og:image" content="https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun.png">
 <meta property="og:image:alt" content="Logo">
 </head>
 <body>
@@ -83,7 +83,7 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="repfun-">repfun <a href="https://glowing-adventure-mrjp2gp.pages.github.io"><img src="reference/figures/repfun.png" align="right" height="139" alt="repfun website"></a>
+<div class="page-header"><h1 id="repfun-">repfun <a href="https://gsk-biostatistics.github.io/repfun/"><img src="reference/figures/repfun.png" align="right" height="139" alt="repfun website"></a>
 <a class="anchor" aria-label="anchor" href="#repfun-"></a>
 </h1></div>
 <p><a id="readme-top"></a></p>
@@ -91,7 +91,7 @@
 <div class="section level2">
 <h2 id="r-reporting-functions-repository">R Reporting Functions Repository<a class="anchor" aria-label="anchor" href="#r-reporting-functions-repository"></a>
 </h2>
-<p>This repository contains an R package of reporting functions that mimimc (HARP) SAS macros for clinical reporting. The package can be used to generate TLFs (Tables, Listings, Figures). See several examples in the vignettes.</p>
+<p>This repository contains an R package of reporting functions that mimic (HARP) SAS macros for clinical reporting. The package can be used to generate TLFs (Tables, Listings, Figures). See several examples in the vignettes.</p>
 <p align="right">
 (<a href="#readme-top">back to top</a>)
 </p>
@@ -101,10 +101,10 @@
 <h2 id="how-to-use-this-repository">How to Use This Repository<a class="anchor" aria-label="anchor" href="#how-to-use-this-repository"></a>
 </h2>
 <ol style="list-style-type: decimal">
-<li>Download and install the package using the zip file (outputs branch) or via library remotes (see below).</li>
+<li>Download and install the package using the zip file (misc branch) or via library remotes (see below).</li>
 <li>Load the library in an R session.</li>
-<li>Review the function documentation under References (<a href="https://glowing-adventure-mrjp2gp.pages.github.io/reference/index.html" class="uri">https://glowing-adventure-mrjp2gp.pages.github.io/reference/index.html</a>).</li>
-<li>Identify a use case that fits your needs from the Articles (<a href="https://glowing-adventure-mrjp2gp.pages.github.io/reference/index.html" class="uri">https://glowing-adventure-mrjp2gp.pages.github.io/reference/index.html</a>).</li>
+<li>Review the function documentation under References (<a href="https://gsk-biostatistics.github.io/repfun/reference/index.html" class="uri">https://gsk-biostatistics.github.io/repfun/reference/index.html</a>).</li>
+<li>Identify a use case that fits your needs from the Articles (<a href="https://gsk-biostatistics.github.io/repfun/articles/index.html" class="uri">https://gsk-biostatistics.github.io/repfun/articles/index.html</a>).</li>
 <li>Copy and modify the Vignette code for your study.</li>
 </ol>
 <p align="right">
@@ -117,12 +117,14 @@
 </h2>
 <ul>
 <li>This package contains reporting functions that mimic (HARP) SAS macros.</li>
-<li>View the function documentation at: <a href="https://glowing-adventure-mrjp2gp.pages.github.io/reference/index.html" class="uri">https://glowing-adventure-mrjp2gp.pages.github.io/reference/index.html</a>
+<li>View the function documentation at: <a href="https://gsk-biostatistics.github.io/repfun/reference/index.html" class="uri">https://gsk-biostatistics.github.io/repfun/reference/index.html</a>
 </li>
-<li>Install the package using: library(remotes); install_github(“gsk-tech/RepFuncs”) [After setting user environment variable GITHUB_PAT.] or install.packages(‘/your/path/repfun_0.0.0.9000.tar.gz’,repos=NULL,type=‘source’) (see outputs branch) or download the following zip file and install as above: <a href="https://github.com/gsk-tech/repfun/repfun_0.0.0.9000.tar.gz" class="external-link uri">https://github.com/gsk-tech/repfun/repfun_0.0.0.9000.tar.gz</a>
+<li>Install the package using: library(remotes); install_github(“devtools::install_github(”GSK-Biostatistics/repfun”)“) [After setting user environment variable GITHUB_PAT.] or install.packages(‘/your/path/repfun_0.0.0.9000.tar.gz’,repos=NULL,type=‘source’) (see misc branch) or download the following zip file and install as above: <a href="https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.tar.gz" class="external-link uri">https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.tar.gz</a>
 </li>
 <li>Use the package by loading it: library(repfun)</li>
-<li>View use cases at: <a href="https://glowing-adventure-mrjp2gp.pages.github.io/articles/" class="uri">https://glowing-adventure-mrjp2gp.pages.github.io/articles/</a>
+<li>View use cases at: <a href="https://gsk-biostatistics.github.io/repfun/articles/" class="uri">https://gsk-biostatistics.github.io/repfun/articles/</a>
+</li>
+<li>View package documentation at: <a href="https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.pdf" class="external-link uri">https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.pdf</a>
 </li>
 </ul>
 <p align="right">
