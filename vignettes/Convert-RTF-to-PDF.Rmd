@@ -52,8 +52,8 @@ C:/Users/MUDID/Documents/scripts/
 
 **Step 3.) Copy the following 2 files into the scripts folder created in Step 2:**
 
-https://github.com/gsk-tech/repfun/blob/main/inst/rtf2pdf.ps1 <br>
-https://github.com/gsk-tech/repfun/blob/main/inst/makepdf.bat
+https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/rtf2pdf.ps1 <br>
+https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/makepdf.bat
 
 <br>
 
