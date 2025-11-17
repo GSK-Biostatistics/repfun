@@ -18,8 +18,8 @@ This repository contains an R package of reporting functions that mimic (HARP) S
 
 1. Download and install the package using the zip file (misc branch) or via library remotes (see below).
 2. Load the library in an R session.
-3. Review the function documentation under References (https://gsk-biostatistics.github.io/repfun/reference/index.html).
-3. Identify a use case that fits your needs from the Articles (https://gsk-biostatistics.github.io/repfun/articles/index.html).
+3. Review the function documentation under References <br> (https://gsk-biostatistics.github.io/repfun/reference/index.html).
+3. Identify a use case that fits your needs from the Articles <br> (https://gsk-biostatistics.github.io/repfun/articles/index.html).
 5. Copy and modify the Vignette code for your study.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
