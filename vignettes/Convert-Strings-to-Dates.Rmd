@@ -1,0 +1,61 @@
+---
+title: "Convert-Strings-to-Dates"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Convert-Strings-to-Dates}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+```
+
+## Define library as a libname
+
+```{r libname}
+sdtmdata <- repfun::ru_libname('../data')
+```
+
+## Use Libname to Access SDTM.AE Data
+
+```{r retrieve}
+sdtm.ae <- sdtmdata$ae.rda() 
+```
+
+## Add times to the character dates
+
+```{r addtimes}
+sdtm.ae %>% mutate(AEDTC=ifelse(nchar(AEDTC)==10,paste0(AEDTC,'T12:30:50'),AEDTC),
+                   AESTDTC=ifelse(nchar(AESTDTC)==10,paste0(AESTDTC,'T00:00:01'),AESTDTC),
+                   AEENDTC=ifelse(nchar(AEENDTC)==10,paste0(AEENDTC,'T00:00:02'),AEENDTC)) -> sdtm.ae2
+```
+
+## Convert character dates to formatted R date variables
+
+```{r convert}
+sdtm.ae3 <- repfun::ru_datetime(sdtm.ae2)
+```
+
+## Display the results
+
+```{r showresult}
+knitr::kable(head(sdtm.ae3[,grepl('(DT$|TM$|DTC$)',names(sdtm.ae3))],10), 
+             caption = "SDTM.AE with Character Dates/Times Converted")
+```

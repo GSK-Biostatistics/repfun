@@ -1,0 +1,86 @@
+url: https://gsk-biostatistics.github.io/repfun/
+template:
+  bootstrap: 5
+  opengraph:
+    image:
+      src: https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun.png
+      alt: "Logo"
+articles:
+- title: TLF Use Cases
+  navbar: TLF Use Cases
+  contents:
+  - AE-Tbls
+  - Dem-Tbls
+  - Figures
+- title: Utility Use Cases
+  navbar: Utility Use Cases
+  contents:
+  - Add-Big-N-to-DataFrame
+  - Add-Decode-Variable
+  - Add-Labels
+  - Add-Page-Numbers-to-Dataframe
+  - Add-Remove-Decode-Variables
+  - Add-Supplemental-to-Domain
+  - Align-Columns-for-TLF-Reporting
+  - Convert-Format-Data-to-Codelist
+  - Convert-RTF-to-PDF
+  - Convert-Strings-to-Dates
+  - Data-Compare
+  - Denormalize-A-DataFrame
+  - Fill-Missings
+  - Generate-Counts-and-Percents
+  - Generate-Relative-Column-Widths-for-RTF-Reporting
+  - Generate-Summary-Statistics
+  - Get-Data-for-Population
+  - Global-Reporting-Setup
+  - Library-Setup
+  - Load-Libraries
+  - Proc-Contents
+  - SAS-Type-Variable-Expansion
+  - Set-Data
+  - Stack-Variables
+reference:
+- title: Reporting
+  contents:
+  - ru_freq
+  - ru_sumstats
+  - ru_list
+- title: Utility
+  contents:
+  - rs_setup
+  - ru_addbignvar
+  - ru_addpage
+  - ru_addsupp
+  - ru_align
+  - ru_contents
+  - ru_data2codelist
+  - ru_datacompare
+  - ru_datetime
+  - ru_denorm
+  - ru_expvarlist
+  - ru_fillcodedcode
+  - ru_fillna
+  - ru_getdata
+  - ru_groupbyvars
+  - ru_labels
+  - ru_libname
+  - ru_load_library
+  - ru_setdata
+  - ru_stackvar
+  - ru_width_rtf
+  - setpath
+  - rem_pg_nums
+- title: Data
+  contents:
+  - adae
+  - adsl
+  - advs
+  - ae
+  - dm
+  - suppae
+  - suppdm
+  - airquality_4test
+  - airquality_updated
+  - copydata
+  - formats
+  - mtcars_w2lbls

@@ -1,0 +1,55 @@
+# .gitignore handles what should be included in or excluded from the git repository.
+# This file is constructed in a way to only allow specific files and file extentions in the repo.
+# It is highly discouraged to modify this file to avoid potential data breaches.
+# Especially files containing study data should NEVER be allowed by this gitignore.
+
+# Exclude everything
+*
+
+# Except for these files
+!.gitignore
+!.gitkeep
+!*.md
+!*.cfg
+!*.sh
+!*.py
+!*.sas
+!*.R
+!*.Rproj
+!*.Rmd
+!*.qmd
+!*.yaml
+!*.ipynb
+!*.XML
+!*.rda
+!*.Rd
+!*.gz
+!*.rtf
+!*.rds
+!*.rtf
+!*.xpt
+!*.sas7bdat
+!*.png
+!*.pdf
+!*.bat
+!*.ps1
+!DESCRIPTION
+!LICENSE
+!NAMESPACE
+
+# Even if they are in subdirectories
+!*/
+
+# Ignore invisible subfolders typicaly used by IDEs
+.vscode/
+#Ignore Persisted R files created through user installation
+.R/
+.cache/
+renv/
+.Rproj.user
+inst/doc
+.Rhistory
+.Rdata
+.httr-oauth
+.DS_Store
+.quarto

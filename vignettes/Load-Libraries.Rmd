@@ -1,0 +1,53 @@
+---
+title: "Load-Libraries"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Load-Libraries}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+```
+
+## Create a vector of packages to load.
+
+```{r toload}
+lbs <- c("janitor", "gmodels", "epiR", "DescTools", "coin", "irr", "Exact", "stats")
+lbs <- c('stats','devtools')
+```
+
+## Unload all packages in the list above.
+
+```{r unload}
+trashbin <- lapply(lbs, 
+                   function(x) if (x %in% .packages()) {detach(paste0('package:',x), character.only=TRUE)})
+```
+
+## Reload all packages in the list above.
+```{r reload}
+suppressMessages(repfun::ru_load_library(lbs))
+```
+
+## Confirm all packages in the list above are loaded.
+```{r confirm}
+loaded <- lapply(lbs,function(x) x %in% loadedNamespaces())
+names(loaded) <- lbs
+knitr::kable(stack(loaded)[,c(2,1)], caption = "Is Package Loaded (T/F)?")
+```

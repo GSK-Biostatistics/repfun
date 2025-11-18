@@ -1,0 +1,125 @@
+---
+title: "Align-Columns-for-TLF-Reporting"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Align-Columns-for-TLF-Reporting}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+library(kableExtra)
+```
+
+## Set Up the Reporting Environment
+
+```{r envir}
+repfun::rs_setup(D_POP="SAFFL",D_POPLBL="Safety",D_POPDATA=get(load("../data/adsl.rda")) %>% 
+           dplyr::filter(SAFFL =='Y'), D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA="../data")
+rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>% 
+              repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)')) -> G_POPDATA
+```
+
+## Read in ADAE and Apply Population
+
+```{r update1}
+adae <- rfenv$adamdata$adae.rda() %>% select(-SAFFL) %>% 
+  repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"), keeppopvars=c("TRT01AN", "TRT01A"))
+```
+
+## Generate Counts and Percents for AE Body System and Preferred Term
+
+```{r cntper1}
+aesum <- repfun::ru_freq(adae,
+                 dsetindenom=G_POPDATA,
+                 countdistinctvars=c('STUDYID','USUBJID'),
+                 groupbyvarsnumer=c('TRT01AN','TRT01A','AEBODSYS','AEDECOD'),
+                 anyeventvars = c('AEBODSYS','AEDECOD'),
+                 anyeventvalues = c('ANY EVENT','ANY EVENT'),
+                 groupbyvarsdenom=c('TRT01AN'),
+                 resultstyle="NUMERPCT",
+                 totalforvar=c('TRT01AN'),
+                 totalid=99,
+                 totaldecode='Total',
+                 codedecodevarpairs=c("TRT01AN", "TRT01A"),
+                 varcodelistpairs=c(""),
+                 codelistnames=list(),
+                 resultpctdps=0)
+```
+
+## Denormalize the AE Counts and Percents Data Set
+
+```{r denorm1}
+aesum_t <- aesum %>% repfun::ru_denorm(varstodenorm=c("tt_result", "PERCENT"), 
+                               groupbyvars=c("tt_summarylevel", "AEBODSYS", "AEDECOD"), 
+                               acrossvar="TRT01AN",
+                               acrossvarlabel="TRT01A", acrossvarprefix=c("tt_ac", "tt_p"))
+```
+
+## Align the Columns for TLF Reporting
+
+```{r align1}
+aesum_t_a <- repfun::ru_align(aesum_t, "tt_ac:") %>% 
+  select(-c('tt_p01','tt_p02','tt_p03','tt_p99','tt_summarylevel'))
+```
+
+## Display the Aligned AE Counts and Percents Data Set
+
+```{r results1}
+print("Aligned Reporting Data Set for AE Counts and Percents")
+print(head(aesum_t_a,20))
+```
+
+## Generate Counts and Percents for Baseline Characteristics Data
+
+```{r cntper2}
+demstats <- repfun::ru_sumstats(G_POPDATA,
+                          analysisvars=c("AGE","TRTDURD"),
+                          groupbyvars=c("STUDYID","TRT01AN"),
+                          codedecodevarpairs=c("TRT01AN", "TRT01A"),
+                          totalforvar="TRT01AN", totalid=99,
+                          totaldecode="Total",
+                          statsinrowsyn = "Y",
+                          analysisvardps=list("AGE"=1,"TRTDURD"=2),
+                          statslist=c("n", "mean", "median", "sd", "min", "max"))
+```
+
+## Denormalize the Baseline Characteristics Summary Statistics Data
+
+```{r denorm2}
+demstats_t <- demstats %>% repfun::ru_denorm(varstodenorm=c("tt_result"), 
+                                     groupbyvars=c("tt_avid", "tt_avnm", "tt_svid", "tt_svnm"),                                                                              acrossvar="TRT01AN", acrossvarlabel="TRT01A", 
+                                     acrossvarprefix=c("tt_ac"))
+```
+
+## Align the Columns for TLF Reporting
+
+```{r align2}
+demstats_t_a <- repfun::ru_align(demstats_t, "tt_ac:")
+```
+
+## Display the Aligned Baseline Characteristics Summary Statistics Data Set
+
+```{r results2}
+print("Aligned Reporting Data Set for Baseline Characteristics Summary Stats")
+print(head(demstats_t_a,20))
+```
+
+

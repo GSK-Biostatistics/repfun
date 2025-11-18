@@ -1,0 +1,44 @@
+---
+title: "Fill-Missings"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Fill-Missings}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Vignette Build Datetime
+
+```{r built}
+message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
+```
+
+## Load Libraries
+
+```{r setup, message=FALSE}
+library(repfun)
+library(dplyr)
+```
+
+## Before Filling Missings
+
+```{r before}
+airquality %>% mutate(CharVar1=ifelse(row_number() %% 2,'Text String 1',NA),
+                      CharVar2=ifelse(row_number() %% 3,'Text String 2',NA)) -> df
+knitr::kable(head(df,10), caption = "Before Invoking repfun::ru_fillna()")
+```
+
+## After Filling Missings
+
+```{r after}
+df2 <- repfun::ru_fillna(df, vars=c('Ozone','Solar.R','CharVar1','CharVar2'), 
+                 fills=c(1111,2222,'AAAA','BBBB'))
+knitr::kable(head(df2,10), caption = "After Invoking repfun::ru_fillna()")
+```
