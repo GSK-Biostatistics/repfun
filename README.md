@@ -86,11 +86,8 @@ For any questions or comments about this project, please contact **[Yongwei Wang
 Acknowledgement to the following useful sources:
 
 * [Helpful Read-Me Template](https://github.com/othneildrew/Best-README-Template)
-* [Choose an Open Source License](https://choosealicense.com)
 * [Img Shields](https://shields.io)
 * [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
