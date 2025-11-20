@@ -40,13 +40,13 @@ library(kableExtra)
 repfun::rs_setup(D_POP="SAFFL",D_POPLBL="Safety",
          D_POPDATA=get(load("../data/adsl.rda")) %>% dplyr::filter(SAFFL =='Y'), 
          D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA="../data")
-rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>% repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)')) -> G_POPDATA
+repfun:::rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>% repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)')) -> G_POPDATA
 ```
 
 ## Read in ADAE and Apply Population
 
 ```{r update}
-adae <- rfenv$adamdata$adae.rda() %>% select(-SAFFL) %>% 
+adae <- repfun:::rfenv$adamdata$adae.rda() %>% select(-SAFFL) %>% 
   repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"), keeppopvars=c("TRT01AN", "TRT01A"))
 ```
 

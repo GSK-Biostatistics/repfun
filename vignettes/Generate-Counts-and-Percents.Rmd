@@ -45,7 +45,7 @@ repfun::rs_setup(D_POPDATA=get(load("../data/adsl.rda")) %>% dplyr::filter(SAFFL
 ## Update ADSL and ADAE
 
 ```{r update, out.width="70%"}
-rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3)),
+repfun:::rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3)),
                      SEXN=ifelse(SEX=='F',1,ifelse(SEX=='M',2,NA)),
                      RACEN=ifelse(RACE=='AMERICAN INDIAN OR ALASKA NATIVE',1,
                                   ifelse(RACE=='BLACK OR AFRICAN AMERICAN',2,
@@ -55,7 +55,7 @@ rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT0
                                        'RACEN'='Race (n)','AGEGR1N'='Pooled Age Group 1 (n)')) -> G_POPDATA
 
 G_POPDATA %>% dplyr::select(STUDYID,USUBJID,SAFFL,TRT01AN,TRT01A) -> G_POPDATA1
-adae <- rfenv$adamdata$adae.rda() %>% dplyr::filter(TRTEMFL=='Y') %>% 
+adae <- repfun:::rfenv$adamdata$adae.rda() %>% dplyr::filter(TRTEMFL=='Y') %>% 
   dplyr::inner_join(G_POPDATA1, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
 ```
 

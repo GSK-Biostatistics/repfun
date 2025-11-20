@@ -51,7 +51,6 @@ fmtlist <- repfun::ru_data2codelist(fmtdata,
 ## Apply the List to Create a Decode Variable on ADSL
 
 ```{r decode}
-rfenv$G_DEBUG <- 0
 adsl <- get(load('../data/adsl.rda'))
 addvar <- repfun::ru_fillcodedcode(adsl, 
                            codedecodevarpairs=c("SEX", "SEXDCD"), 

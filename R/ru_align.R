@@ -21,13 +21,6 @@
 #' #=================
 #' library(repfun)
 #' library(dplyr)
-#' rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-#'              rfenv
-#'          } else {
-#'              rfenv <- new.env(parent = emptyenv())
-#'              rfenv$G_DEBUG <- 0
-#'              rfenv
-#'          }
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir")
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
@@ -41,11 +34,11 @@
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
 #'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=
+#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=
 #'                      ifelse(TRT01A=='Placebo',1,
 #'                      ifelse(TRT01A=='Xanomeline Low Dose',2,3)))
 #' attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
-#' adae <- rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>%
+#' adae <- repfun:::rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>%
 #'         repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"),
 #'         keeppopvars=c("TRT01AN", "TRT01A"))
 #' aesum_t <- repfun::ru_freq(adae,
@@ -87,7 +80,7 @@
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
 #'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- rfenv$G_POPDATA %>%
+#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
 #'              dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'                             ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
 #'   repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
@@ -119,7 +112,8 @@ ru_align <- function (dsetin,
                       alignment="Right",
                       compresschryn="Y",
                       ncspaces=1) {
-  #print(paste0("RU_ALIGN: ", "Start or RU_ALIGN"))
+
+  #if (G_DEBUG>0) print(paste0("RU_ALIGN: ", "Start or RU_ALIGN"))
 
   if (nrow(dsetin) < 1) return(as.data.frame(dsetin))
   alignment <- tolower(alignment)
@@ -203,7 +197,8 @@ ru_align <- function (dsetin,
   d.out <- merge(x = dsetin.1, y = d.out, by = c(byvars, "seq__"), all.x = TRUE, all.y=FALSE) %>% dplyr::select(-seq__)
   #d.out <- ru_labels(d.out, base::labels(dsetin))
   d.out <- ru_labels(d.out, lapply(dsetin,function(x){attr(x,"label")}))
-  #print(paste0("RU_ALIGN: ", "End of RU_ALIGN"))
+
+  #if (G_DEBUG>0) print(paste0("RU_ALIGN: ", "End of RU_ALIGN"))
 
   return(as.data.frame(d.out))
 }

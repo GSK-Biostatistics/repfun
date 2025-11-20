@@ -15,13 +15,6 @@
 #' @examples
 #' library(repfun)
 #' library(dplyr)
-#' rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-#'              rfenv
-#'          } else {
-#'              rfenv <- new.env(parent = emptyenv())
-#'              rfenv$G_DEBUG <- 0
-#'              rfenv
-#'          }
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir");
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
@@ -33,12 +26,12 @@
 #'          R_RAWDATA=NULL,
 #'          R_SDTMDATA=NULL,
 #'          R_ADAMDATA=datdir)
-#' G_POPDATA <- rfenv$G_POPDATA %>%
+#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
 #'     dplyr::mutate(
 #'          TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'                  ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
 #'     repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
-#' adae <- rfenv$adamdata$adae.rda() %>%
+#' adae <- repfun:::rfenv$adamdata$adae.rda() %>%
 #'         dplyr::inner_join(G_POPDATA, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
 #' aesum_p <- repfun::ru_freq(adae,
 #'                    dsetindenom=G_POPDATA,
@@ -76,7 +69,8 @@
 #' @export
 #'
 ru_width_rtf <- function (dsetin, varsin=list(), widths=list(), type="PCT") {
-  #print(paste0("RU_WIDTH_RTF: ", "Start or RU_WIDTHRTF"))
+
+  #if (G_DEBUG>0) print(paste0("RU_WIDTH_RTF: ", "Start of RU_WIDTH_RTF"))
 
   n.totalwidth <- 0
   n.totaldefaultwidth <- 0
@@ -135,7 +129,6 @@ ru_width_rtf <- function (dsetin, varsin=list(), widths=list(), type="PCT") {
     n.widths.1 <- n.widths
   }
   names(n.widths.1) <- varsin
-  #print(paste0("RU_WIDTH_RTF: ", "End of RU_WIDTHRTF"))
+  #if (G_DEBUG>0) print(paste0("RU_WIDTH_RTF: ", "End of RU_WIDTH_RTF"))
   return(n.widths.1)
-  #base::unname(n.widths.1)
 }

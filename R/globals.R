@@ -59,7 +59,59 @@ utils::globalVariables(c(
   "seq___",             # ru_setdata -
   "seq2___",            # ru_setdata -
   "tt_result",          # ru_sumstats -
-  "tt_result_num"       # ru_sumstats -
+  "tt_result_num",      # ru_sumstats -
+  "fmtlist",            # rs_setup
+  "G_ABORT",            # rs_setup
+  "G_ADAMDATA",         # rs_setup
+  "G_CENTID",           # rs_setup
+  "G_DATADATE",         # rs_setup
+  "G_DDDATA",           # rs_setup
+  "G_DEBUG",            # rs_setup
+  "G_DICTION",          # rs_setup
+  "G_DSPLYNUM",         # rs_setup
+  "G_DSPLYTYP",         # rs_setup
+  "G_FONTSIZE",         # rs_setup
+  "G_FOOT1",            # rs_setup
+  "G_FOOT2",            # rs_setup
+  "G_FOOT3",            # rs_setup
+  "G_FOOT4",            # rs_setup
+  "G_FOOT5",            # rs_setup
+  "G_FOOT6",            # rs_setup
+  "G_FOOT7",            # rs_setup
+  "G_FOOT8",            # rs_setup
+  "G_FOOT9",            # rs_setup
+  "G_FORMATS",          # rs_setup
+  "G_HEIGHT",           # rs_setup
+  "G_INPUTDATA",        # rs_setup
+  "G_JUSTIFICATION",    # rs_setup
+  "G_KEEPPOPVARS",      # rs_setup
+  "G_MACDIRS",          # rs_setup
+  "G_OTHERDATA",        # rs_setup
+  "G_OUTFILE",          # rs_setup
+  "G_PGMPTH",           # rs_setup
+  "G_POP",              # rs_setup
+  "G_POPDATA",          # rs_setup
+  "G_POPLBL",           # rs_setup
+  "G_RAWDATA",          # rs_setup
+  "G_RFMTDIR",          # rs_setup
+  "G_RTFYN",            # rs_setup
+  "G_SDTMDATA",         # rs_setup
+  "G_STUDY_DESC",       # rs_setup
+  "G_STUDYID",          # rs_setup
+  "G_SUBJID",           # rs_setup
+  "G_SUBJID",           # rs_setup
+  "G_SUBPOP",           # rs_setup
+  "G_SUBSET",           # rs_setup
+  "G_TITLE1",           # rs_setup
+  "G_TITLE2",           # rs_setup
+  "G_TITLE3",           # rs_setup
+  "G_TITLE4",           # rs_setup
+  "G_TITLE5",           # rs_setup
+  "G_TITLE6",           # rs_setup
+  "G_TITLE7",           # rs_setup
+  "G_USERID",           # rs_setup
+  "G_WIDTH",            # rs_setup
+  "PATH"                # rs_setup
 ))
 
 

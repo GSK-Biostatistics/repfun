@@ -35,7 +35,7 @@ repfun::rs_setup(R_RFMTDIR=paste0("../inst/formats"))
 ## Convert RFMTDIR Format Data Set to List
 
 ```{r makelist}
-list <- repfun::ru_data2codelist(rfenv$rfmtdata$formats())
+list <- repfun::ru_data2codelist(repfun:::rfenv$rfmtdata$formats())
 ```
 
 ## Display the Results

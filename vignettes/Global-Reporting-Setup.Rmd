@@ -66,11 +66,11 @@ suppressMessages(
 ## Use Libname to Access and Subset Data
 
 ```{r subset}
-adae <- rfenv$adamdata$adae.rda() %>% dplyr::filter(TRTEMFL=='Y') -> adsl1
+adae <- repfun:::rfenv$adamdata$adae.rda() %>% dplyr::filter(TRTEMFL=='Y') -> adsl1
 ```
 
 ## Display the Result, add Study ID to Title
 
 ```{r display}
-knitr::kable(head(adae[,c(1:10)],10), caption = paste0("TEAEs for Study: ", rfenv$G_STUDYID))
+knitr::kable(head(adae[,c(1:10)],10), caption = paste0("TEAEs for Study: ", repfun:::rfenv$G_STUDYID))
 ```

@@ -31,18 +31,11 @@ Pass in a data set from a SAS format catalog (or similar) and have a list return
 }
 \examples{
 library(repfun)
-rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-             rfenv
-         } else {
-             rfenv <- new.env(parent = emptyenv())
-             rfenv$G_DEBUG <- 0
-             rfenv
-         }
 datdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"datdir")
 dir.create(datdir,showWarnings=FALSE)
 repfun::copydata(datdir)
 repfun::rs_setup(R_RFMTDIR=datdir)
-list <- repfun::ru_data2codelist(rfenv$rfmtdata$formats.rda())
+list <- repfun::ru_data2codelist(repfun:::rfenv$rfmtdata$formats.rda())
 list$SEXS$START[[1]] # Code value 1
 list$SEXS$LABEL[[1]] # Decode value 1
 list$SEXS$START[[2]] # Code value 2

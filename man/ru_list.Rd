@@ -246,13 +246,6 @@ Pass in a dataframe and reporting settings to have RTF output generated.
 library(repfun)
 library(dplyr)
 library(tibble)
-rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-             rfenv
-         } else {
-             rfenv <- new.env(parent = emptyenv())
-             rfenv$G_DEBUG <- 0
-             rfenv
-         }
 datdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"datdir")
 dir.create(datdir,showWarnings=FALSE)
 outdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"outdir")
@@ -288,10 +281,10 @@ setup <- function(tlfid){
 # Process ADAE - derive counts and percents.
 #============================================
 setup(1)
-aesum <- repfun::ru_freq(rfenv$adamdata$adae.rda() \%>\% dplyr::select(-SAFFL) \%>\%
-                 repfun::ru_getdata(rfenv$G_POPDATA, c("STUDYID", "USUBJID"),
+aesum <- repfun::ru_freq(repfun:::rfenv$adamdata$adae.rda() \%>\% dplyr::select(-SAFFL) \%>\%
+                 repfun::ru_getdata(repfun:::rfenv$G_POPDATA, c("STUDYID", "USUBJID"),
                  keeppopvars=c("TRT01AN", "TRT01A")),
-                 dsetindenom=rfenv$G_POPDATA,
+                 dsetindenom=repfun:::rfenv$G_POPDATA,
                  countdistinctvars=c('STUDYID','USUBJID'),
                  groupbyvarsnumer=c('TRT01AN','TRT01A','AEBODSYS','AEDECOD'),
                  anyeventvars = c('AEBODSYS','AEDECOD'),
@@ -325,7 +318,7 @@ repfun::ru_list(aesum,
         acrossVar="TRT01AN",
         acrossVarLabel="TRT01A",
         acrossColVarPrefix='tt_',
-        dddatasetlabel=paste0('DD Dataframe for AE Table ',rfenv$G_DSPLYNUM),
+        dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM),
         lpp=23)
 
 #==========================================================================
@@ -349,7 +342,7 @@ repfun::ru_list(aesum \%>\% dplyr::filter(!(AEBODSYS \%in\% names(SOCcnts[SOCcnt
         acrossVar="TRT01AN",
         acrossVarLabel="TRT01A",
         acrossColVarPrefix='tt_',
-        dddatasetlabel=paste0('DD Dataframe for AE Table ',rfenv$G_DSPLYNUM),
+        dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM),
         lpp=24)
 
 }

@@ -22,13 +22,6 @@
 #' @examples
 #' library(repfun)
 #' library(dplyr)
-#' rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-#'              rfenv
-#'          } else {
-#'              rfenv <- new.env(parent = emptyenv())
-#'              rfenv$G_DEBUG <- 0
-#'              rfenv
-#'          }
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir");
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
@@ -40,11 +33,11 @@
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
 #'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- rfenv$G_POPDATA %>%
+#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
 #'  dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'                 ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
 #'  repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 001 (n)'))
-#' adae <- rfenv$adamdata$adae.rda() %>%
+#' adae <- repfun:::rfenv$adamdata$adae.rda() %>%
 #'         dplyr::inner_join(G_POPDATA, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
 #' aesum_t <- repfun::ru_freq(
 #'              adae,
