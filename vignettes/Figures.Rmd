@@ -89,7 +89,7 @@ repfun::ru_list(dsetin=myplot,
 ### DDDATA for Figure 1
 
 ```{r dddataf1, results='asis'}
-f1 <- readRDS(rfenv$G_DDDATA) 
+f1 <- readRDS(repfun:::rfenv$G_DDDATA) 
 lbls <- sapply(f1,function(x){attr(x,"label")})
 datatable(
   f1, extensions = 'FixedColumns',
@@ -125,7 +125,7 @@ datatable(
 
 ```{r makef2}
 setup(2)
-rfenv$G_HEIGHT <- rfenv$G_HEIGHT-.15
+assign("G_HEIGHT", repfun:::rfenv$G_HEIGHT-.15 ,envir=repfun:::rfenv)
 myplot1 <- ggplot(iris, aes(Sepal.Length, Sepal.Width)) + geom_point()
 myplot2 <- ggplot(iris, aes(Species, Sepal.Length)) + geom_boxplot()
 myplots <- list('Gender: Male'=myplot1, 'Gender: Female'=myplot2)
@@ -147,7 +147,7 @@ repfun::ru_list(dsetin=myplots,
 ### DDDATA for Figure 2
 
 ```{r dddataf2, results='asis'}
-f2 <- readRDS(rfenv$G_DDDATA) 
+f2 <- readRDS(repfun:::rfenv$G_DDDATA) 
 lbls <- sapply(f2,function(x){attr(x,"label")})
 datatable(
   f2, extensions = 'FixedColumns',

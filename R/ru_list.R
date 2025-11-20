@@ -88,13 +88,6 @@
 #' library(repfun)
 #' library(dplyr)
 #' library(tibble)
-#' rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-#'              rfenv
-#'          } else {
-#'              rfenv <- new.env(parent = emptyenv())
-#'              rfenv$G_DEBUG <- 0
-#'              rfenv
-#'          }
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir")
 #' dir.create(datdir,showWarnings=FALSE)
 #' outdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"outdir")
@@ -130,10 +123,10 @@
 #' # Process ADAE - derive counts and percents.
 #' #============================================
 #' setup(1)
-#' aesum <- repfun::ru_freq(rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>%
-#'                  repfun::ru_getdata(rfenv$G_POPDATA, c("STUDYID", "USUBJID"),
+#' aesum <- repfun::ru_freq(repfun:::rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>%
+#'                  repfun::ru_getdata(repfun:::rfenv$G_POPDATA, c("STUDYID", "USUBJID"),
 #'                  keeppopvars=c("TRT01AN", "TRT01A")),
-#'                  dsetindenom=rfenv$G_POPDATA,
+#'                  dsetindenom=repfun:::rfenv$G_POPDATA,
 #'                  countdistinctvars=c('STUDYID','USUBJID'),
 #'                  groupbyvarsnumer=c('TRT01AN','TRT01A','AEBODSYS','AEDECOD'),
 #'                  anyeventvars = c('AEBODSYS','AEDECOD'),
@@ -167,7 +160,7 @@
 #'         acrossVar="TRT01AN",
 #'         acrossVarLabel="TRT01A",
 #'         acrossColVarPrefix='tt_',
-#'         dddatasetlabel=paste0('DD Dataframe for AE Table ',rfenv$G_DSPLYNUM),
+#'         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM),
 #'         lpp=23)
 #'
 #' #==========================================================================
@@ -191,7 +184,7 @@
 #'         acrossVar="TRT01AN",
 #'         acrossVarLabel="TRT01A",
 #'         acrossColVarPrefix='tt_',
-#'         dddatasetlabel=paste0('DD Dataframe for AE Table ',rfenv$G_DSPLYNUM),
+#'         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM),
 #'         lpp=24)
 #'
 #' @importFrom Hmisc label
@@ -306,6 +299,14 @@ ru_list <- function(dsetin,                               ## Input domain datase
 
                     xptyn = 'N'                           ## Set to 'Y' to have DDDATA data set written to XPT file also.
 ){
+
+  #=============================================
+  # Read parameter settings from rs_setup call.
+  #=============================================
+  globfile <- paste0(gsub("\\","/",tempdir(),fixed=TRUE),'/GLOBALS.txt')
+  if (file.exists(globfile)){source(globfile,local=TRUE)}
+
+  if (G_DEBUG>0) print(paste0("RU_LIST: ", "Start of RU_LIST"))
 
   ##=====================
   ## Parameter checking.
@@ -1428,5 +1429,5 @@ ru_list <- function(dsetin,                               ## Input domain datase
     }
   }
 
-  if (rfenv$G_DEBUG>0){return('Exit ru_list(*** Table or Listing ***)')}
+  if (G_DEBUG>0) print(paste0("RU_LIST: ", "End of RU_LIST"))
 }

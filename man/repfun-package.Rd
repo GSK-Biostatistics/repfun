@@ -20,7 +20,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Chris Rook \email{christopher.x.rook@gsk.com}
+  \item Chris Rook \email{cr883296@gmail.com}
 }
 
 }

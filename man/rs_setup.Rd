@@ -46,7 +46,7 @@ rs_setup(
   D_FOOT7 = NULL,
   D_FOOT8 = NULL,
   D_FOOT9 = NULL,
-  D_USERID = Sys.getenv("DOMINO_USER_NAME"),
+  D_USERID = Sys.getenv("USERNAME"),
   D_RTFYN = "N",
   D_DEBUG = 0
 )
@@ -134,7 +134,7 @@ rs_setup(
 
 \item{D_FOOT9}{Ninth footnote text.}
 
-\item{D_USERID}{Domino user name.}
+\item{D_USERID}{User name.}
 
 \item{D_RTFYN}{Y or N to generate RTf output.}
 
@@ -172,7 +172,7 @@ D_FONTSIZE=10,
 D_FOOT1='1.) Only treatment emergent events related to lipids are displayed.',
 D_FOOT2='2.) Subjects are counted once in each body system & preferred term.',
 D_KEEPPOPVARS=c('STUDYID','USUBJID','SAFFL'),
-D_USERID=Sys.getenv("DOMINO_USER_NAME"),
+D_USERID=Sys.getenv("USERNAME"),
 D_STUDYID='ABCXYZPDQ',
 D_POP="SAFFL",
 D_POPDATA=repfun::adsl \%>\% dplyr::filter(SAFFL=='Y'),

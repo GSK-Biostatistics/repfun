@@ -68,13 +68,6 @@ Pass in a data frame along with identification options and have descriptive stat
 library(repfun)
 library(dplyr)
 library(tibble)
-rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-             rfenv
-         } else {
-             rfenv <- new.env(parent = emptyenv())
-             rfenv$G_DEBUG <- 0
-             rfenv
-         }
 datdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"datdir")
 dir.create(datdir,showWarnings=FALSE)
 outdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"outdir")
@@ -90,11 +83,11 @@ repfun::rs_setup(D_POPDATA=repfun::adsl \%>\% dplyr::filter(SAFFL =='Y'),
                  R_RAWDATA=NULL,
                  R_SDTMDATA=NULL,
                  R_ADAMDATA=datdir)
-G_POPDATA <- rfenv$G_POPDATA \%>\%
+G_POPDATA <- repfun:::rfenv$G_POPDATA \%>\%
   dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
                  ifelse(TRT01A=='Xanomeline Low Dose',2,3)))
 attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
-adae <- rfenv$adamdata$adae.rda() \%>\%
+adae <- repfun:::rfenv$adamdata$adae.rda() \%>\%
   dplyr::inner_join(G_POPDATA, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
 aesum <- repfun::ru_freq(adae,
                  dsetindenom=G_POPDATA,

@@ -39,10 +39,10 @@ repfun::rs_setup(D_POPDATA=get(load("../data/adsl.rda")) %>%
 ## Update ADSL and ADVS
 
 ```{r update, out.width="70%"}
-rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) -> G_POPDATA
+repfun:::rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) -> G_POPDATA
 attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
 
-rfenv$adamdata$advs.rda() %>% dplyr::filter(ANL01FL=='Y') %>% 
+repfun:::rfenv$adamdata$advs.rda() %>% dplyr::filter(ANL01FL=='Y') %>% 
   dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
   dplyr::filter(!is.na(AVISITN) & (DTYPE=='AVERAGE')) -> advs2
 attr(advs2$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'

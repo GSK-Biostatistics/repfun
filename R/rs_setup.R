@@ -42,7 +42,7 @@
 #' @param D_FOOT7 Seventh footnote text.
 #' @param D_FOOT8 Eighth footnote text.
 #' @param D_FOOT9 Ninth footnote text.
-#' @param D_USERID Domino user name.
+#' @param D_USERID User name.
 #' @param D_RTFYN Y or N to generate RTf output.
 #' @param D_DEBUG Level of debugging to show in log files.
 #'
@@ -77,7 +77,7 @@
 #' D_FOOT1='1.) Only treatment emergent events related to lipids are displayed.',
 #' D_FOOT2='2.) Subjects are counted once in each body system & preferred term.',
 #' D_KEEPPOPVARS=c('STUDYID','USUBJID','SAFFL'),
-#' D_USERID=Sys.getenv("DOMINO_USER_NAME"),
+#' D_USERID=Sys.getenv("USERNAME"),
 #' D_STUDYID='ABCXYZPDQ',
 #' D_POP="SAFFL",
 #' D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL=='Y'),
@@ -141,7 +141,7 @@ rs_setup <- function(
     D_FOOT7=NULL,
     D_FOOT8=NULL,
     D_FOOT9=NULL,
-    D_USERID=Sys.getenv("DOMINO_USER_NAME"),
+    D_USERID=Sys.getenv("USERNAME"),
     D_RTFYN="N",
     D_DEBUG=0
 ) {
@@ -311,5 +311,37 @@ rs_setup <- function(
   if (rfenv$G_JUSTIFICATION == "portrait"){
     rfenv$G_WIDTH <- 6.5
     rfenv$G_HEIGHT <- 11 - (8.5-rfenv$G_HEIGHT)
+  }
+
+  #====================================================================
+  # Write rfenv variables to file GLOBALS.txt in temporary directory.
+  #====================================================================
+  globs <- paste0(tempdir(),'/GLOBALS.txt')
+  if (file.exists(globs)){file.remove(globs)}
+  writeLines("",globs)
+  for (f in ls(rfenv)){
+    if (typeof(rfenv[[f]]) == "list" & !is.data.frame(rfenv[[f]])){
+       write(paste0(f," <- new.env()"),file=globs,append=TRUE)
+       for (n in names(rfenv[[f]])){
+         write(paste0(f,'$',n,' <- ',paste(deparse(rfenv[[f]][[n]]),collapse='\n')),file=globs,append=TRUE)
+       }
+    } else {
+       if (is.data.frame(rfenv[[f]]) & f=='G_POPDATA'){
+           G_POPDATA <- data.frame()
+           assign(f,rfenv[[f]])
+           save(G_POPDATA, file = paste0(tempdir(),'/',f))
+           write(paste0('assign("',f,'",get(load("',gsub('\\','/',tempdir(),fixed=TRUE),'/',f,'")))'),file=globs,append=TRUE)
+       } else {
+           if (is.null(rfenv[[f]])){
+               write(paste0(f,' <- NULL'),file=globs,append=TRUE)
+           } else if (is.list(rfenv[[f]]) | is.vector(rfenv[[f]])){
+               write(paste0(f,' <- ',deparse(rfenv[[f]])),file=globs,append=TRUE)
+           } else if (is.numeric(rfenv[[f]])){
+               write(paste0(f,' <- ',as.character(rfenv[[f]])),file=globs,append=TRUE)
+           } else {
+               write(paste0(f,' <- "',gsub('"','\\"',gsub("\\",'/',as.character(rfenv[[f]]),fixed=TRUE),fixed=TRUE),'"'),file=globs,append=TRUE)
+           }
+       }
+    }
   }
 }

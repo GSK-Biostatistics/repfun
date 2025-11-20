@@ -39,13 +39,6 @@ Pass in a data frame alignment criteria to have columns aligned for reporting.
 #=================
 library(repfun)
 library(dplyr)
-rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-             rfenv
-         } else {
-             rfenv <- new.env(parent = emptyenv())
-             rfenv$G_DEBUG <- 0
-             rfenv
-         }
 datdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"datdir")
 dir.create(datdir,showWarnings=FALSE)
 repfun::copydata(datdir)
@@ -59,11 +52,11 @@ repfun::rs_setup(D_POP="SAFFL",
                  R_RAWDATA=NULL,
                  R_SDTMDATA=NULL,
                  R_ADAMDATA=datdir)
-G_POPDATA <- rfenv$G_POPDATA \%>\% dplyr::mutate(TRT01AN=
+G_POPDATA <- repfun:::rfenv$G_POPDATA \%>\% dplyr::mutate(TRT01AN=
                      ifelse(TRT01A=='Placebo',1,
                      ifelse(TRT01A=='Xanomeline Low Dose',2,3)))
 attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
-adae <- rfenv$adamdata$adae.rda() \%>\% dplyr::select(-SAFFL) \%>\%
+adae <- repfun:::rfenv$adamdata$adae.rda() \%>\% dplyr::select(-SAFFL) \%>\%
         repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"),
         keeppopvars=c("TRT01AN", "TRT01A"))
 aesum_t <- repfun::ru_freq(adae,
@@ -105,7 +98,7 @@ repfun::rs_setup(D_POP="SAFFL",
                  R_RAWDATA=NULL,
                  R_SDTMDATA=NULL,
                  R_ADAMDATA=datdir)
-G_POPDATA <- rfenv$G_POPDATA \%>\%
+G_POPDATA <- repfun:::rfenv$G_POPDATA \%>\%
              dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
                             ifelse(TRT01A=='Xanomeline Low Dose',2,3))) \%>\%
   repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))

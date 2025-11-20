@@ -75,7 +75,7 @@ This project is released under the Apache-2.0 license. See the **[LICENSE](LICEN
 
 ## Contact
 
-For any questions or comments about this project, please contact **[Yongwei Wang](mailto:yongwei.x.wang@gsk.com?subject=[GitHub]%20Source%20Yongwei%20Wang)** or **[Chris Rook](mailto:christopher.x.rook@gsk.com?subject=[GitHub]%20Source%20Chris%20Rook)**.
+For any questions or comments about this project, please contact **[Yongwei Wang](mailto:yongwei.x.wang@gsk.com?subject=[GitHub]%20Source%20Yongwei%20Wang)** or **[Chris Rook](mailto:cr883296@gmail.com?subject=[GitHub]%20Source%20Chris%20Rook)**.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

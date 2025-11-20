@@ -56,13 +56,13 @@ Pass in a data frame along with identification options and have Big N added to i
 library(repfun)
 library(dplyr)
 library(tibble)
-rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-             rfenv
-         } else {
-             rfenv <- new.env(parent = emptyenv())
-             rfenv$G_DEBUG <- 0
-             rfenv
-         }
+#rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
+#              rfenv
+#          } else {
+#              rfenv <- new.env(parent = emptyenv())
+#              rfenv$G_DEBUG <- 0
+#              rfenv
+#          }
 datdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"datdir");
 dir.create(datdir,showWarnings=FALSE)
 repfun::copydata(datdir)
@@ -74,11 +74,11 @@ repfun::rs_setup(D_POPDATA=repfun::adsl \%>\% dplyr::filter(SAFFL =='Y'),
                  R_RAWDATA=NULL,
                  R_SDTMDATA=NULL,
                  R_ADAMDATA=datdir)
-G_POPDATA <- rfenv$G_POPDATA \%>\% dplyr::mutate(TRT01AN=
+G_POPDATA <- repfun:::rfenv$G_POPDATA \%>\% dplyr::mutate(TRT01AN=
                                          ifelse(TRT01A=='Placebo',1,
                                          ifelse(TRT01A=='Xanomeline Low Dose',2,3)))
 attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
-adae <- tibble::as_tibble(rfenv$adamdata$adae.rda()) \%>\%
+adae <- tibble::as_tibble(repfun:::rfenv$adamdata$adae.rda()) \%>\%
         dplyr::inner_join(G_POPDATA,
                           by=c('STUDYID','USUBJID','SAFFL','TRT01A')) \%>\%
         dplyr::filter(TRTEMFL=='Y')
