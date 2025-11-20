@@ -241,15 +241,11 @@ repfun::ru_list(dsetin=mytbls,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 3 (1,2,7,8)
+### Select Page(s) of Table 3 (1,2)
 
 ![Table 3 (pg 1) Image](./images/Table_3_Page_1.gif)
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 3 (pg 2) Image](./images/Table_3_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 3 (pg 7) Image](./images/Table_3_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 3 (pg 8) Image](./images/Table_3_Page_4.gif)
 
 ### DDDATA for Table 3 (First few obs)
 
@@ -359,13 +355,9 @@ repfun::ru_list(dsetin=mytbls,
                dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 5 (1,6,11,16)
+### Select Page(s) of Table 5 (1,16)
 
 ![Table 5 (pg 1) Image](./images/Table_5_Page_1.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 5 (pg 6) Image](./images/Table_5_Page_6.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 5 (pg 11) Image](./images/Table_5_Page_11.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 5 (pg 16) Image](./images/Table_5_Page_16.gif){width=800px}
 
@@ -426,15 +418,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 6 (1,2,6,7)
+### Select Page(s) of Table 6 (1,6)
 
 ![Table 6 (pg 1) Image](./images/Table_6_Page_1.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 6 (pg 2) Image](./images/Table_6_Page_2.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 6 (pg 6) Image](./images/Table_6_Page_6.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 6 (pg 7) Image](./images/Table_6_Page_7.gif){width=800px}
 
 ### DDDATA for Table 6 (First few obs)
 
@@ -498,17 +486,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 7 (1,2,6,11,16)
+### Select Page(s) of Table 7 (1,11)
 
 ![Table 7 (pg 1) Image](./images/Table_7_Page_1.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 7 (pg 2) Image](./images/Table_7_Page_2.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 7 (pg 6) Image](./images/Table_7_Page_6.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 7 (pg 11) Image](./images/Table_7_Page_11.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 7 (pg 16) Image](./images/Table_7_Page_16.gif){width=800px}
 
 ### DDDATA for Table 7 (First few obs)
 
@@ -568,15 +550,11 @@ repfun::ru_list(dsetin=mytbls,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 8 (1,2,6,7)
+### Select Page(s) of Table 8 (1,6)
 
 ![Table 8 (pg 1) Image](./images/Table_8_Page_1.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 8 (pg 2) Image](./images/Table_8_Page_2.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 8 (pg 6) Image](./images/Table_8_Page_6.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 8 (pg 7) Image](./images/Table_8_Page_7.gif){width=800px}
 
 ### DDDATA for Table 8 (First few obs)
 
@@ -708,15 +686,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 10 (1,6,11,16)
+### Select Page(s) of Table 10 (1,11)
 
 ![Table 10 (pg 1) Image](./images/Table_10_Page_1.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 10 (pg 6) Image](./images/Table_10_Page_6.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 10 (pg 11) Image](./images/Table_10_Page_11.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 10 (pg 16) Image](./images/Table_10_Page_16.gif){width=800px}
 
 ### DDDATA for Table 10 (First few obs)
 
@@ -826,11 +800,9 @@ repfun::ru_list(dsetin=df,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 12 (1,2)
+### Select Page(s) of Table 12 (1)
 
 ![Table 12 (pg 1) Image](./images/Table_12_Page_1.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 12 (pg 2) Image](./images/Table_12_Page_2.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
 
 ### DDDATA for Table 12 (First few obs)
@@ -895,15 +867,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 13 (1,6,11,16)
+### Select Page(s) of Table 13 (1,11)
 
 ![Table 13 (pg 1) Image](./images/Table_13_Page_1.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 13 (pg 6) Image](./images/Table_13_Page_6.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 13 (pg 11) Image](./images/Table_13_Page_11.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 13 (pg 16) Image](./images/Table_13_Page_16.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
 
 ### DDDATA for Table 13 (First few obs)
@@ -968,15 +936,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 14 (1,19,37,55)
+### Select Page(s) of Table 14 (1,37)
 
 ![Table 14 (pg 1) Image](./images/Table_14_Page_1.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 14 (pg 19) Image](./images/Table_14_Page_19.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 14 (pg 37) Image](./images/Table_14_Page_37.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 14 (pg 55) Image](./images/Table_14_Page_55.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
 
 ### DDDATA for Table 14 (First few obs)

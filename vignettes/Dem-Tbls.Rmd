@@ -196,11 +196,9 @@ repfun::ru_list(dsetin=rptdf,
         labels=list('tt_avnm'='Variable','tt_svnm'='Category/Statistic'))
 ```
 
-### Select Page(s) of Table 15 (1,2)
+### Select Page(s) of Table 15 (1)
 
 ![Table 15 (pg 1) Image](./images/Table_15_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 15 (pg 2) Image](./images/Table_15_Page_2.gif)
 
 ### DDDATA for Table 15 (First few obs)
 
@@ -261,11 +259,9 @@ repfun::ru_list(dsetin=rptdf,
         labels=list('tt_avnm'='Variable','tt_svnm'='Category/Statistic'))
 ```
 
-### Select Page(s) of Table 16 (1,2)
+### Select Page(s) of Table 16 (1)
 
 ![Table 16 (pg 1) Image](./images/Table_16_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 16 (pg 2) Image](./images/Table_16_Page_2.gif)
 
 ### DDDATA for Table 16 (First few obs)
 
@@ -328,15 +324,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 17 (1,2,3,4)
+### Select Page(s) of Table 17 (1,3)
 
 ![Table 17 (pg 1) Image](./images/Table_17_Page_1.gif)
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 17 (pg 2) Image](./images/Table_17_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 17 (pg 3) Image](./images/Table_17_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 17 (pg 4) Image](./images/Table_17_Page_4.gif)
 
 ### DDDATA for Table 17 (First few obs)
 
@@ -402,13 +394,9 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 18 (1,2,3,4)
+### Select Page(s) of Table 18 (2,4)
 
-![Table 18 (pg 1) Image](./images/Table_18_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 18 (pg 2) Image](./images/Table_18_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 18 (pg 3) Image](./images/Table_18_Page_3.gif)
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 18 (pg 4) Image](./images/Table_18_Page_4.gif)
 
@@ -475,15 +463,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 19 (1,2,3,4)
+### Select Page(s) of Table 19 (1,3)
 
 ![Table 19 (pg 1) Image](./images/Table_19_Page_1.gif)
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 19 (pg 2) Image](./images/Table_19_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 19 (pg 3) Image](./images/Table_19_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 19 (pg 4) Image](./images/Table_19_Page_4.gif)
 
 ### DDDATA for Table 19 (First few obs)
 
@@ -549,17 +533,11 @@ repfun::ru_list(dsetin=mytbls,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 20 (1,2,3,4,5)
+### Select Page(s) of Table 20 (1,2)
 
 ![Table 20 (pg 1) Image](./images/Table_20_Page_1.gif)
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 20 (pg 2) Image](./images/Table_20_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 20 (pg 3) Image](./images/Table_20_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 20 (pg 4) Image](./images/Table_20_Page_4.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 20 (pg 5) Image](./images/Table_20_Page_5.gif)
 
 ### DDDATA for Table 20 (First few obs)
 
@@ -620,15 +598,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 21 (1,2,3,4,5)
+### Select Page(s) of Table 21 (1,3)
 
 ![Table 21 (pg 1) Image](./images/Table_21_Page_1.gif)
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 21 (pg 2) Image](./images/Table_21_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 21 (pg 3) Image](./images/Table_21_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 21 (pg 4) Image](./images/Table_21_Page_4.gif)
 
 ### DDDATA for Table 21 (First few obs)
 
@@ -685,15 +659,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 22 (1,2,3,4,5)
+### Select Page(s) of Table 22 (1,3)
 
 ![Table 22 (pg 1) Image](./images/Table_22_Page_1.gif)
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 22 (pg 2) Image](./images/Table_22_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 22 (pg 3) Image](./images/Table_22_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 22 (pg 4) Image](./images/Table_22_Page_4.gif)
 
 ### DDDATA for Table 22 (First few obs)
 
@@ -764,15 +734,11 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 23 (1,3,5,7)
+### Select Page(s) of Table 23 (1,5)
 
 ![Table 23 (pg 1) Image](./images/Table_23_Page_1.gif)
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 23 (pg 2) Image](./images/Table_23_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 23 (pg 3) Image](./images/Table_23_Page_5.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 23 (pg 4) Image](./images/Table_23_Page_7.gif)
+![Table 23 (pg 5) Image](./images/Table_23_Page_5.gif)
 
 ### DDDATA for Table 23 (First few obs)
 
