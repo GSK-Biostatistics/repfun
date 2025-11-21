@@ -10,7 +10,7 @@ test_that("aligning columns works", {
   #=================
   # Adverse Events
   #=================
-  repfun::rs_setup(D_POP="SAFFL",D_POPLBL="Safety",D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'), D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA="../../data")
+  repfun::rs_setup(D_POP="SAFFL",D_POPLBL="Safety",D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'), D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA=".")
   rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) -> G_POPDATA
   attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
   adae <- rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>% repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"), keeppopvars=c("TRT01AN", "TRT01A"))
@@ -58,7 +58,7 @@ test_that("aligning columns works", {
   #===========================
   # Baseline Characteristics
   #===========================
-  rs_setup(D_POP="SAFFL",D_POPLBL="Safety",D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'), D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA="../../data")
+  rs_setup(D_POP="SAFFL",D_POPLBL="Safety",D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'), D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA=".")
   rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>% repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)')) -> G_POPDATA
   demstats_t <- repfun::ru_sumstats(G_POPDATA,
                             analysisvars=c("AGE","TRTDURD"),

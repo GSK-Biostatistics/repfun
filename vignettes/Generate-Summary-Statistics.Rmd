@@ -67,7 +67,7 @@ repfun::ru_sumstats(G_POPDATA,
 
 ```{r results1}
 lbls <- sapply(basechars,function(x){attr(x,"label")})
-knitr::kable(head(basechars,20), col.names=paste(names(lbls),lbls,sep=" "), 
+knitr::kable(head(basechars,10), col.names=paste(names(lbls),lbls,sep=" "), 
              caption = "Summary Statistics for Baseline Characteristics")
 ```
 
@@ -92,7 +92,7 @@ repfun::ru_sumstats(advs2,
 
 ```{r results2}
 lbls <- sapply(vtlsigns,function(x){attr(x,"label")})
-knitr::kable(head(vtlsigns,20), col.names=paste(names(lbls),lbls,sep=" "), 
+knitr::kable(head(vtlsigns,10), col.names=paste(names(lbls),lbls,sep=" "), 
              caption = "Summary Statistics for Vital Signs with Constant Precision")
 ```
 
@@ -126,6 +126,6 @@ repfun::ru_sumstats(advs2_t,
 
 ```{r results3}
 lbls <- sapply(vtlsigns_t,function(x){attr(x,"label")})
-knitr::kable(head(vtlsigns_t,20), col.names=paste(names(lbls),lbls,sep=" "), 
+knitr::kable(head(vtlsigns_t,10), col.names=paste(names(lbls),lbls,sep=" "), 
              caption = "Summary Statistics for Vital Signs with Varying Precision")
 ```

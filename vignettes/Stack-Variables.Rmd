@@ -84,13 +84,7 @@ aesum_s <- repfun::ru_stackvar(dsetin=aesum_p,varsin=c('AEBODSYS','AEDECOD'),
 
 ```{r display}
 lbls <- sapply(aesum_s,function(x){attr(x,"label")})
-knitr::kable(head(aesum_s,20), col.names=paste(names(lbls),lbls,sep=": "), 
+knitr::kable(head(aesum_s,10), col.names=paste(names(lbls),lbls,sep=": "), 
              caption = "Denormalized Data Set for Counts and Percents with Stacked Column") %>%  
   kable_styling(full_width = T) %>% column_spec(c(1,2,3), width_min = c('2in','2in','2in'))
-```
-
-## Clean up Temporary Files
-
-```{r cleanup}
-#unlink("../docs/articles/Stack-Variables_files", recursive = TRUE)
 ```

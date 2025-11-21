@@ -19,8 +19,8 @@ test_that("producing RTFs works", {
       D_FOOT1='1.) Only treatment emergent events related to lipids are displayed.',
       D_FOOT2='2.) Subjects are only counted once within each body system and preferred term.',
       D_KEEPPOPVARS=c('STUDYID','USUBJID','SAFFL'),
-      D_OUTFILE=paste0("../../inst/t_ru_list_",tlfid,".rtf"),
-      D_PGMPTH="../..",
+      D_OUTFILE=paste0(tmpdr,"/t_ru_list_",tlfid,".rtf"),
+      D_PGMPTH=".",
       D_STUDYID='ABCXYZPDQ',
       D_POP="SAFFL",
       D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y') %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
@@ -29,7 +29,7 @@ test_that("producing RTFs works", {
       D_SUBJID=c("STUDYID","USUBJID"),
       D_TITLE1=paste0('Table ',tlfid,': Summary of Treatment Emergent Adverse Events'),
       R_DDDATA=paste0(tmpdr,'/t_ru_list_',tlfid,'.rds'),
-      R_ADAMDATA="../../data")
+      R_ADAMDATA=".")
   }
 
   #============================================

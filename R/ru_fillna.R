@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' library(repfun)
-#' repfun::ru_fillna(airquality, vars=c('Ozone','Solar.R'), fills=c(1111,2222))
+#' repfun::ru_fillna(airquality, vars=c('Ozone','Solar.R'), fills=c(1111,2222)) %>% head(10)
 #'
 #' @export
 #'

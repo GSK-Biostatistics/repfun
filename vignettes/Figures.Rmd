@@ -131,9 +131,6 @@ myplot2 <- ggplot(iris, aes(Species, Sepal.Length)) + geom_boxplot()
 myplots <- list('Gender: Male'=myplot1, 'Gender: Female'=myplot2)
 repfun::ru_list(dsetin=myplots,
         dddatasetlabel='DD Dataframe for Figure 2')
-
-#Sys.sleep(60)
-
 ```
 
 ### Select Page(s) of Figure 2 (1,2)

@@ -38,7 +38,7 @@ library(dplyr)
 ## Compare the Data Frames
 
 ```{r compare}
-irisdiffs <- repfun::ru_datacompare(iris1, iris2, idvars=c('Species','ID'), maxprint=20)
+irisdiffs <- repfun::ru_datacompare(iris1, iris2, idvars=c('Species','ID'), maxprint=10)
 ```
 
 ## Display the Results

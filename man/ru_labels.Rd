@@ -21,8 +21,8 @@ Pass in a data frame along with a named list of columns with their corresponding
 }
 \examples{
 library(repfun)
-ru_labels(mtcars,varlabels=list(mpg='Miles per gallon',
-                                cyl='Number of cylinders'))
+df_with_labels <- ru_labels(mtcars,varlabels=list(mpg='Miles per gallon',
+                                                  cyl='Number of cylinders'))
 
 }
 \author{

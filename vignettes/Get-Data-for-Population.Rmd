@@ -53,6 +53,6 @@ adae <- repfun:::rfenv$adamdata$adae.rda() %>% dplyr::select(-c('SAFFL','TRT01A'
 
 ```{r results}
 lbls <- sapply(adae,function(x){attr(x,"label")})
-knitr::kable(head(adae,20), col.names=paste(names(lbls),lbls,sep=": "), 
+knitr::kable(head(adae,10), col.names=paste(names(lbls),lbls,sep=": "), 
              caption = "Results of Restricting to Population and Adding Population Variables") 
 ```

@@ -14,7 +14,7 @@ test_that("combining SDTM with its supplemental data works", {
   #=============================================================
   # Create prod dmsupp data frame using ru_addsupp() function.
   #=============================================================
-  sdtmdata <- repfun::ru_libname('../../data')
+  sdtmdata <- repfun::ru_libname('.')
   sdtm.dm <- sdtmdata$dm()
   sdtm.suppdm <- sdtmdata$suppdm()
   prod_dm <- repfun::ru_addsupp(dsetin=sdtm.dm,dsetinsupp=sdtm.suppdm)

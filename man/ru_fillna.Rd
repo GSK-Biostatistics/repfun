@@ -21,7 +21,7 @@ Pass in a data frame along with a vector of variables and a vector of fill value
 }
 \examples{
 library(repfun)
-repfun::ru_fillna(airquality, vars=c('Ozone','Solar.R'), fills=c(1111,2222))
+repfun::ru_fillna(airquality, vars=c('Ozone','Solar.R'), fills=c(1111,2222)) \%>\% head(10)
 
 }
 \author{

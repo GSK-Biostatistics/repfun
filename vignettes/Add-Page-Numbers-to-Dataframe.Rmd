@@ -82,7 +82,7 @@ aesum_p1 <- repfun::ru_addpage(aesum_t,grpvars=c('AEBODSYS'),rowsprbdy=30) %>%
   mutate(Row_Number=row_number()) %>%
   repfun::ru_labels(varlabels=list('Row_Number'='DataFrame Row Number'))
 lbls <- lapply(aesum_p1,function(x){attr(x,"label")})
-knitr::kable(head(aesum_p1,40), col.names=paste(names(lbls),lbls,sep=": "),
+knitr::kable(head(aesum_p1,10), col.names=paste(names(lbls),lbls,sep=": "),
              caption="Example 1: Simple Page Numbers Added to Dataframe using 30 Rows in Body of Report") %>%
   kable_styling(full_width = T) %>% column_spec(c(1,2), width_min = '3in')
 ```
@@ -98,7 +98,7 @@ aesum_p2 <- repfun::ru_addpage(aesum_t,grpvars=c('AEBODSYS'),rowsprbdy=30,nospli
   mutate(Row_Number=row_number()) %>% repfun::ru_labels(varlabels=list('Row_Number'='DataFrame Row Number'))
 lbls <- lapply(aesum_p2,function(x){attr(x,"label")})
 knitr::kable(
-  head(aesum_p2,40), col.names=paste(names(lbls),lbls,sep=": "),
+  head(aesum_p2,10), col.names=paste(names(lbls),lbls,sep=": "),
   caption="Example 2: Add Paging to Dataframe with NoSplitVars when it Won't Work (Revert to Simple Paging)") %>%
   kable_styling(full_width = T) %>% column_spec(c(1,2), width_min ='3in')
 ```
@@ -114,13 +114,7 @@ aesum_p3 <- repfun::ru_addpage(aesum_t,grpvars=c('AEBODSYS'),rowsprbdy=35,nospli
   mutate(Row_Number=row_number()) %>% repfun::ru_labels(varlabels=list('Row_Number'='DataFrame Row Number'))
 lbls <- lapply(aesum_p3,function(x){attr(x,"label")})
 knitr::kable(
-  head(aesum_p3,90), col.names=paste(names(lbls),lbls,sep=": "),
+  head(aesum_p3,10), col.names=paste(names(lbls),lbls,sep=": "),
   caption = "Example 3: Add Paging to Dataframe with NoSplitVars when it Will Work using 35 Rows in Body of Report") %>%
   kable_styling(full_width = T) %>% column_spec(c(1,2), width_min ='3in')
-```
-
-## Clean up Temporary Files
-
-```{r cleanup}
-#unlink("../docs/articles/Add-Page-Numbers-to-Dataframe_files", recursive = TRUE)
 ```

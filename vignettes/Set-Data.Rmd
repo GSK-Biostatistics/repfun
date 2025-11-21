@@ -30,7 +30,7 @@ library(dplyr)
 ## Append data frames with different columns
 
 ```{r build}
-  fun <- repfun::ru_setdata(mtcars,airquality)
+  fun <- repfun::ru_setdata(head(mtcars,5),head(airquality,5))
   fun[['Row.names']] <- as.character(fun$Row.names)
 ```
 

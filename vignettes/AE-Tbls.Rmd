@@ -113,16 +113,14 @@ repfun::ru_list(aesum,
         lpp=23)
 ```
 
-### Select Page(s) of Table 1 (1,2)
+### Select Page(s) of Table 1 (1)
 
 ![Table 1 (pg 1) Image](./images/Table_1_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 1 (pg 2) Image](./images/Table_1_Page_2.gif)
 
 ### DDDATA for Table 1 (First few obs)
 
 ```{r dddata1}
-t1 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=50)
+t1 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t1,function(x){attr(x,"label")})
 names(t1) <- paste(names(lbls),lbls,sep=": ")
 DT::datatable(
@@ -178,16 +176,14 @@ repfun::ru_list(aesum %>% dplyr::filter(!(AEBODSYS %in% names(SOCcnts[SOCcnts>=2
         lpp=24)
 ```
 
-### Select Page(s) of Table 2 (1,2)
+### Select Page(s) of Table 2 (1)
 
 ![Table 2 (pg 1) Image](./images/Table_2_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 2 (pg 2) Image](./images/Table_2_Page_2.gif)
 
 ### DDDATA for Table 2 (First few obs)
 
 ```{r dddata2}
-t2 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=50)
+t2 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t2,function(x){attr(x,"label")})
 names(t2) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -241,16 +237,14 @@ repfun::ru_list(dsetin=mytbls,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 3 (1,2)
+### Select Page(s) of Table 3 (1)
 
 ![Table 3 (pg 1) Image](./images/Table_3_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 3 (pg 2) Image](./images/Table_3_Page_2.gif)
 
 ### DDDATA for Table 3 (First few obs)
 
 ```{r dddata3}
-t3 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "",STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t3 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "",STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t3,function(x){attr(x,"label")})
 names(t3) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -355,16 +349,14 @@ repfun::ru_list(dsetin=mytbls,
                dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 5 (1,16)
+### Select Page(s) of Table 5 (1)
 
 ![Table 5 (pg 1) Image](./images/Table_5_Page_1.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 5 (pg 16) Image](./images/Table_5_Page_16.gif){width=800px}
 
 ### DDDATA for Table 5 (First few obs)  
 
 ```{r dddata5}
-t5 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(SYSPREF != '') %>% dplyr::filter(row_number()<=50)
+t5 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(SYSPREF != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t5,function(x){attr(x,"label")})
 names(t5) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -418,16 +410,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 6 (1,6)
+### Select Page(s) of Table 6 (1)
 
 ![Table 6 (pg 1) Image](./images/Table_6_Page_1.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 6 (pg 6) Image](./images/Table_6_Page_6.gif){width=800px}
 
 ### DDDATA for Table 6 (First few obs)
 
 ```{r dddata6}
-t6 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=50)
+t6 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t6,function(x){attr(x,"label")})
 names(t6) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -486,16 +476,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 7 (1,11)
+### Select Page(s) of Table 7 (1)
 
 ![Table 7 (pg 1) Image](./images/Table_7_Page_1.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 7 (pg 11) Image](./images/Table_7_Page_11.gif){width=800px}
 
 ### DDDATA for Table 7 (First few obs)
 
 ```{r dddata7}
-t7 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=50)
+t7 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t7,function(x){attr(x,"label")})
 names(t7) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -550,16 +538,14 @@ repfun::ru_list(dsetin=mytbls,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 8 (1,6)
+### Select Page(s) of Table 8 (1)
 
 ![Table 8 (pg 1) Image](./images/Table_8_Page_1.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 8 (pg 6) Image](./images/Table_8_Page_6.gif){width=800px}
 
 ### DDDATA for Table 8 (First few obs)
 
 ```{r dddata8}
-t8 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t8 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t8,function(x){attr(x,"label")})
 names(t8) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -580,7 +566,6 @@ datatable(
 ### Table 8 PDF
 
 <a href="https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_8.pdf" target="_blank" download>View</a>
-
 
 <!-- ************************************************************************************************************************************************** -->
 <!-- ************************************************************************************************************************************************** -->
@@ -621,7 +606,7 @@ repfun::ru_list(dsetin=df,
 ### DDDATA for Table 9 (First few obs)
 
 ```{r dddata9}
-t9 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t9 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t9,function(x){attr(x,"label")})
 names(t9) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -686,16 +671,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 10 (1,11)
+### Select Page(s) of Table 10 (1)
 
 ![Table 10 (pg 1) Image](./images/Table_10_Page_1.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 10 (pg 11) Image](./images/Table_10_Page_11.gif){width=800px}
 
 ### DDDATA for Table 10 (First few obs)
 
 ```{r dddata10}
-t10 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t10 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t10,function(x){attr(x,"label")})
 names(t10) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -751,7 +734,7 @@ repfun::ru_list(dsetin=df,
 ### DDDATA for Table 11 (First few obs)
 
 ```{r dddata11}
-t11 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t11 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t11,function(x){attr(x,"label")})
 names(t11) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -808,7 +791,7 @@ repfun::ru_list(dsetin=df,
 ### DDDATA for Table 12 (First few obs)
 
 ```{r dddata12}
-t12 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=50)
+t12 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t12,function(x){attr(x,"label")})
 names(t12) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -867,17 +850,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 13 (1,11)
+### Select Page(s) of Table 13 (1)
 
 ![Table 13 (pg 1) Image](./images/Table_13_Page_1.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 13 (pg 11) Image](./images/Table_13_Page_11.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 
 ### DDDATA for Table 13 (First few obs)
 
 ```{r dddata13}
-t13 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=50)
+t13 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t13,function(x){attr(x,"label")})
 names(t13) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -936,17 +916,15 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 14 (1,37)
+### Select Page(s) of Table 14 (1)
 
 ![Table 14 (pg 1) Image](./images/Table_14_Page_1.gif){width=800px}
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 14 (pg 37) Image](./images/Table_14_Page_37.gif){width=800px}
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
 
 ### DDDATA for Table 14 (First few obs)
 
 ```{r dddata14}
-t14 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=50)
+t14 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t14,function(x){attr(x,"label")})
 names(t14) <- paste(names(lbls),lbls,sep=": ")
 datatable(
