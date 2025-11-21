@@ -19,7 +19,7 @@ Pass in a collection of data frames separated by commas and they will be appende
 }
 \examples{
 library(repfun)
-repfun::ru_setdata(mtcars,airquality)
+repfun::ru_setdata(head(mtcars,5),head(airquality,5))
 
 }
 \author{

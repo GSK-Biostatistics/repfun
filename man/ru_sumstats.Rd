@@ -85,7 +85,7 @@ ru_sumstats(G_POPDATA,
             totaldecode="Total",
             statsinrowsyn = "Y",
             analysisvardps=list("AGE"=1,"TRTDURD"=2),
-            statslist=c("n", "mean", "median", "sd", "min", "max"))
+            statslist=c("n", "mean", "median", "sd", "min", "max")) \%>\% head(10)
 
 }
 \author{

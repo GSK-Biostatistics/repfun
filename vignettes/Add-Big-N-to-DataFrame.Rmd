@@ -70,13 +70,7 @@ addbign <- repfun::ru_addbignvar(adae,
 ```{r results1}
 lbls <- sapply(addbign,function(x){attr(x,"label")})
 knitr::kable(
-  head(addbign,20), col.names=paste(names(lbls),lbls,sep=": "), 
+  head(addbign,10), col.names=paste(names(lbls),lbls,sep=": "), 
   caption = "Big N Added to ADAE (Attached to TRT01A - The last groupbyvars column)") %>% 
   kable_styling(full_width = T) %>% column_spec(c(2,4,5,6), width_min = '2in')
-```
-
-## Clean up Temporary Files
-
-```{r cleanup}
-#unlink("../docs/articles/Add-Big-N-to-DataFrame_files", recursive = TRUE)
 ```

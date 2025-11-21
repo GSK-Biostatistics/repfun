@@ -9,7 +9,7 @@ test_that("ru_libname works for rds and rda files", {
   #==================================================
   # Read ADSL RDA file, restrict to SAFETY subjects.
   #==================================================
-  adamdata1 <- repfun::ru_libname('../../data')
+  adamdata1 <- repfun::ru_libname('.')
   adsl <- adamdata1$adsl.rda() %>% dplyr::filter(SAFFL=='Y') -> adsl1
 
   #================================================

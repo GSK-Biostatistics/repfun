@@ -85,7 +85,7 @@ aeprod <- repfun::ru_freq(adae,
 
 ```{r results1}
 lbls <- sapply(aeprod,function(x){attr(x,"label")})
-knitr::kable(head(aeprod,20), col.names=paste(names(lbls),lbls,sep=": "), 
+knitr::kable(head(aeprod,10), col.names=paste(names(lbls),lbls,sep=": "), 
              caption = "Counts and Percents for AEs by Body System and Preferred Term") %>%
     kable_styling(full_width = T) %>% column_spec(c(3,4,8), width_min = c('2in','2in','2in'))
 ```
@@ -116,7 +116,7 @@ aeprod2 <- repfun::ru_freq(adae,
 
 ```{r results2}
 lbls <- sapply(aeprod2,function(x){attr(x,"label")})
-knitr::kable(head(aeprod2,20), col.names=paste(names(lbls),lbls,sep=": "), 
+knitr::kable(head(aeprod2,10), col.names=paste(names(lbls),lbls,sep=": "), 
              caption = "Counts and Percents for AEs by Preferred Term Only") %>%
   kable_styling(full_width = T) %>% column_spec(c(3,7), width_min = c('2in','2in'))
 ```
@@ -166,15 +166,8 @@ for(v in c('AGEGR1','SEX','RACE')){
 
 ```{r results3}
 lbls <- sapply(basechar,function(x){attr(x,"label")})
-knitr::kable(head(basechar,20), col.names=paste(names(lbls),lbls,sep=": "), 
+knitr::kable(head(basechar,10), col.names=paste(names(lbls),lbls,sep=": "), 
              caption = "Counts and Percents for Demographic Data") %>%
   kable_styling(full_width = T) %>% 
   column_spec(c(2,4,6,10), width_min = c('2in','2in','3in','2in'))
 ```
-
-## Clean up Temporary Files
-
-```{r cleanup}
-#unlink("../docs/articles/Generate-Counts-and-Percents_files", recursive = TRUE)
-```
-

@@ -67,17 +67,17 @@
 #'
 #' # Example 1: Simple paging.
 #' aesum_p1 <- repfun::ru_addpage(aesum_t,grpvars=c('AEBODSYS'),rowsprbdy=30)
-#' print(head(aesum_p1,40))
+#' print(head(aesum_p1,10))
 #'
 #' # Example 2: No splitvars, but 30 rows won't work for this data.
 #' aesum_p2 <- repfun::ru_addpage(aesum_t,grpvars=c('AEBODSYS'),rowsprbdy=30,
 #'                        nosplitvars=TRUE)
-#' print(head(aesum_p2,40))
+#' print(head(aesum_p2,10))
 #'
 #' # Example 3: No splitvars, but 35 rows is enough.
 #' aesum_p3 <- repfun::ru_addpage(aesum_t,grpvars=c('AEBODSYS'),rowsprbdy=35,
 #'                        nosplitvars=TRUE)
-#' print(head(aesum_p3,40))
+#' print(head(aesum_p3,10))
 #'
 #' @export
 #'

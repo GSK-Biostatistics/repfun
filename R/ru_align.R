@@ -99,10 +99,10 @@
 #'             acrossvarprefix=c("tt_ac"))
 #'
 #' print('Before Aligning')
-#' print(head(demstats_t,20))
+#' print(head(demstats_t,10))
 #' demstats_t_a <- repfun::ru_align(demstats_t, "tt_ac:", ncspaces=10)
 #' print('After Aligning')
-#' print(head(demstats_t_a,20))
+#' print(head(demstats_t_a,10))
 #'
 #' @export
 #'

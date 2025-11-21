@@ -51,7 +51,7 @@
 #'             totaldecode="Total",
 #'             statsinrowsyn = "Y",
 #'             analysisvardps=list("AGE"=1,"TRTDURD"=2),
-#'             statslist=c("n", "mean", "median", "sd", "min", "max"))
+#'             statslist=c("n", "mean", "median", "sd", "min", "max")) %>% head(10)
 #'
 #' @export
 #'
@@ -69,8 +69,6 @@ ru_sumstats <- function (dsetin, analysisvars=NULL,
                          totalid=NULL,
                          totaldecode=c('Total')
 ) {
-
-  #message('MADE IT HERE 1 ...')
 
   if (rfenv$G_DEBUG>0) {print(paste0("RU_SUMSTATS: ", "Start or RU_SUMSTATS"))}
 

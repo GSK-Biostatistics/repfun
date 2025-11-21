@@ -15,7 +15,7 @@ test_that("generating summary statistics works", {
   #====================
   rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
            D_SUBJID=c("STUDYID","USUBJID"),
-           R_ADAMDATA="../../data")
+           R_ADAMDATA=".")
 
   #=================================
   # Baseline characteristics: PROD

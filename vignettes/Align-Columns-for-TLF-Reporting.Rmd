@@ -84,7 +84,7 @@ aesum_t_a <- repfun::ru_align(aesum_t, "tt_ac:") %>%
 
 ```{r results1}
 print("Aligned Reporting Data Set for AE Counts and Percents")
-print(head(aesum_t_a,20))
+print(head(aesum_t_a,10))
 ```
 
 ## Generate Counts and Percents for Baseline Characteristics Data
@@ -119,7 +119,7 @@ demstats_t_a <- repfun::ru_align(demstats_t, "tt_ac:")
 
 ```{r results2}
 print("Aligned Reporting Data Set for Baseline Characteristics Summary Stats")
-print(head(demstats_t_a,20))
+print(head(demstats_t_a,10))
 ```
 
 

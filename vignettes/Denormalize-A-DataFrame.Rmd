@@ -84,7 +84,7 @@ aesum_t <- repfun::ru_denorm(aesum,varstodenorm=c("tt_result", "PERCENT"),
 
 ```{r results}
 lbls <- sapply(aesum_t,function(x){attr(x,"label")})
-knitr::kable(head(aesum_t,20), col.names=paste(names(lbls),lbls,sep=": "), 
+knitr::kable(head(aesum_t,10), col.names=paste(names(lbls),lbls,sep=": "), 
              caption = "Denormalized Data Set for Counts and Percents") %>%  
   kable_styling(full_width = T) %>% column_spec(c(2,3), width_min = c('2in','2in'))
 ```
@@ -116,13 +116,7 @@ demprod_t <- repfun::ru_denorm(demstats, varstodenorm=c("tt_result"),
 
 ```{r results2}
 lbls <- sapply(demprod_t,function(x){attr(x,"label")})
-knitr::kable(head(demprod_t,20), col.names=paste(names(lbls),lbls,sep=": "), 
+knitr::kable(head(demprod_t,10), col.names=paste(names(lbls),lbls,sep=": "), 
              caption = "Denormalized Data Set for Baseline Characteristics Summary Statistics") %>%   
   kable_styling(full_width = T) %>% column_spec(c(2), width_min = c('3in'))
-```
-
-## Clean up Temporary Files
-
-```{r cleanup}
-#unlink("../docs/articles/Denormalize-A-DataFrame_files", recursive = TRUE)
 ```

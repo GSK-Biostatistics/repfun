@@ -13,7 +13,7 @@ test_that("generating counts and percents works", {
   options(dplyr.summarise.inform = FALSE)
   repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
            D_SUBJID=c("STUDYID","USUBJID"),
-           R_ADAMDATA="../../data")
+           R_ADAMDATA=".")
 
   #===========================================
   # Add numeric variables to ADSL (and ADAE).

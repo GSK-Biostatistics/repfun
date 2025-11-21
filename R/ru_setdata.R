@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' library(repfun)
-#' repfun::ru_setdata(mtcars,airquality)
+#' repfun::ru_setdata(head(mtcars,5),head(airquality,5))
 #'
 #' @export
 #'

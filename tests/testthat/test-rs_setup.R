@@ -4,9 +4,17 @@ test_that("environment setup works", {
   suppressMessages(library(dplyr))
   suppressMessages(library(tibble))
   suppressMessages(library(testthat))
-  suppressMessages(library(rprojroot))
 
+  #globs <- paste0(tempdir(),'/GLOBALS2.txt')
+  #write(getwd(),file=globs,append=TRUE)
+  #write(testthat::test_path(),file=globs,append=TRUE)
+  #write(paste0(getwd(),'/',testthat::test_path()),file=globs,append=TRUE)
+  #Sys.sleep(300)
+
+  #repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
   repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
+  #print(getwd())
+  #Sys.sleep(20)
 
   #======================
   # Invoke setup macro.
@@ -22,7 +30,7 @@ test_that("environment setup works", {
       D_FOOT1='1.) Only treatment emergent events related to lipids are displayed.',
       D_FOOT2='2.) Subjects are only counted once within each body system and preferred term.',
       D_KEEPPOPVARS=c('STUDYID','USUBJID','SAFFL'),
-      D_OUTFILE=paste0("../../inst/t_ru_list_1.rtf"),
+      D_OUTFILE=paste0(tmpdr,"/t_ru_list_1.rtf"),
       D_PGMPTH="./test-rs_setup.R",
       D_STUDYID='ABCXYZPDQ',
       D_POP="SAFFL",
@@ -34,11 +42,11 @@ test_that("environment setup works", {
       R_DICTION="../../inst/formats",
       R_MACDIRS=NULL,
       R_DDDATA=paste0(tmpdr,'/t_ru_list_1.rds'),
-      R_OTHERDATA="../../data",
-      R_INPUTDATA="../../data",
-      R_RAWDATA="../../data",
-      R_SDTMDATA="../../data",
-      R_ADAMDATA="../../data",
+      R_OTHERDATA=".",
+      R_INPUTDATA=".",
+      R_RAWDATA=".",
+      R_SDTMDATA=".",
+      R_ADAMDATA=".",
       D_RTFYN="Y",
       D_DEBUG=0)
   )

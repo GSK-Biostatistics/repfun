@@ -196,16 +196,14 @@ repfun::ru_list(dsetin=rptdf,
         labels=list('tt_avnm'='Variable','tt_svnm'='Category/Statistic'))
 ```
 
-### Select Page(s) of Table 15 (1,2)
+### Select Page(s) of Table 15 (1)
 
 ![Table 15 (pg 1) Image](./images/Table_15_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 15 (pg 2) Image](./images/Table_15_Page_2.gif)
 
 ### DDDATA for Table 15 (First few obs)
 
 ```{r dddata15, results='asis'}
-t15 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(tt_svnm != '') %>% dplyr::filter(row_number()<=50)
+t15 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(tt_svnm != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t15,function(x){attr(x,"label")})
 names(t15) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -261,16 +259,14 @@ repfun::ru_list(dsetin=rptdf,
         labels=list('tt_avnm'='Variable','tt_svnm'='Category/Statistic'))
 ```
 
-### Select Page(s) of Table 16 (1,2)
+### Select Page(s) of Table 16 (1)
 
 ![Table 16 (pg 1) Image](./images/Table_16_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 16 (pg 2) Image](./images/Table_16_Page_2.gif)
 
 ### DDDATA for Table 16 (First few obs)
 
 ```{r dddata16, results='asis'}
-t16 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t16 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t16,function(x){attr(x,"label")})
 names(t16) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -328,20 +324,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 17 (1,2,3,4)
+### Select Page(s) of Table 17 (1)
 
 ![Table 17 (pg 1) Image](./images/Table_17_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 17 (pg 2) Image](./images/Table_17_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 17 (pg 3) Image](./images/Table_17_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 17 (pg 4) Image](./images/Table_17_Page_4.gif)
 
 ### DDDATA for Table 17 (First few obs)
 
 ```{r dddata17, results='asis'}
-t17 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t17 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t17,function(x){attr(x,"label")})
 names(t17) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -402,20 +392,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 18 (1,2,3,4)
+### Select Page(s) of Table 18 (2)
 
-![Table 18 (pg 1) Image](./images/Table_18_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
 ![Table 18 (pg 2) Image](./images/Table_18_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 18 (pg 3) Image](./images/Table_18_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 18 (pg 4) Image](./images/Table_18_Page_4.gif)
 
 ### DDDATA for Table 18 (First few obs)
 
 ```{r dddata18, results='asis'}
-t18 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t18 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t18,function(x){attr(x,"label")})
 names(t18) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -475,20 +459,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 19 (1,2,3,4)
+### Select Page(s) of Table 19 (1)
 
 ![Table 19 (pg 1) Image](./images/Table_19_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 19 (pg 2) Image](./images/Table_19_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 19 (pg 3) Image](./images/Table_19_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 19 (pg 4) Image](./images/Table_19_Page_4.gif)
 
 ### DDDATA for Table 19 (First few obs)
 
 ```{r dddata19, results='asis'}
-t19 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t19 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t19,function(x){attr(x,"label")})
 names(t19) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -549,22 +527,14 @@ repfun::ru_list(dsetin=mytbls,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 20 (1,2,3,4,5)
+### Select Page(s) of Table 20 (1)
 
 ![Table 20 (pg 1) Image](./images/Table_20_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 20 (pg 2) Image](./images/Table_20_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 20 (pg 3) Image](./images/Table_20_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 20 (pg 4) Image](./images/Table_20_Page_4.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 20 (pg 5) Image](./images/Table_20_Page_5.gif)
 
 ### DDDATA for Table 20 (First few obs)
 
 ```{r dddata20, results='asis'}
-t20 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t20 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t20,function(x){attr(x,"label")})
 names(t20) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -620,20 +590,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 21 (1,2,3,4,5)
+### Select Page(s) of Table 21 (1)
 
 ![Table 21 (pg 1) Image](./images/Table_21_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 21 (pg 2) Image](./images/Table_21_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 21 (pg 3) Image](./images/Table_21_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 21 (pg 4) Image](./images/Table_21_Page_4.gif)
 
 ### DDDATA for Table 21 (First few obs)
 
 ```{r dddata21, results='asis'}
-t21 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", tt_svnm) != '') %>% dplyr::filter(row_number()<=50)
+t21 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", tt_svnm) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t21,function(x){attr(x,"label")})
 names(t21) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -685,20 +649,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 22 (1,2,3,4,5)
+### Select Page(s) of Table 22 (1)
 
 ![Table 22 (pg 1) Image](./images/Table_22_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 22 (pg 2) Image](./images/Table_22_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 22 (pg 3) Image](./images/Table_22_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 22 (pg 4) Image](./images/Table_22_Page_4.gif)
 
 ### DDDATA for Table 22 (First few obs)
 
 ```{r dddata22, results='asis'}
-t22 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=50)
+t22 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t22,function(x){attr(x,"label")})
 names(t22) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -764,20 +722,14 @@ repfun::ru_list(dsetin=dfpg,
         dddatasetlabel=paste0('DD Dataframe for DEMO Table ',repfun:::rfenv$G_DSPLYNUM))
 ```
 
-### Select Page(s) of Table 23 (1,3,5,7)
+### Select Page(s) of Table 23 (1)
 
 ![Table 23 (pg 1) Image](./images/Table_23_Page_1.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 23 (pg 2) Image](./images/Table_23_Page_3.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 23 (pg 3) Image](./images/Table_23_Page_5.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Table 23 (pg 4) Image](./images/Table_23_Page_7.gif)
 
 ### DDDATA for Table 23 (First few obs)
 
 ```{r dddata23, results='asis'}
-t23 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", tt_svnm) != '') %>% dplyr::filter(row_number()<=50)
+t23 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", tt_svnm) != '') %>% dplyr::filter(row_number()<=20)
 lbls <- sapply(t23,function(x){attr(x,"label")})
 names(t23) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -802,6 +754,5 @@ datatable(
 ## Clean up Temporary Files
 
 ```{r cleanup}
-#unlink("../docs/articles/Dem-Tbls_files", recursive = TRUE)
 unlink(tmpdr, recursive = TRUE)
 ```

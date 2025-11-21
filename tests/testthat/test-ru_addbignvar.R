@@ -12,7 +12,7 @@ test_that("adding big N works", {
   #=======
   suppressMessages(require(dplyr))
   options(dplyr.summarise.inform = FALSE)
-  repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'), D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA="../../data")
+  repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'), D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA=".")
   rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
     dplyr::select(STUDYID,USUBJID,SAFFL,TRT01AN,TRT01A) -> G_POPDATA
   attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
