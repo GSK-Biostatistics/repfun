@@ -29,7 +29,12 @@ library(dplyr)
 ## Define data library
 
 ```{r define}
-rfmtdir <- repfun::ru_libname('../inst/formats')
+tmpdr <- tempdir()
+datdir <- file.path(gsub("\\","/",tmpdr,fixed=TRUE),"datdir")
+fname <- system.file("formats", "formats.sas7bdat", package = "repfun")
+dir.create(datdir,showWarnings=FALSE)
+file.copy(from=fname,to=paste0(datdir,'/formats.sas7bdat'))
+rfmtdir <- repfun::ru_libname(datdir)
 ```
 
 ## Read in Format Data Set
@@ -51,7 +56,7 @@ fmtlist <- repfun::ru_data2codelist(fmtdata,
 ## Apply the List to Create a Decode Variable on ADSL
 
 ```{r decode}
-adsl <- get(load('../data/adsl.rda'))
+adsl <- repfun::adsl
 addvar <- repfun::ru_fillcodedcode(adsl, 
                            codedecodevarpairs=c("SEX", "SEXDCD"), 
                            varcodelistpairs=c("SEX", "SEXS"), 

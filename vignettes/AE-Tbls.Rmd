@@ -33,6 +33,9 @@ library(kableExtra)
 
 ```{r envir}
 tmpdr <- tempdir()
+datdir <- file.path(gsub("\\","/",tmpdr,fixed=TRUE),"datdir")
+dir.create(datdir,showWarnings=FALSE)
+repfun::copydata(datdir)
 setup <- function(tlfid){
  repfun::rs_setup(
    D_DATADATE=Sys.Date(),
@@ -51,7 +54,7 @@ setup <- function(tlfid){
    D_SUBJID=c("STUDYID","USUBJID"),
    D_TITLE1=paste0('Table ',tlfid,': Summary of Treatment Emergent Adverse Events'),
    R_DDDATA=paste0(tmpdr,'/t_ru_list_',tlfid,'.rds'),
-   R_ADAMDATA="../data")
+   R_ADAMDATA=datdir)
   
 #print(tmpdr)  
 #Sys.sleep(100)  

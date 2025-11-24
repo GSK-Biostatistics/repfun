@@ -248,6 +248,7 @@ library(dplyr)
 library(tibble)
 datdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"datdir")
 dir.create(datdir,showWarnings=FALSE)
+repfun::copydata(datdir)
 outdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"outdir")
 dir.create(outdir,showWarnings=FALSE)
 #===================================
@@ -304,22 +305,22 @@ repfun::ru_align("tt_result")
 #======================================
 # Table 1:  Summary of Adverse Events
 #======================================
-repfun::ru_list(aesum,
-        columns=c('AEBODSYS','AEDECOD','tt_01','tt_02','tt_03','tt_99'),
-        nowidowvar='AEBODSYS',
-        widths=c(5.5,4.5,1.75,1.9,1.9,1.75),
-        skipvars=c('AEBODSYS'),
-        centrevars=c('tt_01','tt_02','tt_03','tt_99'),
-        ordervars=c('AEBODSYS','tt_summarylevel','AEDECOD'),
-        noprintvars=c('tt_summarylevel'),
-        denormyn='Y',
-        varsToDenorm=c('tt_result'),
-        groupByVars=c('AEBODSYS','tt_summarylevel','AEDECOD'),
-        acrossVar="TRT01AN",
-        acrossVarLabel="TRT01A",
-        acrossColVarPrefix='tt_',
-        dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM),
-        lpp=23)
+#repfun::ru_list(aesum,
+#         columns=c('AEBODSYS','AEDECOD','tt_01','tt_02','tt_03','tt_99'),
+#         nowidowvar='AEBODSYS',
+#         widths=c(5.5,4.5,1.75,1.9,1.9,1.75),
+#         skipvars=c('AEBODSYS'),
+#         centrevars=c('tt_01','tt_02','tt_03','tt_99'),
+#         ordervars=c('AEBODSYS','tt_summarylevel','AEDECOD'),
+#         noprintvars=c('tt_summarylevel'),
+#         denormyn='Y',
+#         varsToDenorm=c('tt_result'),
+#         groupByVars=c('AEBODSYS','tt_summarylevel','AEDECOD'),
+#         acrossVar="TRT01AN",
+#         acrossVarLabel="TRT01A",
+#         acrossColVarPrefix='tt_',
+#         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM),
+#         lpp=23)
 
 #==========================================================================
 # Table 2:  Summary of Adverse Events using NOWIDOWVAR (remove SOCs that

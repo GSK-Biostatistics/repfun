@@ -30,7 +30,10 @@ library(dplyr)
 ## Define Libnames
 
 ```{r libname}
-adamdata <- repfun::ru_libname('../data')
+datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir")
+dir.create(datdir,showWarnings=FALSE)
+repfun::copydata(datdir)
+adamdata <- repfun::ru_libname(datdir)
 ```
 
 ## Use Libname to Access and Subset Data
