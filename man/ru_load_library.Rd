@@ -22,5 +22,5 @@ repfun::ru_load_library(c("dplyr", "haven", "magrittr", "r2rtf"))
 }
 \author{
 Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
-Chris Rook, \email{christopher.x.rook@gsk.com}
+Chris Rook, \email{cr883296@gmail.com}
 }

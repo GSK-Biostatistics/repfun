@@ -30,7 +30,11 @@ library(dplyr)
 ## Define library as a libname
 
 ```{r libname}
-sdtmdata <- repfun::ru_libname('../data')
+tmpdr <- tempdir()
+datdir <- file.path(gsub("\\","/",tmpdr,fixed=TRUE),"datdir")
+dir.create(datdir,showWarnings=FALSE)
+repfun::copydata(datdir)
+sdtmdata <- repfun::ru_libname(datdir)
 ```
 
 ## Use Libname to Access SDTM.AE Data

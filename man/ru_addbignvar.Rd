@@ -56,13 +56,6 @@ Pass in a data frame along with identification options and have Big N added to i
 library(repfun)
 library(dplyr)
 library(tibble)
-#rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-#              rfenv
-#          } else {
-#              rfenv <- new.env(parent = emptyenv())
-#              rfenv$G_DEBUG <- 0
-#              rfenv
-#          }
 datdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"datdir");
 dir.create(datdir,showWarnings=FALSE)
 repfun::copydata(datdir)
@@ -99,5 +92,5 @@ addbign <- repfun::ru_addbignvar(adae,
 }
 \author{
 Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
-Chris Rook, \email{christopher.x.rook@gsk.com}
+Chris Rook, \email{cr883296@gmail.com}
 }

@@ -49,18 +49,11 @@
 #' @return Global variables defined for use with the reporting tools.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
-#'         Chris Rook, \email{christopher.x.rook@gsk.com}
+#'         Chris Rook, \email{cr883296@gmail.com}
 #'
 #' @examples
 #' library(repfun)
 #' library(dplyr)
-#' rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-#'              rfenv
-#'          } else {
-#'              rfenv <- new.env(parent = emptyenv())
-#'              rfenv$G_DEBUG <- 0
-#'              rfenv
-#'          }
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir")
 #' dir.create(datdir,showWarnings=FALSE)
 #' outdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"outdir")

@@ -4,23 +4,29 @@
 \name{repfun-package}
 \alias{repfun}
 \alias{repfun-package}
-\title{repfun: Create TLFs using R functions styled after SAS macros}
+\title{repfun: Create TLFs using R Functions Styled after SAS Macros}
 \description{
 A clinical reporting toolkit of R functions that are written to mimic the style of SAS reporting macros. The purpose is to generate TLFs (tables, listings and figures) to support clinical trials.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://gsk-biostatistics.github.io/repfun}
+  \item \url{https://GSK-Biostatistics.github.io/repfun/}
+  \item \url{https://github.com/GSK-Biostatistics/repfun}
 }
 
 }
 \author{
-\strong{Maintainer}: Yongwei Wang \email{yongwei.x.wang@viivhealthcare.com}
+\strong{Maintainer}: Chris Rook \email{cr883296@gmail.com}
 
 Authors:
 \itemize{
-  \item Chris Rook \email{cr883296@gmail.com}
+  \item Yongwei Wang \email{yongwei.x.wang@viivhealthcare.com}
+}
+
+Other contributors:
+\itemize{
+  \item GlaxoSmithKline Research & Development Limited [copyright holder, funder]
 }
 
 }

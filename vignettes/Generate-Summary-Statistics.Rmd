@@ -30,10 +30,14 @@ library(dplyr)
 ## Set Up the Reporting Environment
 
 ```{r envir}
-repfun::rs_setup(D_POPDATA=get(load("../data/adsl.rda")) %>% 
+tmpdr <- tempdir()
+datdir <- file.path(gsub("\\","/",tmpdr,fixed=TRUE),"datdir")
+dir.create(datdir,showWarnings=FALSE)
+repfun::copydata(datdir)
+repfun::rs_setup(D_POPDATA=repfun::adsl %>% 
            dplyr::filter(SAFFL =='Y'),
          D_SUBJID=c("STUDYID","USUBJID"),
-         R_ADAMDATA="../data")
+         R_ADAMDATA=datdir)
 ```
 
 ## Update ADSL and ADVS

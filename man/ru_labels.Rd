@@ -27,5 +27,5 @@ df_with_labels <- ru_labels(mtcars,varlabels=list(mpg='Miles per gallon',
 }
 \author{
 Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
-Chris Rook, \email{christopher.x.rook@gsk.com}
+Chris Rook, \email{cr883296@gmail.com}
 }

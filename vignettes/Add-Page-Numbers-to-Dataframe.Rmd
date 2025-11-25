@@ -31,9 +31,13 @@ library(kableExtra)
 ## Set Up the Reporting Environment
 
 ```{r envir}
+tmpdr <- tempdir()
+datdir <- file.path(gsub("\\","/",tmpdr,fixed=TRUE),"datdir")
+dir.create(datdir,showWarnings=FALSE)
+repfun::copydata(datdir)
 repfun::rs_setup(D_POP="SAFFL",D_POPLBL="Safety",
-         D_POPDATA=get(load("../data/adsl.rda")) %>% dplyr::filter(SAFFL =='Y'), 
-         D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA="../data")
+         D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'), 
+         D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA=datdir)
 repfun:::rfenv$G_POPDATA %>% mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>% 
   repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)')) -> G_POPDATA
 ```

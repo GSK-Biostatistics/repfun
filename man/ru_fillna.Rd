@@ -26,5 +26,5 @@ repfun::ru_fillna(airquality, vars=c('Ozone','Solar.R'), fills=c(1111,2222)) \%>
 }
 \author{
 Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
-Chris Rook, \email{christopher.x.rook@gsk.com}
+Chris Rook, \email{cr883296@gmail.com}
 }

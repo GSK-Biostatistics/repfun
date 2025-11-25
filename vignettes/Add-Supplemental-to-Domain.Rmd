@@ -36,7 +36,11 @@ library(dplyr)
 ## Define data library
 
 ```{r define}
-sdtmdata <- repfun::ru_libname('../data')
+tmpdr <- tempdir()
+datdir <- file.path(gsub("\\","/",tmpdr,fixed=TRUE),"datdir")
+dir.create(datdir,showWarnings=FALSE)
+repfun::copydata(datdir)
+sdtmdata <- repfun::ru_libname(datdir)
 ```
 
 ## Read SDTM DM and SUPPDM domains
