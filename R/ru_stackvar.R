@@ -11,7 +11,7 @@
 #'
 #' @return The incoming dataframe with columns stacked as requested.
 #'
-#' @author Chris Rook, \email{christopher.x.rook@gsk.com} \cr
+#' @author Chris Rook, \email{cr883296@gmail.com} \cr
 #'         Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com}
 #'
 #' @examples

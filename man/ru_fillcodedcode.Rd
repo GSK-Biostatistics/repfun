@@ -36,13 +36,6 @@ Pass in a data frame with along code/decode variables and values to have missing
 }
 \examples{
 library(repfun)
-rfenv <- if (exists('rfenv') && is.environment(get('rfenv'))){
-             rfenv
-         } else {
-             rfenv <- new.env(parent = emptyenv())
-             rfenv$G_DEBUG <- 0
-             rfenv
-         }
 fmtlist <- list('SEXS'=list('START'=list('M','F'),
                 'LABEL'=c('Male','Female')))
 adsl <- repfun::adsl
@@ -54,5 +47,5 @@ unique(adsl2[c("SEX","SEXDCD")])
 }
 \author{
 Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
-Chris Rook, \email{christopher.x.rook@gsk.com}
+Chris Rook, \email{cr883296@gmail.com}
 }

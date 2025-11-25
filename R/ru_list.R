@@ -81,7 +81,7 @@
 #'
 #' @return A formattted RTF report is generated to the specified file.
 #'
-#' @author Chris Rook, \email{christopher.x.rook@gsk.com} \cr
+#' @author Chris Rook, \email{cr883296@gmail.com} \cr
 #'         Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com}
 #'
 #' @examples

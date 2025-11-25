@@ -12,7 +12,7 @@
 #' @return A data frame based on the incoming data frame but restricted to the population of interest with relevant population variables added.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
-#'         Chris Rook, \email{christopher.x.rook@gsk.com}
+#'         Chris Rook, \email{cr883296@gmail.com}
 #'
 #' @examples
 #' library(repfun)
