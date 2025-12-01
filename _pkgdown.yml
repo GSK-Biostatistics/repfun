@@ -4,7 +4,7 @@ template:
   opengraph:
     image:
       src: https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun.png
-      alt: "Logo"
+      alt: Logo
 articles:
 - title: TLF Use Cases
   navbar: TLF Use Cases
@@ -84,3 +84,4 @@ reference:
   - copydata
   - formats
   - mtcars_w2lbls
+
