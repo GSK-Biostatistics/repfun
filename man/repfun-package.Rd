@@ -11,8 +11,7 @@ A clinical reporting toolkit of R functions that are written to mimic the style 
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://GSK-Biostatistics.github.io/repfun/}
-  \item \url{https://github.com/GSK-Biostatistics/repfun}
+  \item \url{https://gsk-biostatistics.github.io/repfun/}
 }
 
 }
