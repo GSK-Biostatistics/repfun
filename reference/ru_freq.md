@@ -1,0 +1,157 @@
+# Create Percentage based on Numerator and Denominator Data
+
+Pass in a data frame along with identification options and have
+descriptive statistics derived.
+
+## Usage
+
+``` r
+ru_freq(
+  dsetin,
+  dsetindenom = NULL,
+  countdistinctvars = NULL,
+  groupbyvarsnumer = NULL,
+  groupbyvarsdenom = NULL,
+  resultstyle = "NUMERPCT",
+  totalforvar = NULL,
+  totalid = NULL,
+  totaldecode = c("Total"),
+  anyeventvars = NULL,
+  anyeventvalues = NULL,
+  codedecodevarpairs = NULL,
+  varcodelistpairs = NULL,
+  codelistnames = list(),
+  groupminmaxvar = NULL,
+  resultpctdps = 0
+)
+```
+
+## Arguments
+
+- dsetin:
+
+  The data set that will be counted to generate descriptive statistics.
+
+- dsetindenom:
+
+  Input dataset containing data to be counted to obtain the denominator.
+
+- countdistinctvars:
+
+  Variable(s) that contain values to be counted uniquely within any
+  output grouping.
+
+- groupbyvarsnumer:
+
+  Variables in DSETINNUMER to group the data by when counting to obtain
+  the numerator.
+
+- groupbyvarsdenom:
+
+  Variables in DSETINDENOM to group the data by when counting to obtain
+  the denominator.
+
+- resultstyle:
+
+  The appearance style of the result columns that will be displayed in
+  the report.
+
+- totalforvar:
+
+  Variable for which overall totals are required within all other
+  grouped class variables.
+
+- totalid:
+
+  Value(s) used to populate the variable(s) specified in totalforvar.
+
+- totaldecode:
+
+  Value(s) used to populate the variable(s) of the decode variable(s) of
+  the totalforvar.
+
+- anyeventvars:
+
+  Set of variables for which total rows will be added.
+
+- anyeventvalues:
+
+  Set of text values for total rows generated above.
+
+- codedecodevarpairs:
+
+  Specifies code and decode variable pairs. Those variables should be in
+  parameter GROUPBYVARSNUMER. One variable in the pair will contain the
+  code, which is used in counting and ordering, and the other will
+  contain decode, which is used for presentation.
+
+- varcodelistpairs:
+
+  List of code/decode pairs of variables.
+
+- codelistnames:
+
+  List of decodes for use with decoding code/decode pairs.
+
+- groupminmaxvar:
+
+  Specify if frequency of each group should be from first or last value
+  of a variable in format MIN(variables).
+
+- resultpctdps:
+
+  The reporting precision for percentages.
+
+## Value
+
+A data frame based on the incoming data frame but collapsed by groups
+with descriptive statistics added.
+
+## Author
+
+Yongwei Wang, <yongwei.x.wang@viivhealthcare.com>  
+Chris Rook, <cr883296@gmail.com>
+
+## Examples
+
+``` r
+library(repfun)
+library(dplyr)
+library(tibble)
+datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir")
+dir.create(datdir,showWarnings=FALSE)
+outdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"outdir")
+dir.create(outdir,showWarnings=FALSE)
+fmtdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"fmtdir")
+dir.create(fmtdir,showWarnings=FALSE)
+repfun::copydata(datdir)
+repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
+                 D_SUBJID=c("STUDYID","USUBJID"),
+                 R_DICTION=NULL,
+                 R_OTHERDATA=NULL,
+                 R_INPUTDATA=NULL,
+                 R_RAWDATA=NULL,
+                 R_SDTMDATA=NULL,
+                 R_ADAMDATA=datdir)
+G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+  dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
+                 ifelse(TRT01A=='Xanomeline Low Dose',2,3)))
+attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
+adae <- repfun:::rfenv$adamdata$adae.rda() %>%
+  dplyr::inner_join(G_POPDATA, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
+aesum <- repfun::ru_freq(adae,
+                 dsetindenom=G_POPDATA,
+                 countdistinctvars=c('STUDYID','USUBJID'),
+                 groupbyvarsnumer=c('TRT01AN','TRT01A','AEBODSYS','AEDECOD'),
+                 anyeventvars = c('AEBODSYS','AEDECOD'),
+                 anyeventvalues = c('ANY EVENT','ANY EVENT'),
+                 groupbyvarsdenom=c('TRT01AN'),
+                 resultstyle="NUMERPCT",
+                 totalforvar=c('TRT01AN'),
+                 totalid=99,
+                 totaldecode='Total',
+                 codedecodevarpairs=c("TRT01AN", "TRT01A"),
+                 varcodelistpairs=c(""),
+                 codelistnames=list(),
+                 resultpctdps=0)
+```

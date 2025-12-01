@@ -1,0 +1,35 @@
+pandoc: 3.1.11
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  Add-Big-N-to-DataFrame: Add-Big-N-to-DataFrame.html
+  Add-Decode-Variable: Add-Decode-Variable.html
+  Add-Labels: Add-Labels.html
+  Add-Page-Numbers-to-Dataframe: Add-Page-Numbers-to-Dataframe.html
+  Add-Remove-Decode-Variables: Add-Remove-Decode-Variables.html
+  Add-Supplemental-to-Domain: Add-Supplemental-to-Domain.html
+  AE-Tbls: AE-Tbls.html
+  Align-Columns-for-TLF-Reporting: Align-Columns-for-TLF-Reporting.html
+  Convert-Format-Data-to-Codelist: Convert-Format-Data-to-Codelist.html
+  Convert-RTF-to-PDF: Convert-RTF-to-PDF.html
+  Convert-Strings-to-Dates: Convert-Strings-to-Dates.html
+  Data-Compare: Data-Compare.html
+  Dem-Tbls: Dem-Tbls.html
+  Denormalize-A-DataFrame: Denormalize-A-DataFrame.html
+  Figures: Figures.html
+  Fill-Missings: Fill-Missings.html
+  Generate-Counts-and-Percents: Generate-Counts-and-Percents.html
+  Generate-Relative-Column-Widths-for-RTF-Reporting: Generate-Relative-Column-Widths-for-RTF-Reporting.html
+  Generate-Summary-Statistics: Generate-Summary-Statistics.html
+  Get-Data-for-Population: Get-Data-for-Population.html
+  Global-Reporting-Setup: Global-Reporting-Setup.html
+  Library-Setup: Library-Setup.html
+  Load-Libraries: Load-Libraries.html
+  Proc-Contents: Proc-Contents.html
+  SAS-Type-Variable-Expansion: SAS-Type-Variable-Expansion.html
+  Set-Data: Set-Data.html
+  Stack-Variables: Stack-Variables.html
+last_built: 2025-12-01T19:27Z
+urls:
+  reference: https://gsk-biostatistics.github.io/repfun/reference
+  article: https://gsk-biostatistics.github.io/repfun/articles

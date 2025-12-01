@@ -1,0 +1,101 @@
+# Create a List of Relative Widths of Columns for RTF Outputs
+
+Pass in a data set and identify the columns for reporting to have
+estimated relative column width returned.
+
+## Usage
+
+``` r
+ru_width_rtf(dsetin, varsin = list(), widths = list(), type = "PCT")
+```
+
+## Arguments
+
+- dsetin:
+
+  A dataframe containing columns for reporting.
+
+- varsin:
+
+  A vector of variables on the reporting dataframe that will be
+  displayed in the output.
+
+- widths:
+
+  Provide a set of default widths for some or all variables as desired.
+  (These will be used.)
+
+- type:
+
+  Specify the type of width to be computed and returned. (Currently
+  supports PCT, which refers to relative widths not percentages.)
+
+## Value
+
+A list of widths of the same size as the list specified by varsin.
+
+## Author
+
+Yongwei Wang, <yongwei.x.wang@viivhealthcare.com>  
+Chris Rook, <cr883296@gmail.com>
+
+## Examples
+
+``` r
+library(repfun)
+library(dplyr)
+datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir");
+dir.create(datdir,showWarnings=FALSE)
+repfun::copydata(datdir)
+repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
+         D_SUBJID=c("STUDYID","USUBJID"),
+         R_DICTION=NULL,
+         R_OTHERDATA=NULL,
+         R_INPUTDATA=NULL,
+         R_RAWDATA=NULL,
+         R_SDTMDATA=NULL,
+         R_ADAMDATA=datdir)
+G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+    dplyr::mutate(
+         TRT01AN=ifelse(TRT01A=='Placebo',1,
+                 ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
+    repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
+adae <- repfun:::rfenv$adamdata$adae.rda() %>%
+        dplyr::inner_join(G_POPDATA, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
+aesum_p <- repfun::ru_freq(adae,
+                   dsetindenom=G_POPDATA,
+                   countdistinctvars=c('STUDYID','USUBJID'),
+                   groupbyvarsnumer=c('TRT01AN','TRT01A','AEBODSYS','AEDECOD'),
+                   anyeventvars = c('AEBODSYS','AEDECOD'),
+                   anyeventvalues = c('ANY EVENT','ANY EVENT'),
+                   groupbyvarsdenom=c('TRT01AN'),
+                   resultstyle="NUMERPCT",
+                   totalforvar=c('TRT01AN'),
+                   totalid=99,
+                   totaldecode='Total',
+                   codedecodevarpairs=c("TRT01AN", "TRT01A"),
+                   varcodelistpairs=c(""),
+                   codelistnames=list(),
+                   resultpctdps=0) %>%
+                   repfun::ru_denorm(varstodenorm=c("tt_result", "PERCENT"),
+                             groupbyvars=c("tt_summarylevel", "AEBODSYS", "AEDECOD"),
+                             acrossvar="TRT01AN", acrossvarlabel="TRT01A",
+                             acrossvarprefix=c("tt_ac", "tt_p")) %>%
+                   dplyr::mutate(ord1=ifelse(tt_summarylevel==0,0,1)) %>%
+                   dplyr::rename(ord2=tt_summarylevel) %>%
+                   dplyr::arrange(ord1,AEBODSYS,ord2,AEDECOD) %>%
+                   dplyr::select(-c(starts_with('tt_p'),starts_with('ord'))) %>%
+                   repfun::ru_addpage(grpvars=c('AEBODSYS'),rowsprbdy=35,nosplitvars=TRUE)
+
+widths1 <- repfun::ru_width_rtf(aesum_p,
+           c('AEBODSYS','AEDECOD','tt_ac01','tt_ac02','tt_ac03','tt_ac99'))
+print(widths1)
+#> AEBODSYS  AEDECOD  tt_ac01  tt_ac02  tt_ac03  tt_ac99 
+#>       46       32        5        5        5        6 
+widths2 <- repfun::ru_width_rtf(aesum_p,
+           c('AEBODSYS','AEDECOD','tt_ac01','tt_ac02','tt_ac03','tt_ac99'),
+           list('AEBODSYS'=35, 'AEDECOD'=30))
+print(widths2)
+#> AEBODSYS  AEDECOD  tt_ac01  tt_ac02  tt_ac03  tt_ac99 
+#>       35       30        8        8        8       10 
+```
