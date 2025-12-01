@@ -83,7 +83,7 @@ repfun::ru_list(dsetin=myplot,
 
 ### Select Page(s) of Figure 1 (1)
 
-![Figure 1 (pg 1) Image](./images/Figure_1_Page_1.jpg)
+![Figure 1 (pg 1) Image](./images/Figure_1_Page_1.gif)
 <hr style="border: none; width: 20%; border-top: 1px solid #000;">
 
 ### DDDATA for Figure 1
@@ -134,11 +134,7 @@ repfun::ru_list(dsetin=myplots,
 
 ### Select Page(s) of Figure 2 (1,2)
 
-![Figure 2 (pg 1) Image](./images/Figure_2_Page_1.jpg)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-![Figure 2 (pg 2) Image](./images/Figure_2_Page_2.gif)
-<hr style="border: none; width: 20%; border-top: 1px solid #000;">
-
+![Figure 2 (pg 1) Image](./images/Figure_2_Page_1.gif)
 
 ### DDDATA for Figure 2
 

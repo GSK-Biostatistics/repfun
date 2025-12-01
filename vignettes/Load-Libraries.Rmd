@@ -24,6 +24,7 @@ message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
 
 ```{r setup, message=FALSE}
 library(repfun)
+library(devtools)
 ```
 
 ## Create a vector of packages to load.
