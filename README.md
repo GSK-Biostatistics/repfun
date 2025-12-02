@@ -31,7 +31,7 @@ This repository contains an R package of reporting functions that mimic (HARP) S
 - This package contains reporting functions that mimic (HARP) SAS macros.
 - View the function documentation at: https://gsk-biostatistics.github.io/repfun/reference/index.html
 - Install the package using: 
-    library(remotes); install_github("devtools::install_github("GSK-Biostatistics/repfun")") [After setting user environment variable GITHUB_PAT.]
+    library(remotes); install_github("GSK-Biostatistics/repfun")
     or install.packages('/your/path/repfun_0.0.0.9000.tar.gz',repos=NULL,type='source') (see misc branch)
     or download the following zip file and install as above: https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.tar.gz
 - Use the package by loading it: library(repfun)
