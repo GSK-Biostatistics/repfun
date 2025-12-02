@@ -1,6 +1,7 @@
 # repfun [![repfun website](reference/figures/repfun.png)](https://gsk-biostatistics.github.io/repfun/)
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/license/apache-2-0)
+[![R-CMD-check](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml)
 
 ## R Reporting Functions Repository
 
