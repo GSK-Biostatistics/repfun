@@ -62,32 +62,32 @@ https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/makepdf.bat
 <br>
 
 **Step 5.) From within R Studio files pane, select and Export the RTF files produced in Step 4 (see below).**
+<a href="https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/Export.gif" target="_blank" Export>Click to View Picture</a>
 
-![Export](./images/Export.gif)
 <br>
 <br>
 
 **Step 6.) Click download (see below).**
-
-![Download](./images/Download.gif)
+<a href="https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/Download.gif" target="_blank" Download>Click to View Picture</a>
 
 <br>
 <br>
 
 **Step 7.) Run the batch file copied in Step 3 (see below).**
-
-![Batch](./images/Batch.gif)
+<a href="https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/Batch.gif" target="_blank" Batch>Click to View Picture</a>
 
 <br>
 <br>
 
 **The following file is produced from Step 7 (see below).**
-![Converted](./images/Converted.gif)
+<a href="https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/Converted.gif" target="_blank" Converted>Click to View Picture</a>
+
 <br>
 <br>
 
 **Step 8: Final step is to upload the converted.zip file from R Studio files pane (see below).**
-![Upload](./images/Upload.gif)
+<a href="https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/Upload.gif" target="_blank" Upload>Click to View Picture</a>
+
 <br>
 <br>
 
