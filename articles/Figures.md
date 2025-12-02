@@ -4,7 +4,7 @@
 
 ``` r
 message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
-#> Datetime: 2025-12-01:2025-12-01 19:29:07.527413
+#> Datetime: 2025-12-02:2025-12-02 19:32:56.805788
 ```
 
 ## Load Libraries
@@ -87,11 +87,11 @@ datatable(
 
 ### Figure 1 RTF
 
-[Download](https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_fig_1.rtf)
+[Download](https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/t_ru_list_fig_1.rtf)
 
 ### Figure 1 PDF
 
-[View](https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_fig_1.pdf)
+[View](https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/t_ru_list_fig_1.pdf)
 
 ------------------------------------------------------------------------
 
@@ -109,11 +109,13 @@ repfun::ru_list(dsetin=myplots,
         dddatasetlabel='DD Dataframe for Figure 2')
 ```
 
-### Select Page(s) of Figure 2 (1,2)
+### Select Page(s) of Figure 2 (1)
 
 ![Figure 2 (pg 1) Image](images/Figure_2_Page_1.gif)
 
 Figure 2 (pg 1) Image
+
+------------------------------------------------------------------------
 
 ### DDDATA for Figure 2
 
@@ -133,11 +135,11 @@ datatable(
 
 ### Figure 2 RTF
 
-[Download](https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_fig_2.rtf)
+[Download](https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/t_ru_list_fig_2.rtf)
 
 ### Figure 2 PDF
 
-[View](https://github.com/GSK-Biostatistics/repfun/tree/misc/outputs/t_ru_list_fig_2.pdf)
+[View](https://github.com/GSK-Biostatistics/repfun/blob/misc/outputs/t_ru_list_fig_2.pdf)
 
 ## Clean up Temporary Files
 

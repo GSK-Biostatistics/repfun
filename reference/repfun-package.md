@@ -8,9 +8,7 @@ the style of SAS reporting macros. The purpose is to generate TLFs
 
 Useful links:
 
-- <https://GSK-Biostatistics.github.io/repfun/>
-
-- <https://github.com/GSK-Biostatistics/repfun>
+- <https://gsk-biostatistics.github.io/repfun/>
 
 ## Author
 
