@@ -1,5 +1,3 @@
-<!-- BADGES & SHIELDS FROM https://naereen.github.io/badges/ -->
-
 # repfun <a href="https://gsk-biostatistics.github.io/repfun/"><img src="man/figures/repfun.png" align="right" height="139" alt="repfun website" /></a>
 
 <a id="readme-top"></a>
@@ -7,6 +5,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/license/apache-2-0)
 [![R-CMD-check](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/GSK-Biostatistics/repfun/graph/badge.svg)](https://app.codecov.io/gh/GSK-Biostatistics/repfun)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
 ## R Reporting Functions Repository
 
@@ -44,6 +43,7 @@ This repository contains an R package of reporting functions that mimic (HARP) S
 
 <hr />
 
+<!-- BADGES & SHIELDS FROM https://naereen.github.io/badges/ -->
 ## Built With
 
 * [![R](https://img.shields.io/badge/-script-276DC3.svg?style=flat&logo=R)](https://cran.r-project.org) 
