@@ -4,6 +4,8 @@
 [![R-CMD-check](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/GSK-Biostatistics/repfun/graph/badge.svg)](https://app.codecov.io/gh/GSK-Biostatistics/repfun)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
 ## R Reporting Functions Repository
 
