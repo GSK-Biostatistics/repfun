@@ -40,8 +40,10 @@ Suggests:
     tibble,
     lubridate,
     ggplot2 (>= 3.5.0),
-    devtools
+    devtools,
+    spelling
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 LazyData: true
 URL: https://gsk-biostatistics.github.io/repfun/
+Language: en-US
