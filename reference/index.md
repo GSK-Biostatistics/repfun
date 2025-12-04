@@ -61,6 +61,8 @@
   : Set the current working directory.
 - [`rem_pg_nums()`](https://gsk-biostatistics.github.io/repfun/reference/rem_pg_nums.md)
   : Remove floating page numbers from RTF files.
+- [`copydata()`](https://gsk-biostatistics.github.io/repfun/reference/copydata.md)
+  : Copy package data to the directory specified.
 
 ## Data
 
@@ -82,8 +84,6 @@
   : Updated airquality for testing.
 - [`airquality_updated`](https://gsk-biostatistics.github.io/repfun/reference/airquality_updated.md)
   : Updated airquality
-- [`copydata()`](https://gsk-biostatistics.github.io/repfun/reference/copydata.md)
-  : Copy package data to the directory specified.
 - [`formats`](https://gsk-biostatistics.github.io/repfun/reference/formats.md)
   : Data frame of SAS formats
 - [`mtcars_w2lbls`](https://gsk-biostatistics.github.io/repfun/reference/mtcars_w2lbls.md)

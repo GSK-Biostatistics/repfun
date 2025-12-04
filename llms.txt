@@ -1,11 +1,11 @@
 # repfun [![repfun website](reference/figures/repfun.png)](https://gsk-biostatistics.github.io/repfun/)
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/license/apache-2-0)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/GSK-Biostatistics/repfun/graph/badge.svg)](https://app.codecov.io/gh/GSK-Biostatistics/repfun)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
 ## R Reporting Functions Repository
 
@@ -179,6 +179,8 @@ Acknowledgement to the following useful sources:
   : Set the current working directory.
 - [`rem_pg_nums()`](https://gsk-biostatistics.github.io/repfun/reference/rem_pg_nums.md)
   : Remove floating page numbers from RTF files.
+- [`copydata()`](https://gsk-biostatistics.github.io/repfun/reference/copydata.md)
+  : Copy package data to the directory specified.
 
 ## Data
 
@@ -200,8 +202,6 @@ Acknowledgement to the following useful sources:
   : Updated airquality for testing.
 - [`airquality_updated`](https://gsk-biostatistics.github.io/repfun/reference/airquality_updated.md)
   : Updated airquality
-- [`copydata()`](https://gsk-biostatistics.github.io/repfun/reference/copydata.md)
-  : Copy package data to the directory specified.
 - [`formats`](https://gsk-biostatistics.github.io/repfun/reference/formats.md)
   : Data frame of SAS formats
 - [`mtcars_w2lbls`](https://gsk-biostatistics.github.io/repfun/reference/mtcars_w2lbls.md)
