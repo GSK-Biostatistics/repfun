@@ -70,6 +70,7 @@ reference:
   - ru_width_rtf
   - setpath
   - rem_pg_nums
+  - copydata
 - title: Data
   contents:
   - adae
@@ -81,7 +82,6 @@ reference:
   - suppdm
   - airquality_4test
   - airquality_updated
-  - copydata
   - formats
   - mtcars_w2lbls
 
