@@ -2,22 +2,24 @@
 
 <a id="readme-top"></a>
 
+
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/license/apache-2-0)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/repfun)](https://CRAN.R-project.org/package=repfun)
 [![R-CMD-check](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/GSK-Biostatistics/repfun/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/GSK-Biostatistics/repfun/graph/badge.svg)](https://app.codecov.io/gh/GSK-Biostatistics/repfun)
 
 ## R Reporting Functions Repository
 
-This repository contains an R package of reporting functions that mimic (HARP) SAS macros for clinical reporting.  The package can be used to generate TLFs (Tables, Listings, Figures).  See several examples in the vignettes.
+This repository contains an R package of reporting functions that mimic (HARP) SAS macros for clinical reporting.  The package can be used to generate TLFs (Tables, Listings, Figures).  See several examples in the <a href="https://gsk-biostatistics.github.io/repfun/">Vignettes/Articles</a>.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <hr />
 
-## How to Use This Repository
+## How to Use This Package
 
-1. Download and install the package using the zip file (misc branch) or via library remotes (see below).
+1. Download and install the package using the zip file repfun_0.0.0.9000.tar.gz (in "misc" branch) or via library remotes (see below).
 2. Load the library in an R session.
 3. Review the function documentation under References <br> (https://gsk-biostatistics.github.io/repfun/reference/index.html).
 3. Identify a use case that fits your needs from the Articles <br> (https://gsk-biostatistics.github.io/repfun/articles/index.html).
@@ -33,7 +35,7 @@ This repository contains an R package of reporting functions that mimic (HARP) S
 - View the function documentation at: https://gsk-biostatistics.github.io/repfun/reference/index.html
 - Install the package using: 
     library(remotes); install_github("GSK-Biostatistics/repfun")
-    or install.packages('/your/path/repfun_0.0.0.9000.tar.gz',repos=NULL,type='source') (see misc branch)
+    or install.packages('/your/path/repfun_0.0.0.9000.tar.gz',repos=NULL,type='source') (see "misc" branch)
     or download the following zip file and install as above: https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.tar.gz
 - Use the package by loading it: library(repfun)
 - View use cases at: https://gsk-biostatistics.github.io/repfun/articles/
