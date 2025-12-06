@@ -203,7 +203,7 @@ repfun::ru_list(dsetin=rptdf,
 ### DDDATA for Table 15 (First few obs)
 
 ```{r dddata15, results='asis'}
-t15 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(tt_svnm != '') %>% dplyr::filter(row_number()<=20)
+t15 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(tt_svnm != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t15,function(x){attr(x,"label")})
 names(t15) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -266,7 +266,7 @@ repfun::ru_list(dsetin=rptdf,
 ### DDDATA for Table 16 (First few obs)
 
 ```{r dddata16, results='asis'}
-t16 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t16 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t16,function(x){attr(x,"label")})
 names(t16) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -331,7 +331,7 @@ repfun::ru_list(dsetin=dfpg,
 ### DDDATA for Table 17 (First few obs)
 
 ```{r dddata17, results='asis'}
-t17 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t17 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t17,function(x){attr(x,"label")})
 names(t17) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -399,7 +399,7 @@ repfun::ru_list(dsetin=dfpg,
 ### DDDATA for Table 18 (First few obs)
 
 ```{r dddata18, results='asis'}
-t18 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t18 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t18,function(x){attr(x,"label")})
 names(t18) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -466,7 +466,7 @@ repfun::ru_list(dsetin=dfpg,
 ### DDDATA for Table 19 (First few obs)
 
 ```{r dddata19, results='asis'}
-t19 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t19 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t19,function(x){attr(x,"label")})
 names(t19) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -534,7 +534,7 @@ repfun::ru_list(dsetin=mytbls,
 ### DDDATA for Table 20 (First few obs)
 
 ```{r dddata20, results='asis'}
-t20 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t20 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t20,function(x){attr(x,"label")})
 names(t20) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -597,7 +597,7 @@ repfun::ru_list(dsetin=dfpg,
 ### DDDATA for Table 21 (First few obs)
 
 ```{r dddata21, results='asis'}
-t21 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", tt_svnm) != '') %>% dplyr::filter(row_number()<=20)
+t21 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", tt_svnm) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t21,function(x){attr(x,"label")})
 names(t21) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -656,7 +656,7 @@ repfun::ru_list(dsetin=dfpg,
 ### DDDATA for Table 22 (First few obs)
 
 ```{r dddata22, results='asis'}
-t22 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t22 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t22,function(x){attr(x,"label")})
 names(t22) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -729,7 +729,7 @@ repfun::ru_list(dsetin=dfpg,
 ### DDDATA for Table 23 (First few obs)
 
 ```{r dddata23, results='asis'}
-t23 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", tt_svnm) != '') %>% dplyr::filter(row_number()<=20)
+t23 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", tt_svnm) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t23,function(x){attr(x,"label")})
 names(t23) <- paste(names(lbls),lbls,sep=": ")
 datatable(
