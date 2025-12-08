@@ -337,4 +337,5 @@ rs_setup <- function(
        }
     }
   }
+  return(invisible(NULL))
 }

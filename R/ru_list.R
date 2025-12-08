@@ -1345,8 +1345,6 @@ ru_list <- function(dsetin,                               ## Input domain datase
     print(paste('spanbbord: ', paste(spanbbord,collapse=', ')))
   }
 
-  #return('***** MADE IT HERE ... *****')
-
   if (is.null(pgvar) && is.null(pagevars)){rpp <- rpp-1}
   if (!is.null(nowidowvar) && is.null(sharecolvars) & !is.null(skipvars)) {rpp <- rpp + 1}
 
@@ -1431,4 +1429,5 @@ ru_list <- function(dsetin,                               ## Input domain datase
   }
 
   if (G_DEBUG>0) print(paste0("RU_LIST: ", "End of RU_LIST"))
+  return(invisible(NULL))
 }

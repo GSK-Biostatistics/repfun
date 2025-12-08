@@ -4,9 +4,9 @@
 \name{repfun-package}
 \alias{repfun}
 \alias{repfun-package}
-\title{repfun: Create TLFs using R Functions Styled after SAS Macros}
+\title{repfun: Create TLFs using Functions Styled after SAS Macros}
 \description{
-A clinical reporting toolkit of R functions that are written to mimic the style of SAS reporting macros. The purpose is to generate TLFs (tables, listings and figures) to support clinical trials. This package is well suited for firms who wish to transition from SAS to R without changing their ways of working.
+A clinical reporting toolkit of R functions that are written to mimic the style of SAS reporting macros. The purpose is to generate TLFs (tables, listings and figures) to support clinical research. This package is well suited for firms who wish to transition from SAS to R without changing their ways of working as it follows a traditional SAS workflow. Invoke functions (instead of macros) to summarize data and produce formatted reports. This package differs from others in that it includes tools for both analyzing and reporting data.
 }
 \seealso{
 Useful links:

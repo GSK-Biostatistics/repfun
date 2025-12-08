@@ -27,4 +27,6 @@ tryCatch(
   finally = {
     #message(paste0('Current Working Directory is: ',getwd()))
     }
-)}
+)
+  return(invisible(NULL))
+}

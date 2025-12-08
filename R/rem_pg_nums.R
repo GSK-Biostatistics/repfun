@@ -67,6 +67,7 @@ rem_pg_nums <- function(infile){
       file_content_updated <- file_content[-remrows]
       writeLines(file_content_updated, infile)
     }
-
   }
+
+  return(invisible(NULL))
 }
