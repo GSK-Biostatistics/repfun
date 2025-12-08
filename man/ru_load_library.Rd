@@ -10,7 +10,7 @@ ru_load_library(pkgs)
 \item{pkgs}{A list of packages to check if installed and then load.}
 }
 \value{
-No return value, packages are loaded.
+'NULL' because packages are loaded.
 }
 \description{
 Given a list of packages, check if installed and generate message, otherwise load package.

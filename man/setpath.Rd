@@ -10,7 +10,7 @@ setpath(p)
 \item{p}{A path as a string.}
 }
 \value{
-No return value, the current working directory is set.
+'NULL' because the current working directory is set.
 }
 \description{
 Set the current working directory so that relative paths work as expected.
