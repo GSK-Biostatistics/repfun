@@ -4,7 +4,7 @@
 
 ``` r
 message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
-#> Datetime: 2025-12-05:2025-12-05 18:49:13.611818
+#> Datetime: 2025-12-08:2025-12-08 16:03:03.806439
 ```
 
 ## Load Libraries
@@ -72,7 +72,7 @@ Figure 1 (pg 1) Image
 ### DDDATA for Figure 1
 
 ``` r
-f1 <- readRDS(repfun:::rfenv$G_DDDATA) 
+f1 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(f1,function(x){attr(x,"label")})
 datatable(
   f1, extensions = 'FixedColumns',
@@ -120,7 +120,7 @@ Figure 2 (pg 1) Image
 ### DDDATA for Figure 2
 
 ``` r
-f2 <- readRDS(repfun:::rfenv$G_DDDATA) 
+f2 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(f2,function(x){attr(x,"label")})
 datatable(
   f2, extensions = 'FixedColumns',

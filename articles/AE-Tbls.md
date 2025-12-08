@@ -4,7 +4,7 @@
 
 ``` r
 message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
-#> Datetime: 2025-12-05:2025-12-05 18:48:21.963039
+#> Datetime: 2025-12-08:2025-12-08 16:02:14.199294
 ```
 
 ## Load Libraries
@@ -106,7 +106,7 @@ Table 1 (pg 1) Image
 ### DDDATA for Table 1 (First few obs)
 
 ``` r
-t1 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
+t1 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t1,function(x){attr(x,"label")})
 names(t1) <- paste(names(lbls),lbls,sep=": ")
 DT::datatable(
@@ -165,7 +165,7 @@ Table 2 (pg 1) Image
 ### DDDATA for Table 2 (First few obs)
 
 ``` r
-t2 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
+t2 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t2,function(x){attr(x,"label")})
 names(t2) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -221,7 +221,7 @@ Table 3 (pg 1) Image
 ### DDDATA for Table 3 (First few obs)
 
 ``` r
-t3 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "",STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t3 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "",STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t3,function(x){attr(x,"label")})
 names(t3) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -323,7 +323,7 @@ Table 5 (pg 1) Image
 ### DDDATA for Table 5 (First few obs)
 
 ``` r
-t5 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(SYSPREF != '') %>% dplyr::filter(row_number()<=20)
+t5 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(SYSPREF != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t5,function(x){attr(x,"label")})
 names(t5) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -379,7 +379,7 @@ Table 6 (pg 1) Image
 ### DDDATA for Table 6 (First few obs)
 
 ``` r
-t6 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
+t6 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t6,function(x){attr(x,"label")})
 names(t6) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -441,7 +441,7 @@ Table 7 (pg 1) Image
 ### DDDATA for Table 7 (First few obs)
 
 ``` r
-t7 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
+t7 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t7,function(x){attr(x,"label")})
 names(t7) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -499,7 +499,7 @@ Table 8 (pg 1) Image
 ### DDDATA for Table 8 (First few obs)
 
 ``` r
-t8 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t8 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t8,function(x){attr(x,"label")})
 names(t8) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -557,7 +557,7 @@ Table 9 (pg 1) Image
 ### DDDATA for Table 9 (First few obs)
 
 ``` r
-t9 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t9 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t9,function(x){attr(x,"label")})
 names(t9) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -624,7 +624,7 @@ Table 10 (pg 1) Image
 ### DDDATA for Table 10 (First few obs)
 
 ``` r
-t10 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t10 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t10,function(x){attr(x,"label")})
 names(t10) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -677,7 +677,7 @@ Table 11 (pg 1) Image
 ### DDDATA for Table 11 (First few obs)
 
 ``` r
-t11 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=20)
+t11 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(gsub("\\s+", "", STACKVAR) != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t11,function(x){attr(x,"label")})
 names(t11) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -731,7 +731,7 @@ Table 12 (pg 1) Image
 ### DDDATA for Table 12 (First few obs)
 
 ``` r
-t12 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
+t12 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t12,function(x){attr(x,"label")})
 names(t12) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -793,7 +793,7 @@ Table 13 (pg 1) Image
 ### DDDATA for Table 13 (First few obs)
 
 ``` r
-t13 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
+t13 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t13,function(x){attr(x,"label")})
 names(t13) <- paste(names(lbls),lbls,sep=": ")
 datatable(
@@ -857,7 +857,7 @@ Table 14 (pg 1) Image
 ### DDDATA for Table 14 (First few obs)
 
 ``` r
-t14 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=20)
+t14 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(AEDECOD != '') %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(t14,function(x){attr(x,"label")})
 names(t14) <- paste(names(lbls),lbls,sep=": ")
 datatable(

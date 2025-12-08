@@ -11,12 +11,12 @@
 
 ## Citation
 
-Rook C, Wang Y (2025). *repfun: Create TLFs using R Functions Styled
-after SAS Macros*. R package version 0.0.0.9000,
+Rook C, Wang Y (2025). *repfun: Create TLFs using Functions Styled after
+SAS Macros*. R package version 0.0.0.9000,
 <https://gsk-biostatistics.github.io/repfun/>.
 
     @Manual{,
-      title = {repfun: Create TLFs using R Functions Styled after SAS Macros},
+      title = {repfun: Create TLFs using Functions Styled after SAS Macros},
       author = {Chris Rook and Yongwei Wang},
       year = {2025},
       note = {R package version 0.0.0.9000},
