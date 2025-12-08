@@ -116,4 +116,5 @@ ru_contents <- function (dsetin) {
   base::cat("\n", s_var_info_1)
 
   #print(paste0("RU_CONTENTS: ", "End of RU_CONTENTS"))
+  return(invisible(NULL))
 }

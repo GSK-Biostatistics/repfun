@@ -24,4 +24,5 @@ ru_load_library <- function(pkgs) {
       library(pkgs[i], character.only = TRUE)
     }
   }
+  return(invisible(NULL))
 }

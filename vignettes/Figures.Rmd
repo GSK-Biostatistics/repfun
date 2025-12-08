@@ -89,7 +89,7 @@ repfun::ru_list(dsetin=myplot,
 ### DDDATA for Figure 1
 
 ```{r dddataf1, results='asis'}
-f1 <- readRDS(repfun:::rfenv$G_DDDATA) 
+f1 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(f1,function(x){attr(x,"label")})
 datatable(
   f1, extensions = 'FixedColumns',
@@ -140,7 +140,7 @@ repfun::ru_list(dsetin=myplots,
 ### DDDATA for Figure 2
 
 ```{r dddataf2, results='asis'}
-f2 <- readRDS(repfun:::rfenv$G_DDDATA) 
+f2 <- readRDS(repfun:::rfenv$G_DDDATA) %>% dplyr::filter(row_number()<=10)
 lbls <- sapply(f2,function(x){attr(x,"label")})
 datatable(
   f2, extensions = 'FixedColumns',

@@ -113,14 +113,3 @@ utils::globalVariables(c(
   "G_WIDTH",            # rs_setup
   "PATH"                # rs_setup
 ))
-
-
-
-
-
-
-
-
-
-
-

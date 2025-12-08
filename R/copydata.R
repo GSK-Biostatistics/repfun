@@ -46,4 +46,6 @@ copydata <- function(p){
   save(airquality_updated, file = paste0(p,"/airquality_updated.rda"))
   save(mtcars_w2lbls, file = paste0(p,"/mtcars_w2lbls.rda"))
   save(formats, file = paste0(p,"/formats.rda"))
+
+  return(invisible(NULL))
 }
