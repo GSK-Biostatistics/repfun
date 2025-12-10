@@ -50,6 +50,7 @@
     <li><a class="dropdown-item" href="../articles/Set-Data.html">Set-Data</a></li>
     <li><a class="dropdown-item" href="../articles/Stack-Variables.html">Stack-Variables</a></li>
   </ul></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
       </ul></div>
@@ -191,16 +192,6 @@ Yongwei Wang, <a href="mailto:yongwei.x.wang@viivhealthcare.com">yongwei.x.wang@
 <span class="r-in"><span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ord1</span>,<span class="va">AEBODSYS</span>,<span class="va">ord2</span>,<span class="va">AEDECOD</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">'tt_p'</span><span class="op">)</span>,<span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">'ord'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">#Example 1: Simple paging.</span></span></span>
-<span class="r-in"><span><span class="co">#aesum_p1 &lt;- repfun::ru_addpage(aesum_t,grpvars=c('AEBODSYS'),rowsprbdy=30)</span></span></span>
-<span class="r-in"><span><span class="co">#print(head(aesum_p1,10))</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">#Example 2: No splitvars, but 30 rows won't work for this data.</span></span></span>
-<span class="r-in"><span><span class="co">#aesum_p2 &lt;- repfun::ru_addpage(aesum_t,grpvars=c('AEBODSYS'),rowsprbdy=30,</span></span></span>
-<span class="r-in"><span><span class="co">#                        nosplitvars=TRUE)</span></span></span>
-<span class="r-in"><span><span class="co">#print(head(aesum_p2,10))</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Example 3: No splitvars, but 35 rows is enough.</span></span></span>
 <span class="r-in"><span><span class="va">aesum_p3</span> <span class="op">&lt;-</span> <span class="fu">repfun</span><span class="fu">::</span><span class="fu">ru_addpage</span><span class="op">(</span><span class="va">aesum_t</span>,grpvars<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'AEBODSYS'</span><span class="op">)</span>,rowsprbdy<span class="op">=</span><span class="fl">35</span>,</span></span>
 <span class="r-in"><span>                    nosplitvars<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">aesum_p3</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>

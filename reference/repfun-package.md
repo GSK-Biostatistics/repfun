@@ -2,7 +2,7 @@
 
 A clinical reporting toolkit of R functions that are written to mimic
 the style of SAS reporting macros. The purpose is to generate TLFs
-(tables, listings and figures) to support clinical research. This
+(tables, listings and figures) that support clinical research. This
 package is well suited for firms who wish to transition from SAS to R
 without changing their ways of working as it follows a traditional SAS
 workflow. Invoke functions (instead of macros) to summarize data and

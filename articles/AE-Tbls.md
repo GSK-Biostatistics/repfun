@@ -4,7 +4,7 @@
 
 ``` r
 message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
-#> Datetime: 2025-12-08:2025-12-08 16:02:14.199294
+#> Datetime: 2025-12-10:2025-12-10 18:23:44.365176
 ```
 
 ## Load Libraries
@@ -42,10 +42,6 @@ setup <- function(tlfid){
    D_TITLE1=paste0('Table ',tlfid,': Summary of Treatment Emergent Adverse Events'),
    R_DDDATA=paste0(tmpdr,'/t_ru_list_',tlfid,'.rds'),
    R_ADAMDATA=datdir)
-  
-#print(tmpdr)  
-#Sys.sleep(100)  
-  
 }
 ```
 

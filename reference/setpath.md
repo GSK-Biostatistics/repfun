@@ -17,7 +17,7 @@ setpath(p)
 
 ## Value
 
-No return value, the current working directory is set.
+'NULL' because the current working directory is set.
 
 ## Author
 

@@ -17,7 +17,7 @@ ru_load_library(pkgs)
 
 ## Value
 
-No return value, packages are loaded.
+'NULL' because packages are loaded.
 
 ## Author
 

@@ -50,6 +50,7 @@
     <li><a class="dropdown-item" href="../articles/Set-Data.html">Set-Data</a></li>
     <li><a class="dropdown-item" href="../articles/Stack-Variables.html">Stack-Variables</a></li>
   </ul></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
       </ul></div>
@@ -461,7 +462,7 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A formattted RTF report is generated to the specified file.</p>
+    <p>'NULL' because a formattted RTF report is generated to the specified file.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -529,26 +530,6 @@ Yongwei Wang, <a href="mailto:yongwei.x.wang@viivhealthcare.com">yongwei.x.wang@
 <span class="r-in"><span>                 resultpctdps<span class="op">=</span><span class="fl">0</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">TRT01AN</span>,<span class="va">TRT01A</span>,<span class="va">AEBODSYS</span>,<span class="va">tt_summarylevel</span>,<span class="va">AEDECOD</span>,<span class="va">NUMERCNT</span>,<span class="va">DENOMCNT</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span><span class="fu">repfun</span><span class="fu">::</span><span class="fu"><a href="ru_align.html">ru_align</a></span><span class="op">(</span><span class="st">"tt_result"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">#======================================</span></span></span>
-<span class="r-in"><span><span class="co"># Table 1:  Summary of Adverse Events</span></span></span>
-<span class="r-in"><span><span class="co">#======================================</span></span></span>
-<span class="r-in"><span><span class="co">#repfun::ru_list(aesum,</span></span></span>
-<span class="r-in"><span><span class="co">#         columns=c('AEBODSYS','AEDECOD','tt_01','tt_02','tt_03','tt_99'),</span></span></span>
-<span class="r-in"><span><span class="co">#         nowidowvar='AEBODSYS',</span></span></span>
-<span class="r-in"><span><span class="co">#         widths=c(5.5,4.5,1.75,1.9,1.9,1.75),</span></span></span>
-<span class="r-in"><span><span class="co">#         skipvars=c('AEBODSYS'),</span></span></span>
-<span class="r-in"><span><span class="co">#         centrevars=c('tt_01','tt_02','tt_03','tt_99'),</span></span></span>
-<span class="r-in"><span><span class="co">#         ordervars=c('AEBODSYS','tt_summarylevel','AEDECOD'),</span></span></span>
-<span class="r-in"><span><span class="co">#         noprintvars=c('tt_summarylevel'),</span></span></span>
-<span class="r-in"><span><span class="co">#         denormyn='Y',</span></span></span>
-<span class="r-in"><span><span class="co">#         varsToDenorm=c('tt_result'),</span></span></span>
-<span class="r-in"><span><span class="co">#         groupByVars=c('AEBODSYS','tt_summarylevel','AEDECOD'),</span></span></span>
-<span class="r-in"><span><span class="co">#         acrossVar="TRT01AN",</span></span></span>
-<span class="r-in"><span><span class="co">#         acrossVarLabel="TRT01A",</span></span></span>
-<span class="r-in"><span><span class="co">#         acrossColVarPrefix='tt_',</span></span></span>
-<span class="r-in"><span><span class="co">#         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM),</span></span></span>
-<span class="r-in"><span><span class="co">#         lpp=23)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">#==========================================================================</span></span></span>
 <span class="r-in"><span><span class="co"># Table 2:  Summary of Adverse Events using NOWIDOWVAR (remove SOCs that</span></span></span>

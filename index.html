@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Create TLFs using Functions Styled after SAS Macros • repfun</title>
+<title>Create TLFs using Functions Styled after SAS™ Macros • repfun</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Create TLFs using Functions Styled after SAS Macros">
-<meta name="description" content="A clinical reporting toolkit of R functions that are written to mimic the style of SAS reporting macros. The purpose is to generate TLFs (tables, listings and figures) to support clinical research. This package is well suited for firms who wish to transition from SAS to R without changing their ways of working as it follows a traditional SAS workflow. Invoke functions (instead of macros) to summarize data and produce formatted reports. This package differs from others in that it includes tools for both analyzing and reporting data.">
-<meta property="og:description" content="A clinical reporting toolkit of R functions that are written to mimic the style of SAS reporting macros. The purpose is to generate TLFs (tables, listings and figures) to support clinical research. This package is well suited for firms who wish to transition from SAS to R without changing their ways of working as it follows a traditional SAS workflow. Invoke functions (instead of macros) to summarize data and produce formatted reports. This package differs from others in that it includes tools for both analyzing and reporting data.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Create TLFs using Functions Styled after SAS™ Macros">
+<meta name="description" content="A clinical reporting toolkit of R functions that are written to mimic the style of traditional reporting macros. The purpose is to generate TLFs (tables, listings and figures) that support clinical research. This package is well suited for firms or individuals who wish to incorporate R without changing their ways of working as it follows a traditional clinical research workflow. Invoke functions (instead of macros) to summarize data and produce formatted reports. This package differs from others in that it includes tools (wrappers) for both analyzing and reporting data.">
+<meta property="og:description" content="A clinical reporting toolkit of R functions that are written to mimic the style of traditional reporting macros. The purpose is to generate TLFs (tables, listings and figures) that support clinical research. This package is well suited for firms or individuals who wish to incorporate R without changing their ways of working as it follows a traditional clinical research workflow. Invoke functions (instead of macros) to summarize data and produce formatted reports. This package differs from others in that it includes tools (wrappers) for both analyzing and reporting data.">
 <meta property="og:image" content="https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun.gif">
 <meta property="og:image:alt" content="Logo">
 </head>
@@ -70,6 +70,7 @@
     <li><a class="dropdown-item" href="articles/Stack-Variables.html">Stack-Variables</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -91,7 +92,7 @@
 <div class="section level2">
 <h2 id="r-reporting-functions-repository">R Reporting Functions Repository<a class="anchor" aria-label="anchor" href="#r-reporting-functions-repository"></a>
 </h2>
-<p>This repository contains an R package of reporting functions that mimic (HARP) SAS macros for clinical reporting. The package can be used to generate TLFs (Tables, Listings, Figures). See several examples in the <a href="https://gsk-biostatistics.github.io/repfun/">Vignettes/Articles</a>.</p>
+<p>This repository contains an R package of reporting functions that mimic (HARP) traditional macros for clinical reporting. The package can be used to generate TLFs (Tables, Listings, Figures). See several examples in the <a href="https://gsk-biostatistics.github.io/repfun/">Vignettes/Articles</a>.</p>
 <p align="right">
 (<a href="#readme-top">back to top</a>)
 </p>
@@ -101,7 +102,7 @@
 <h2 id="how-to-use-this-package">How to Use This Package<a class="anchor" aria-label="anchor" href="#how-to-use-this-package"></a>
 </h2>
 <ol style="list-style-type: decimal">
-<li>Download and install the package using the zip file repfun_0.0.0.9000.tar.gz (in “misc” branch) or via library remotes (see below).</li>
+<li>Download and install the package from CRAN (see below), or using the zip file repfun_0.0.0.9000.tar.gz (in “misc” branch), or via library remotes (see below).</li>
 <li>Load the library in an R session.</li>
 <li>Review the function documentation under References <br> (<a href="https://gsk-biostatistics.github.io/repfun/reference/index.html" class="uri">https://gsk-biostatistics.github.io/repfun/reference/index.html</a>).</li>
 <li>Identify a use case that fits your needs from the Articles <br> (<a href="https://gsk-biostatistics.github.io/repfun/articles/index.html" class="uri">https://gsk-biostatistics.github.io/repfun/articles/index.html</a>).</li>
@@ -116,10 +117,10 @@
 <h2 id="general-information">General Information<a class="anchor" aria-label="anchor" href="#general-information"></a>
 </h2>
 <ul>
-<li>This package contains reporting functions that mimic (HARP) SAS macros.</li>
+<li>This package contains reporting functions that mimic (HARP) traditional macros.</li>
 <li>View the function documentation at: <a href="https://gsk-biostatistics.github.io/repfun/reference/index.html" class="uri">https://gsk-biostatistics.github.io/repfun/reference/index.html</a>
 </li>
-<li>Install the package using: library(remotes); install_github(“GSK-Biostatistics/repfun”) or install.packages(‘/your/path/repfun_0.0.0.9000.tar.gz’,repos=NULL,type=‘source’) (see “misc” branch) or download the following zip file and install as above: <a href="https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.tar.gz" class="external-link uri">https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.tar.gz</a>
+<li>Install the package using: Via CRAN: install.packages(“repfun”) library(remotes); install_github(“GSK-Biostatistics/repfun”) or install.packages(‘/your/path/repfun_0.0.0.9000.tar.gz’,repos=NULL,type=‘source’) (see “misc” branch) or download the following zip file and install as above: <a href="https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.tar.gz" class="external-link uri">https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.0.0.9000.tar.gz</a>
 </li>
 <li>Use the package by loading it: library(repfun)</li>
 <li>View use cases at: <a href="https://gsk-biostatistics.github.io/repfun/articles/" class="uri">https://gsk-biostatistics.github.io/repfun/articles/</a>
