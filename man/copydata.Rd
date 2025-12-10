@@ -10,7 +10,7 @@ copydata(p)
 \item{p}{A path as a string.}
 }
 \value{
-No return value, the current working directory is set.
+'NULL' because package dataframes are copied to a folder.
 }
 \description{
 Copy all package data into a temporary directory that can be used when running examples.

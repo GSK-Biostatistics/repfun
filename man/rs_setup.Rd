@@ -141,7 +141,7 @@ rs_setup(
 \item{D_DEBUG}{Level of debugging to show in log files.}
 }
 \value{
-Global variables defined for use with the reporting tools.
+'NULL' because variables defined for use with the reporting tools.
 }
 \description{
 Pass values to setup function and the global environment will be arranged for use  reporting tools.

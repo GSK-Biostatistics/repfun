@@ -237,7 +237,7 @@ ru_list(
 \item{xptyn}{Write DDDATA data frame as XPT file in addition to RDS?}
 }
 \value{
-'NULL' because a formattted RTF report is generated to the specified file.
+'NULL' because a formatted RTF report is generated to the specified file.
 }
 \description{
 Pass in a dataframe and reporting settings to have RTF output generated.
