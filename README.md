@@ -11,7 +11,7 @@
 
 ## R Reporting Functions Repository
 
-This repository contains an R package of reporting functions that mimic (HARP) SAS macros for clinical reporting.  The package can be used to generate TLFs (Tables, Listings, Figures).  See several examples in the <a href="https://gsk-biostatistics.github.io/repfun/">Vignettes/Articles</a>.
+This repository contains an R package of reporting functions that mimic (HARP) traditional macros for clinical reporting.  The package can be used to generate TLFs (Tables, Listings, Figures).  See several examples in the <a href="https://gsk-biostatistics.github.io/repfun/">Vignettes/Articles</a>.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -31,7 +31,7 @@ This repository contains an R package of reporting functions that mimic (HARP) S
 
 ## General Information
 
-- This package contains reporting functions that mimic (HARP) SAS macros.
+- This package contains reporting functions that mimic (HARP) traditional macros.
 - View the function documentation at: https://gsk-biostatistics.github.io/repfun/reference/index.html
 - Install the package using: 
     Via CRAN: install.packages("repfun")
