@@ -4,7 +4,7 @@
 #'
 #' @param dsetin Incoming data frame to have proc contents generated.
 #'
-#' @return The proc contents output will be displayed.
+#' @return 'NULL' because the proc contents output will be displayed.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
 #'         Chris Rook, \email{cr883296@gmail.com}

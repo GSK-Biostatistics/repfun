@@ -79,7 +79,7 @@
 #' @param span2bbord List of level 2 column spanning bottom border values (above Level 1).
 #' @param xptyn Write DDDATA data frame as XPT file in addition to RDS?
 #'
-#' @return 'NULL' because a formattted RTF report is generated to the specified file.
+#' @return 'NULL' because a formatted RTF report is generated to the specified file.
 #'
 #' @author Chris Rook, \email{cr883296@gmail.com} \cr
 #'         Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com}

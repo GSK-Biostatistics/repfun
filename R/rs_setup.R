@@ -46,7 +46,7 @@
 #' @param D_RTFYN Y or N to generate RTf output.
 #' @param D_DEBUG Level of debugging to show in log files.
 #'
-#' @return Global variables defined for use with the reporting tools.
+#' @return 'NULL' because variables defined for use with the reporting tools.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
 #'         Chris Rook, \email{cr883296@gmail.com}
