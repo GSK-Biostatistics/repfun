@@ -55,10 +55,6 @@ setup <- function(tlfid){
    D_TITLE1=paste0('Table ',tlfid,': Summary of Treatment Emergent Adverse Events'),
    R_DDDATA=paste0(tmpdr,'/t_ru_list_',tlfid,'.rds'),
    R_ADAMDATA=datdir)
-  
-#print(tmpdr)  
-#Sys.sleep(100)  
-  
 }
 ```
 

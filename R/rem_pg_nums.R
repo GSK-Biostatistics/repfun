@@ -4,7 +4,7 @@
 #'
 #' @param infile A path to the RTF file as a string.
 #'
-#' @return No return value, the file is modified.
+#' @return 'NULL' because floating page numbers are removed from rtf files.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
 #'         Chris Rook, \email{cr883296@gmail.com}

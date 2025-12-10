@@ -4,7 +4,7 @@
 #'
 #' @param pkgs A list of packages to check if installed and then load.
 #'
-#' @return No return value, packages are loaded.
+#' @return 'NULL' because packages are loaded.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
 #'         Chris Rook, \email{cr883296@gmail.com}

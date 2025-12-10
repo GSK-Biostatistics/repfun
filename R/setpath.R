@@ -4,7 +4,7 @@
 #'
 #' @param p A path as a string.
 #'
-#' @return No return value, the current working directory is set.
+#' @return 'NULL' because the current working directory is set.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
 #'         Chris Rook, \email{cr883296@gmail.com}
