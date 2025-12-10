@@ -17,7 +17,7 @@ copydata(p)
 
 ## Value
 
-No return value, the current working directory is set.
+'NULL' because package dataframes are copied to a folder.
 
 ## Author
 

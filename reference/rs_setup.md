@@ -239,7 +239,7 @@ rs_setup(
 
 ## Value
 
-Global variables defined for use with the reporting tools.
+'NULL' because variables defined for use with the reporting tools.
 
 ## Author
 

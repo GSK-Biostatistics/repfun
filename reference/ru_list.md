@@ -428,7 +428,7 @@ ru_list(
 
 ## Value
 
-'NULL' because a formattted RTF report is generated to the specified
+'NULL' because a formatted RTF report is generated to the specified
 file.
 
 ## Author

@@ -17,7 +17,7 @@ rem_pg_nums(infile)
 
 ## Value
 
-No return value, the file is modified.
+'NULL' because floating page numbers are removed from rtf files.
 
 ## Author
 

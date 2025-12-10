@@ -16,7 +16,7 @@ ru_contents(dsetin)
 
 ## Value
 
-The proc contents output will be displayed.
+'NULL' because the proc contents output will be displayed.
 
 ## Author
 
