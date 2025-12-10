@@ -10,7 +10,7 @@ ru_contents(dsetin)
 \item{dsetin}{Incoming data frame to have proc contents generated.}
 }
 \value{
-The proc contents output will be displayed.
+'NULL' because the proc contents output will be displayed.
 }
 \description{
 Pass in a data frame and the contents will be displayed.

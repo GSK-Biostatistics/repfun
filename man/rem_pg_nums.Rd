@@ -10,7 +10,7 @@ rem_pg_nums(infile)
 \item{infile}{A path to the RTF file as a string.}
 }
 \value{
-No return value, the file is modified.
+'NULL' because floating page numbers are removed from rtf files.
 }
 \description{
 Pass in an RTF file to have floating page numbers removed and result saved to the same file.
