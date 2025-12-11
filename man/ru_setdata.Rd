@@ -12,7 +12,7 @@ ru_setdata(..., keeprownames = TRUE)
 \item{keeprownames}{Convert row names on data frame to columns and keep the column.}
 }
 \value{
-The incoming data frames combined.
+The incoming data frames combined (stacked).
 }
 \description{
 Pass in a collection of data frames separated by commas and they will be appended.

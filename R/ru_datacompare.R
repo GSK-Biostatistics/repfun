@@ -7,7 +7,7 @@
 #' @param idvars Match on these values prior to comparing records.
 #' @param maxprint Maximum number of differences per variable to display.
 #'
-#' @return An output similar to proc compare will be displayed.
+#' @return An output similar to proc compare will be printed and returned as a list.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
 #'         Chris Rook, \email{cr883296@gmail.com}
@@ -68,7 +68,7 @@ ru_datacompare <- function (dsetinbase, dsetincomp, idvars, maxprint=50) {
                      "vs", paste(factor2, collapse = ", ")))
       }
     }
-    return(NULL)
+    return(invisible(NULL))
   })
 
   factor_diff <- factor_diff[!sapply(factor_diff, is.null)]

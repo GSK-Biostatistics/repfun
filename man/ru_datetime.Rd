@@ -12,7 +12,7 @@ ru_datetime(dsetin, includevars = NULL)
 \item{includevars}{Specify which variables ending in DTC will be processed.}
 }
 \value{
-The proc contents output will be displayed.
+The incoming data frame with numeric dates and times added will be returned.
 }
 \description{
 Pass in a data frame and variables ending in "DTC" will have corresponding numeric versions created and saved.
