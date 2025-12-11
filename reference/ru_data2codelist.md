@@ -40,8 +40,8 @@ ru_data2codelist(
 
 ## Value
 
-A data frame based on the incoming data frame but with decode values
-added along with records when completetypes is true.
+A list based on the incoming data frame but with decode values added
+along with records when completetypes is true.
 
 ## Author
 

@@ -21,7 +21,8 @@ ru_datetime(dsetin, includevars = NULL)
 
 ## Value
 
-The proc contents output will be displayed.
+The incoming data frame with numeric dates and times added will be
+returned.
 
 ## Author
 

@@ -29,7 +29,8 @@ ru_datacompare(dsetinbase, dsetincomp, idvars, maxprint = 50)
 
 ## Value
 
-An output similar to proc compare will be displayed.
+An output similar to proc compare will be printed and returned as a
+list.
 
 ## Author
 

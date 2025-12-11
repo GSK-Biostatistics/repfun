@@ -21,7 +21,7 @@ ru_setdata(..., keeprownames = TRUE)
 
 ## Value
 
-The incoming data frames combined.
+The incoming data frames combined (stacked).
 
 ## Author
 
