@@ -16,7 +16,7 @@ ru_datacompare(dsetinbase, dsetincomp, idvars, maxprint = 50)
 \item{maxprint}{Maximum number of differences per variable to display.}
 }
 \value{
-An output similar to proc compare will be displayed.
+An output similar to proc compare will be printed and returned as a list.
 }
 \description{
 Pass in a base and compare data frame to find out if they are equal similar to proc compare in SAS.

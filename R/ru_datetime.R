@@ -5,7 +5,7 @@
 #' @param dsetin Incoming data frame to have numeric datetimes added.
 #' @param includevars Specify which variables ending in DTC will be processed.
 #'
-#' @return The proc contents output will be displayed.
+#' @return The incoming data frame with numeric dates and times added will be returned.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
 #'         Chris Rook, \email{cr883296@gmail.com}

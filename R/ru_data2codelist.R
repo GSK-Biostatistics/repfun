@@ -8,7 +8,7 @@
 #' @param decodevarname Name of the variable that holds the decode value.
 #' @param typevarname Type of format (character or numeric).
 #'
-#' @return A data frame based on the incoming data frame but with decode values added along with records when completetypes is true.
+#' @return A list based on the incoming data frame but with decode values added along with records when completetypes is true.
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
 #'         Chris Rook, \email{cr883296@gmail.com}

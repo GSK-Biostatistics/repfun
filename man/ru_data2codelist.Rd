@@ -24,7 +24,7 @@ ru_data2codelist(
 \item{typevarname}{Type of format (character or numeric).}
 }
 \value{
-A data frame based on the incoming data frame but with decode values added along with records when completetypes is true.
+A list based on the incoming data frame but with decode values added along with records when completetypes is true.
 }
 \description{
 Pass in a data set from a SAS format catalog (or similar) and have a list returned in the structure of a SAS format for decoding variables.

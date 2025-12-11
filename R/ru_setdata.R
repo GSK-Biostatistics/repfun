@@ -5,7 +5,7 @@
 #' @param ... A collection of data frames.
 #' @param keeprownames Convert row names on data frame to columns and keep the column.
 #'
-#' @return The incoming data frames combined.
+#' @return The incoming data frames combined (stacked).
 #'
 #' @author Yongwei Wang, \email{yongwei.x.wang@viivhealthcare.com} \cr
 #'         Chris Rook, \email{cr883296@gmail.com}
