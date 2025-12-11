@@ -46,5 +46,6 @@ Suggests:
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 LazyData: true
-URL: https://gsk-biostatistics.github.io/repfun/
+URL: https://gsk-biostatistics.github.io/repfun/, https://github.com/GSK-Biostatistics/repfun
 Language: en-US
+BugReports: https://github.com/GSK-Biostatistics/repfun/issues
