@@ -1,6 +1,6 @@
 Package: repfun
 Title: Create TLFs using Functions Styled after SAS™ Macros
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     c(person("Chris", "Rook", , "cr883296@gmail.com", role = c("aut", "cre")),
       person("Yongwei", "Wang", , "yongwei.x.wang@viivhealthcare.com", role = c("aut")),
@@ -46,5 +46,6 @@ Suggests:
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 LazyData: true
-URL: https://gsk-biostatistics.github.io/repfun/
+URL: https://gsk-biostatistics.github.io/repfun/, https://github.com/GSK-Biostatistics/repfun
 Language: en-US
+BugReports: https://github.com/GSK-Biostatistics/repfun/issues
