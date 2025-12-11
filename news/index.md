@@ -1,5 +1,5 @@
 # Changelog
 
-## repfun (development version)
+## repfun 0.1.0
 
 - Initial CRAN submission.

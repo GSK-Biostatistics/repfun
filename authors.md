@@ -11,14 +11,17 @@
 
 ## Citation
 
+Source:
+[`DESCRIPTION`](https://github.com/GSK-Biostatistics/repfun/blob/main/DESCRIPTION)
+
 Rook C, Wang Y (2025). *repfun: Create TLFs using Functions Styled after
-SAS™ Macros*. R package version 0.0.0.9000,
+SAS™ Macros*. R package version 0.1.0,
 <https://gsk-biostatistics.github.io/repfun/>.
 
     @Manual{,
       title = {repfun: Create TLFs using Functions Styled after SAS™ Macros},
       author = {Chris Rook and Yongwei Wang},
       year = {2025},
-      note = {R package version 0.0.0.9000},
+      note = {R package version 0.1.0},
       url = {https://gsk-biostatistics.github.io/repfun/},
     }
