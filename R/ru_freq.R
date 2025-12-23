@@ -133,28 +133,42 @@ ru_freq <- function (dsetin, dsetindenom=NULL, countdistinctvars=NULL, groupbyva
   k <- 0
   while (TRUE) {
     k <- k + 1
-    if (v_vars1[1] == "") {
+    if (is.null(groupminmaxvar) || groupminmaxvar[1] == "") {
+      v_vars3 <- v_vars1
+    } else {
+      str_minmaxvar <- unlist(base::strsplit(groupminmaxvar, "[()]"))
+      v_vars3 <- base::setdiff(v_vars1, ru_groupbyvars(str_minmaxvar[2], codedecodevarpairs, adddecode=TRUE))
+    }
+    if (v_vars3[1] == "") {
       if (is.null(groupminmaxvar) || groupminmaxvar[1] == "") {
         df_sub_1 <- dsetin
       } else {
-        str_minmaxvar <- unlist(base::strsplit(groupminmaxvar, "[()]"))
         if (toupper(str_minmaxvar[1]) == "MIN") {
-          df_sub_1 <- df_dsetin %>% dplyr::filter(str_minmaxvar[1] == min(str_minmaxvar[1], na.rm=TRUE))
+          df_sub_1 <- df_dsetin %>% 
+            dplyr::arrange(!! rlang::sym(str_minmaxvar[2])) %>%
+            dplyr::slice_head(n=1) 
         } else {
-          df_sub_1 <- df_dsetin %>% dplyr::filter(str_minmaxvar[1] == max(str_minmaxvar[1], na.rm=TRUE))
+          df_sub_1 <- df_dsetin %>% 
+            dplyr::arrange(!! rlang::sym(str_minmaxvar[2])) %>%
+            dplyr::slice_tail(n=1) 
         }
       }
     } else {
       if (is.null(groupminmaxvar) || groupminmaxvar[1] == "") {
         df_sub_1 <- df_dsetin %>% dplyr::select(dplyr::all_of(v_vars1)) %>% dplyr::distinct()
       } else {
-        str_minmaxvar <- unlist(base::strsplit(groupminmaxvar, "[()]"))
         if (toupper(str_minmaxvar[1]) == "MIN") {
           df_sub_1 <- df_dsetin %>% dplyr::select(dplyr::all_of(unique(c(v_vars1, str_minmaxvar[2])))) %>% dplyr::distinct() %>%
-            dplyr::group_by(!!! v_vars1) %>% dplyr::filter(str_minmaxvar[1] == min(str_minmaxvar[1], na.rm=TRUE))
+            dplyr::group_by(!!! rlang::syms(v_vars3)) %>%
+            dplyr::arrange(!! rlang::sym(str_minmaxvar[2]), .by_group = TRUE) %>%
+            dplyr::slice_head(n=1) %>%
+            dplyr::ungroup()
         } else {
           df_sub_1 <- df_dsetin %>% dplyr::select(dplyr::all_of(unique(c(v_vars1, str_minmaxvar[2])))) %>% dplyr::distinct() %>%
-            dplyr::group_by(!!! v_vars1) %>% dplyr::filter(str_minmaxvar[1] == max(str_minmaxvar[1], na.rm=TRUE))
+            dplyr::group_by(!!! rlang::syms(v_vars3)) %>%
+            dplyr::arrange(!! rlang::sym(str_minmaxvar[2]), .by_group = TRUE) %>%
+            dplyr::slice_tail(n=1) %>%
+            dplyr::ungroup()
         }
       }
     }
