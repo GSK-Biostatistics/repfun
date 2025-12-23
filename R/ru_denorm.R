@@ -155,11 +155,11 @@ ru_denorm <- function (dsetin,
       if (n_acrossvarlen[j] > 0 & typeof(var_thisacrossvar[i, j]) %in% c("double", "integer")) this_name <- base::sprintf(paste0("%.", n_acrossvarlen[j], "d"), var_thisacrossvar[i, j])
       else this_name <- unlist(var_thisacrossvar[i, j])
 
-      if (j == 1) this_acorssvarname <- this_name
-      else this_acorssvarname <- paste(this_acrossvarname, this_name, sep="_")
+      if (j == 1) this_acrossvarname <- this_name
+      else this_acrossvarname <- paste(this_acrossvarname, this_name, sep="_")
     }
-    if (i == 1) s.acrossvarname <- this_acorssvarname
-    else s.acrossvarname <- c(s.acrossvarname, this_acorssvarname)
+    if (i == 1) s.acrossvarname <- this_acrossvarname
+    else s.acrossvarname <- c(s.acrossvarname, this_acrossvarname)
   }
 
   df_d1 <- NULL
