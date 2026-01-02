@@ -43,11 +43,11 @@ ru_labels <- function (dsetin, varlabels=list(), style=c("base", "Hmisc")) {
     if (is.character(varlabels)) str_this_label <- varlabels[i]
     else str_this_label <- unlist(varlabels[var_var_names[i]])
 
-    if (! (is.na(str_this_label) || is.null(str_this_label) )) {
+    if (length(str_this_label) > 0 && ! (is.na(str_this_label))) {
       v_var_labels[var_var_names[i]] <- str_this_label
     } else {
       str_this_label <- unlist(var_ori_labels[var_var_names[i]])
-      if (! (is.na(str_this_label) || is.null(str_this_label) )) {
+      if (length(str_this_label) > 0 && ! (is.na(str_this_label))) {
         v_var_labels[var_var_names[i]] <- str_this_label
       } else {
         v_var_labels[var_var_names[i]] <- var_var_names[i]
