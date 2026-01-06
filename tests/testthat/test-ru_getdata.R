@@ -9,16 +9,24 @@ test_that("get data function works", {
   #=========================
   # Set up the environment.
   #=========================
-  repfun::rs_setup(D_POP="SAFFL",D_POPLBL="Safety",D_POPDATA=repfun::adsl, D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA=".")
+  repfun::rs_setup(D_POP="SAFFL",
+                   D_POPLBL="Safety",
+                   D_POPDATA=repfun::adsl,
+                   D_SUBJID=c("STUDYID","USUBJID"),
+                   R_ADAMDATA=".")
+
   rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3)),
-                       SAFFL=ifelse((row_number() %% 10) == 0,'N',SAFFL)) %>%
+                                    SAFFL=ifelse((row_number() %% 10) == 0,'N',SAFFL)) %>%
     repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)','SAFFL'='Safety Population Flag')) -> G_POPDATA
 
   #==================================
   # Invoke getdata function on ADAE.
   #==================================
-  adae <- rfenv$adamdata$adae.rda() %>% dplyr::select(-c('SAFFL','TRT01A')) %>% repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"), keeppopvars=c("TRT01AN", "TRT01A")) %>%
-    dplyr::select(STUDYID,USUBJID,AEBODSYS,AEDECOD,SAFFL,TRT01AN,TRT01A) %>% dplyr::arrange(STUDYID,USUBJID,AEBODSYS,AEDECOD,SAFFL,TRT01AN,TRT01A)
+  adae <- rfenv$adamdata$adae.rda() %>%
+    dplyr::select(-c('SAFFL','TRT01A')) %>%
+    repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"), keeppopvars=c("TRT01AN", "TRT01A", "SAFFL")) %>%
+    dplyr::select(STUDYID,USUBJID,AEBODSYS,AEDECOD,SAFFL,TRT01AN,TRT01A) %>%
+    dplyr::arrange(STUDYID,USUBJID,AEBODSYS,AEDECOD,SAFFL,TRT01AN,TRT01A)
 
   #================================
   # Manually apply the population.
