@@ -4,7 +4,7 @@
 
 ``` r
 message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
-#> Datetime: 2026-01-06:2026-01-06 18:24:06.129475
+#> Datetime: 2026-01-06:2026-01-06 19:25:27.647867
 ```
 
 ## Load Libraries
@@ -35,7 +35,7 @@ repfun:::rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,if
 ``` r
 adae <- repfun:::rfenv$adamdata$adae.rda() %>% dplyr::select(-c('SAFFL','TRT01A')) %>% 
   repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"), 
-             keeppopvars=c("TRT01AN", "TRT01A")) %>%
+             keeppopvars=c("TRT01AN", "TRT01A", "SAFFL")) %>%
  dplyr::select(STUDYID,USUBJID,AEBODSYS,AEDECOD,SAFFL,TRT01AN,TRT01A) %>% 
   dplyr::arrange(STUDYID,USUBJID,AEBODSYS,AEDECOD,SAFFL,TRT01AN,TRT01A)
 ```

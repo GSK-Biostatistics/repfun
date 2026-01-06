@@ -4,7 +4,7 @@
 
 ``` r
 message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
-#> Datetime: 2026-01-06:2026-01-06 18:22:23.726146
+#> Datetime: 2026-01-06:2026-01-06 19:23:45.769357
 ```
 
 ## Load Libraries
@@ -35,7 +35,7 @@ G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
   repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
 
 adae <- repfun:::rfenv$adamdata$adae.rda() %>% filter(TRTEMFL=='Y') %>%
-        repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"))
+        repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"),keeppopvars=c("TRT01AN", "TRT01A", "SAFFL"))
 ```
 
 ## Add Big N to ADAE
