@@ -94,7 +94,7 @@ ru_getdata <- function(dsetin,
 
   if (! is.null(df_pop_data) && ! is.null(subjidvars) && subjidvars[1] != "") {
     var_pop_vars <- base::unique(c(unlist(subjidvars), unlist(keeppopvars)))
-    var_pop_vars <- base::setdiff(base::names(df_pop_data), base::names(df_gdata))
+    var_pop_vars <- base::setdiff(var_pop_vars, base::names(df_gdata))
     var_pop_vars <- base::unique(c(unlist(subjidvars), unlist(var_pop_vars)))
     df_pop_data <- df_pop_data %>% dplyr::select(dplyr::all_of(var_pop_vars))
     df_gdata <- base::merge(df_gdata, df_pop_data, by=subjidvars, all.x=FALSE, all.y=FALSE)
