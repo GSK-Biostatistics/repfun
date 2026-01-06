@@ -48,7 +48,7 @@ repfun:::rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,if
 ```{r update}
 adae <- repfun:::rfenv$adamdata$adae.rda() %>% dplyr::select(-c('SAFFL','TRT01A')) %>% 
   repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"), 
-             keeppopvars=c("TRT01AN", "TRT01A")) %>%
+             keeppopvars=c("TRT01AN", "TRT01A", "SAFFL")) %>%
  dplyr::select(STUDYID,USUBJID,AEBODSYS,AEDECOD,SAFFL,TRT01AN,TRT01A) %>% 
   dplyr::arrange(STUDYID,USUBJID,AEBODSYS,AEDECOD,SAFFL,TRT01AN,TRT01A)
 ```

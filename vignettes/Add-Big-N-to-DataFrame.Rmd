@@ -48,7 +48,7 @@ G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
   repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
 
 adae <- repfun:::rfenv$adamdata$adae.rda() %>% filter(TRTEMFL=='Y') %>%
-        repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"))
+        repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"),keeppopvars=c("TRT01AN", "TRT01A", "SAFFL"))
 ```
 
 ## Add Big N to ADAE
