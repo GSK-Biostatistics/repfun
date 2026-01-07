@@ -40,14 +40,14 @@ in the
 ## General Information
 
 - This package contains reporting functions that mimic (HARP)
-  traditional macros.
+  traditional reporting macros.
 - View the function documentation at:
   <https://gsk-biostatistics.github.io/repfun/reference/index.html>
 - Install the package using: Via CRAN: install.packages(“repfun”)
   library(remotes); install_github(“GSK-Biostatistics/repfun”) or
   install.packages(‘/your/path/repfun_0.1.0.tar.gz’,repos=NULL,type=‘source’)
-  (see “misc” branch) or download the following zip file and install as
-  above:
+  (see “misc” branch for latest tarball) or download the following zip
+  file and install as above:
   <https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.1.0.tar.gz>
 - Use the package by loading it: library(repfun)
 - View use cases at:
