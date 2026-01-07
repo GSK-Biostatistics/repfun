@@ -170,4 +170,91 @@ test_that("generating counts and percents works", {
 
   testthat::expect_equal(basechar, bcqc)
 
+  #=====================================================
+  # Vital Sign Timepoints: PROD counts and percents.
+  #=====================================================
+  advs <- repfun::advs %>%
+    dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
+    filter(SAFFL=='Y' & !is.na(ATPTN) & !is.na(AVISITN) & !is.na(TRT01AN)) %>%
+    ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
+
+  #=======
+  # PROD
+  #=======
+  prod_advs <- repfun::ru_freq(advs, dsetindenom=advs, countdistinctvars=c("STUDYID", "USUBJID"),
+                               groupbyvarsnumer=c("PARAMCD", "TRT01AN", "AVISITN", "ATPTN"),
+                               anyeventvars = NULL, anyeventvalues =  NULL, groupminmaxvar="max(ATPTN)",
+                               totalforvar="TRT01AN(2, 3)", totalid = 9, totaldecode = 'All Xano',
+                               groupbyvarsdenom=c("PARAMCD", "TRT01AN", "AVISITN"), resultstyle="NUMERPCT",
+                               codedecodevarpairs=c("TRT01AN", "TRT01A", "AVISITN", "AVISIT", "PARAMCD", "PARAM", "ATPTN", "ATPT"),
+                               varcodelistpairs=c(""), codelistnames=list(), resultpctdps=0) %>% select(-tt_summarylevel) %>%
+    arrange(PARAMCD,TRT01AN,AVISITN,ATPTN)
+
+
+  #=====
+  # QC
+  #=====
+  advs_tot <- advs %>% mutate(TRT01AN=ifelse(TRT01AN %in% c(2,3),9,TRT01AN),
+                              TRT01A=ifelse(TRT01AN==9,'All Xano',TRT01A))
+
+  advs2 <- advs %>% rbind(advs_tot)
+
+  trt <- advs2 %>% distinct(TRT01AN,TRT01A)
+  vis <- advs2 %>% distinct(AVISITN,AVISIT)
+  prm <- advs2 %>% distinct(PARAMCD,PARAM)
+  tim <- advs2 %>% distinct(ATPTN,ATPT)
+  mfile <- trt %>% cross_join(vis) %>% cross_join(prm) %>% cross_join(tim) %>% mutate(NUMERCNT=0)
+
+  #PROD <- vs_cnts %>% distinct(TRT01AN,TRT01A,AVISITN,AVISIT,PARAMCD,PARAM,ATPTN,ATPT)
+  #QC <- mfile %>% distinct(TRT01AN,TRT01A,AVISITN,AVISIT,PARAMCD,PARAM,ATPTN,ATPT)
+  #freq(PROD,c('TRT01AN','TRT01A','PARAMCD','PARAM'))
+  #freq(QC,c('TRT01AN','TRT01A','PARAMCD','PARAM'))
+  #PROD %>% arrange(PARAMCD,AVISITN,AVISIT) %>% distinct(PARAMCD,AVISITN,AVISIT)
+  #QC %>% arrange(PARAMCD,AVISITN,AVISIT) %>% distinct(PARAMCD,AVISITN,AVISIT)
+  #testthat::expect_equal(PROD, QC)
+
+  qc_numer <- advs2 %>%
+    distinct(STUDYID,USUBJID,TRT01AN,TRT01A,PARAMCD,PARAM,AVISITN,AVISIT,ATPTN,ATPT) %>%
+    arrange(STUDYID,USUBJID,TRT01AN,TRT01A,PARAMCD,PARAM,AVISITN,AVISIT,ATPTN,ATPT) %>%
+    group_by(STUDYID,USUBJID,TRT01AN,TRT01A,PARAMCD,PARAM,AVISITN,AVISIT) %>%
+    filter(row_number()==n()) %>%
+    ungroup() %>%
+    group_by(TRT01AN,TRT01A,PARAMCD,PARAM,AVISITN,AVISIT,ATPTN,ATPT) %>%
+    summarize(COUNT=n()) %>%
+    ungroup()
+
+  qc_denom <- advs2 %>%
+    distinct(STUDYID,USUBJID,TRT01AN,TRT01A,PARAMCD,PARAM,AVISITN,AVISIT) %>%
+    group_by(TRT01AN,TRT01A,PARAMCD,PARAM,AVISITN,AVISIT) %>%
+    summarize(DENOMCNT=n()) %>%
+    ungroup()
+
+  qc_advs <- mfile %>%
+    left_join(qc_numer,by=c('TRT01AN','TRT01A','PARAMCD','PARAM','AVISITN','AVISIT','ATPTN','ATPT')) %>%
+    left_join(qc_denom,by=c('TRT01AN','TRT01A','PARAMCD','PARAM','AVISITN','AVISIT')) %>%
+    mutate(NUMERCNT=ifelse(!is.na(COUNT),COUNT,NUMERCNT),
+           PERCENT=100*NUMERCNT/DENOMCNT,
+           tt_result=paste0(NUMERCNT,' (',round(PERCENT,0),'%)')) %>% select(names(prod_advs)) %>%
+    arrange(PARAMCD,TRT01AN,AVISITN,ATPTN)
+
+  #=========================================
+  # Temporary step, remove all attributes.
+  #=========================================
+  qc_advs[] <- lapply(qc_advs, function(x) {
+    attributes(x) <- NULL
+    x
+  })
+
+  prod_advs[] <- lapply(prod_advs, function(x) {
+    attributes(x) <- NULL
+    x
+  })
+
+  attr(qc_advs, '_xportr.df_arg_') <- NULL
+  attr(qc_advs, 'label') <- NULL
+  attr(prod_advs, '_xportr.df_arg_') <- NULL
+  attr(prod_advs, 'label') <- NULL
+
+  testthat::expect_equal(prod_advs, qc_advs)
+
 })
