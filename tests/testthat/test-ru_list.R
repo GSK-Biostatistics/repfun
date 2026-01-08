@@ -4,6 +4,7 @@ test_that("producing RTFs works", {
   suppressMessages(library(dplyr))
   suppressMessages(library(tidyr))
   suppressMessages(library(haven))
+  suppressMessages(library(ggplot2))
   suppressMessages(library(testthat))
 
   repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
@@ -237,6 +238,26 @@ test_that("producing RTFs works", {
   # Test 2: Compare.
   #==================
   testthat::expect_equal(prod2, qc2)
+
+  #====================================================================================
+  # Test 4: Generate figure using ru_list.  Check for size and existence of rtf file.
+  #====================================================================================
+  setup(4)
+  assign("G_HEIGHT", rfenv$G_HEIGHT-.16 ,envir=rfenv)
+  myplot1 <- ggplot(iris, aes(Sepal.Length, Sepal.Width)) + geom_point()
+  myplot2 <- ggplot(iris, aes(Species, Sepal.Length)) + geom_boxplot()
+  myplots <- list('Gender: Male'=myplot1, 'Gender: Female'=myplot2)
+  repfun::ru_list(dsetin=myplots,
+                  dddatasetlabel='DD Dataframe for Figure 4')
+
+  figfil <- paste0(tmpdr,"/t_ru_list_4.rtf")
+  if (file.exists(figfil)){
+     fsize <- file.size(figfil)/1024
+  } else {
+     fsize <- 0
+  }
+
+  testthat::expect_equal(round(26.3,1),round(fsize,1))
 
   unlink(tmpdr, recursive = TRUE)
 
