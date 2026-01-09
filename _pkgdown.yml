@@ -68,7 +68,6 @@ reference:
   - ru_setdata
   - ru_stackvar
   - ru_width_rtf
-  - setpath
   - rem_pg_nums
   - copydata
 - title: Data
