@@ -11,7 +11,7 @@
 
 ## R Reporting Functions Repository
 
-This repository contains an R package of reporting functions that mimic (HARP) traditional macros for clinical reporting.  The package can be used to generate TLFs (Tables, Listings, Figures).  See several examples in the <a href="https://gsk-biostatistics.github.io/repfun/">Vignettes/Articles</a>.
+This repository contains an R package of reporting functions that mimic (HARP) traditional macros for clinical reporting.  The package can be used to generate Tables, Listings and Figures.  See several examples in the <a href="https://gsk-biostatistics.github.io/repfun/">Vignettes/Articles</a>.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -72,7 +72,7 @@ install.packages(c("tidyr","dplyr","ggplot2","magrittr","Hmisc","haven","stringr
 
 ## License
 
-This project is released under the Apache-2.0 license. See the **[LICENSE](LICENSE.md)** file for details.
+This project is released under the Apache-2.0 license. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

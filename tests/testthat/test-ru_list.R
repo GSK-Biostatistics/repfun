@@ -7,8 +7,6 @@ test_that("producing RTFs works", {
   suppressMessages(library(ggplot2))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #===================================
   # Set up the reporting environment.
   #===================================

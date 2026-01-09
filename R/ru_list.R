@@ -37,8 +37,8 @@
 #' @param flowvars Variables with flow option
 #' @param widths Column widths
 #' @param defaultwidths List of default column widths
-#' @param skipvars similar to SAS statement skipvars Break after <var> / skip
-#' @param pagevars similar to SAS statement pagevars Break after <var> / page
+#' @param skipvars similar to SAS statement skipvars Break after xxx / skip
+#' @param pagevars similar to SAS statement pagevars Break after xxx / page
 #' @param idvars ID variables
 #' @param linevars Order variable printed with line statements.
 #' @param centrevars Centre justify variables

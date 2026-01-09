@@ -5,17 +5,6 @@ test_that("environment setup works", {
   suppressMessages(library(tibble))
   suppressMessages(library(testthat))
 
-  #globs <- paste0(tempdir(),'/GLOBALS2.txt')
-  #write(getwd(),file=globs,append=TRUE)
-  #write(testthat::test_path(),file=globs,append=TRUE)
-  #write(paste0(getwd(),'/',testthat::test_path()),file=globs,append=TRUE)
-  #Sys.sleep(300)
-
-  #repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-  #print(getwd())
-  #Sys.sleep(20)
-
   #======================
   # Invoke setup macro.
   #======================
@@ -51,13 +40,9 @@ test_that("environment setup works", {
       D_DEBUG=0)
   )
 
-  #print(getwd())
-  #print(adamdata)
-
   #=========================================================
   # Read ADSL directly, subset and compare with G_POPDATA.
   #=========================================================
-  #indata <- adamdata$adsl.rda()
   indata <- do.call(rfenv$adamdata$adsl.rda,list())
   indata <- tibble::as_tibble(indata)
   indata %>% dplyr::filter(SAFFL=='Y') -> C_POPDATA
