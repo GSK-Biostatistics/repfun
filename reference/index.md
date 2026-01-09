@@ -57,8 +57,6 @@
   : Stack Columns of a Dataframe into New Column
 - [`ru_width_rtf()`](https://gsk-biostatistics.github.io/repfun/reference/ru_width_rtf.md)
   : Create a List of Relative Widths of Columns for RTF Outputs
-- [`setpath()`](https://gsk-biostatistics.github.io/repfun/reference/setpath.md)
-  : Set the current working directory.
 - [`rem_pg_nums()`](https://gsk-biostatistics.github.io/repfun/reference/rem_pg_nums.md)
   : Remove floating page numbers from RTF files.
 - [`copydata()`](https://gsk-biostatistics.github.io/repfun/reference/copydata.md)

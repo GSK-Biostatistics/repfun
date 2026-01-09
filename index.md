@@ -13,9 +13,8 @@ coverage](https://codecov.io/gh/GSK-Biostatistics/repfun/graph/badge.svg)](https
 
 This repository contains an R package of reporting functions that mimic
 (HARP) traditional macros for clinical reporting. The package can be
-used to generate TLFs (Tables, Listings, Figures). See several examples
-in the
-[Vignettes/Articles](https://gsk-biostatistics.github.io/repfun/).
+used to generate Tables, Listings and Figures. See several examples in
+the [Vignettes/Articles](https://gsk-biostatistics.github.io/repfun/).
 
 ([back to top](#readme-top))
 
@@ -87,9 +86,7 @@ install.packages(c("tidyr","dplyr","ggplot2","magrittr","Hmisc","haven","stringr
 
 ## License
 
-This project is released under the Apache-2.0 license. See the
-**[LICENSE](https://gsk-biostatistics.github.io/repfun/LICENSE.md)**
-file for details.
+This project is released under the Apache-2.0 license.
 
 ([back to top](#readme-top))
 

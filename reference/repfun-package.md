@@ -1,7 +1,7 @@
-# repfun: Create TLFs using Functions Styled after SAS™ Macros
+# repfun: Create Tables, Listings and Figures using Functions Styled after SAS™ Macros
 
 Mimic the style of traditional reporting macros for clinical trials. The
-purpose is to generate TLFs (tables, listings and figures) that support
+purpose is to generate tables, listings and figures that support
 clinical research. This package is well suited for firms or individuals
 who wish to incorporate R without changing their ways of working as it
 follows a traditional clinical research workflow. Invoke functions

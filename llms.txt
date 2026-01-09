@@ -13,9 +13,8 @@ coverage](https://codecov.io/gh/GSK-Biostatistics/repfun/graph/badge.svg)](https
 
 This repository contains an R package of reporting functions that mimic
 (HARP) traditional macros for clinical reporting. The package can be
-used to generate TLFs (Tables, Listings, Figures). See several examples
-in the
-[Vignettes/Articles](https://gsk-biostatistics.github.io/repfun/).
+used to generate Tables, Listings and Figures. See several examples in
+the [Vignettes/Articles](https://gsk-biostatistics.github.io/repfun/).
 
 ([back to top](#readme-top))
 
@@ -87,9 +86,7 @@ install.packages(c("tidyr","dplyr","ggplot2","magrittr","Hmisc","haven","stringr
 
 ## License
 
-This project is released under the Apache-2.0 license. See the
-**[LICENSE](https://gsk-biostatistics.github.io/repfun/LICENSE.md)**
-file for details.
+This project is released under the Apache-2.0 license.
 
 ([back to top](#readme-top))
 
@@ -179,8 +176,6 @@ Acknowledgement to the following useful sources:
   : Stack Columns of a Dataframe into New Column
 - [`ru_width_rtf()`](https://gsk-biostatistics.github.io/repfun/reference/ru_width_rtf.md)
   : Create a List of Relative Widths of Columns for RTF Outputs
-- [`setpath()`](https://gsk-biostatistics.github.io/repfun/reference/setpath.md)
-  : Set the current working directory.
 - [`rem_pg_nums()`](https://gsk-biostatistics.github.io/repfun/reference/rem_pg_nums.md)
   : Remove floating page numbers from RTF files.
 - [`copydata()`](https://gsk-biostatistics.github.io/repfun/reference/copydata.md)

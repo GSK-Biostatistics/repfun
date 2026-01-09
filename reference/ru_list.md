@@ -261,11 +261,11 @@ ru_list(
 
 - skipvars:
 
-  similar to SAS statement skipvars Break after ` / skip`
+  similar to SAS statement skipvars Break after skip
 
 - pagevars:
 
-  similar to SAS statement pagevars Break after ` / page`
+  similar to SAS statement pagevars Break after page
 
 - idvars:
 
