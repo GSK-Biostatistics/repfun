@@ -5,8 +5,6 @@ test_that("transposing a dataframe works", {
   suppressMessages(library(tidyr))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #======================
   #======================
   # Adverse Events Test

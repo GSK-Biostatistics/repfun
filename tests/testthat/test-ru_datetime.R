@@ -4,8 +4,6 @@ test_that("adding formatted datetimes works", {
   suppressMessages(library(dplyr))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #=================================================
   # Read SDTM.AE and add time values to the dates.
   #=================================================

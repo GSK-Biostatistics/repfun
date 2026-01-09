@@ -3,8 +3,6 @@ test_that("proc contents works", {
   suppressMessages(library(repfun))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #=============================================
   # Put contents of mtcars into temporary file.
   #=============================================

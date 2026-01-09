@@ -5,8 +5,6 @@ test_that("generating counts and percents works", {
   suppressMessages(library(tidyr))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #===============================
   # Set up reporting environment.
   #===============================

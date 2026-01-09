@@ -154,9 +154,9 @@ ru_list(
 
 \item{defaultwidths}{List of default column widths}
 
-\item{skipvars}{similar to SAS statement skipvars Break after \if{html}{\out{<var>}} / skip}
+\item{skipvars}{similar to SAS statement skipvars Break after skip}
 
-\item{pagevars}{similar to SAS statement pagevars Break after \if{html}{\out{<var>}} / page}
+\item{pagevars}{similar to SAS statement pagevars Break after page}
 
 \item{idvars}{ID variables}
 

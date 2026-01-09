@@ -4,9 +4,8 @@ test_that("producing RTFs works", {
   suppressMessages(library(dplyr))
   suppressMessages(library(tidyr))
   suppressMessages(library(haven))
+  suppressMessages(library(ggplot2))
   suppressMessages(library(testthat))
-
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
 
   #===================================
   # Set up the reporting environment.
@@ -56,7 +55,7 @@ test_that("producing RTFs works", {
   # Prod Table 1:  Summary of Adverse Events - DDDATA only.
   #==========================================================
   repfun::ru_list(aesum,
-                  display='N',
+                  display='Y',
                   columns=c('AEBODSYS','AEDECOD','tt_01','tt_02','tt_03','tt_99'),
                   nowidowvar='AEBODSYS',
                   widths=c(5.5,4.5,1.75,1.9,1.9,1.75),
@@ -107,6 +106,87 @@ test_that("producing RTFs works", {
   #==================
   testthat::expect_equal(prod1, qc1)
 
+  #==========================================================
+  # Prod Table 3:  Summary of Adverse Events - DDDATA only.
+  #==========================================================
+  setup(3)
+  aesum <- repfun::ru_freq(rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>%
+                             repfun::ru_getdata(rfenv$G_POPDATA, c("STUDYID", "USUBJID"), keeppopvars=c("TRT01AN", "TRT01A")),
+                           dsetindenom=rfenv$G_POPDATA,
+                           countdistinctvars=c('STUDYID','USUBJID'),
+                           groupbyvarsnumer=c('TRT01AN','TRT01A','AEBODSYS','AEDECOD'),
+                           anyeventvars = c('AEBODSYS','AEDECOD'),
+                           anyeventvalues = c('ANY EVENT','ANY EVENT'),
+                           groupbyvarsdenom=c('TRT01AN'),
+                           resultstyle="NUMERPCT",
+                           totalforvar=c('TRT01AN'),
+                           totalid=99,
+                           totaldecode='Total',
+                           codedecodevarpairs=c("TRT01AN", "TRT01A"),
+                           varcodelistpairs=c(""),
+                           codelistnames=list(),
+                           resultpctdps=0) %>% dplyr::arrange(TRT01AN,TRT01A,AEBODSYS,tt_summarylevel,AEDECOD,NUMERCNT,DENOMCNT) %>% repfun::ru_align("tt_result")
+
+  #=========
+  #=========
+  # PROD 3
+  #=========
+  #=========
+  aetbls <- list('Gender: Male'=aesum,
+                 'Gender: Female'=aesum)
+
+  repfun::ru_list(aetbls,
+                  display='Y',
+                  columns=c('AEBODSYS','AEDECOD','tt_01','tt_02','tt_03','tt_99'),
+                  nowidowvar='AEBODSYS',
+                  widths=c(5.5,4.5,1.75,1.9,1.9,1.75),
+                  skipvars=c('AEBODSYS'),
+                  centrevars=c('tt_01','tt_02','tt_03','tt_99'),
+                  ordervars=c('AEBODSYS','tt_summarylevel','AEDECOD'),
+                  noprintvars=c('tt_summarylevel'),
+                  denormyn='Y',
+                  varsToDenorm=c('tt_result'),
+                  groupByVars=c('AEBODSYS','tt_summarylevel','AEDECOD'),
+                  acrossVar="TRT01AN",
+                  acrossVarLabel="TRT01A",
+                  acrossColVarPrefix='tt_',
+                  dddatasetlabel=paste0('DD Dataframe for AE Table ',rfenv$G_DSPLYNUM),
+                  lpp=23,
+                  rpp=50)
+
+  prod3 <- readRDS(paste0(tmpdr,'/t_ru_list_3.rds'))
+  prod3[] <- lapply(prod3, as.character)
+  attr(prod3, 'label') <- NULL
+
+  #=======
+  #=======
+  # QC 3
+  #=======
+  #=======
+  qc3 <- aesum %>% dplyr::mutate(TRT01A=paste0(TRT01A,'\\line (N=',DENOMCNT,')\\line n (%)')) %>%
+    repfun::ru_denorm(varstodenorm=c("tt_result", "PERCENT"), groupbyvars=c("tt_summarylevel", "AEBODSYS", "AEDECOD"), acrossvar="TRT01AN",
+                      acrossvarlabel="TRT01A", acrossvarprefix=c("tt_", "tt_p")) %>% {lapply(., attr, "label") ->> LBLS; .} %>% dplyr::arrange(AEBODSYS,tt_summarylevel,AEDECOD) %>%
+    dplyr::select(-starts_with('tt_p'),-tt_summarylevel) %>% dplyr::group_by(AEBODSYS) %>% dplyr::group_modify(~ add_row(.x,.after=Inf)) %>%
+    dplyr::ungroup() %>% dplyr::mutate(dplyr::across(dplyr::everything(), ~ tidyr::replace_na(.x, ""))) %>% dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) %>%
+    repfun::ru_labels(varlabels=LBLS,style='base') %>%
+    repfun::ru_addpage(grpvars=c('AEBODSYS'),rowsprbdy=19)
+
+  qc3 %>% group_by(AEBODSYS) %>% mutate(lastrow=ifelse(row_number()==n(),TRUE,FALSE),
+                                        frstpage=ifelse(lastrow & !PAGEVAR==lag(PAGEVAR),TRUE,FALSE)) %>% filter(!(lastrow & frstpage)) %>% select(-c(lastrow,frstpage)) -> qc3
+
+  qc3 <- as.data.frame(qc3)
+  qc3 <- rbind(qc3 %>% mutate(PAGBYCAT='Gender: Male'),qc3 %>% mutate(PAGBYCAT='Gender: Female'))
+  attr(qc3$PAGEVAR, "label") <- NULL
+
+  attr(qc3,'label') <- 'DD Dataframe for AE Table 3'
+  qc3[] <- lapply(qc3, as.character)
+  attr(qc3, 'label') <- NULL
+
+  #==================
+  # Test 3: Compare.
+  #==================
+  testthat::expect_equal(prod3, qc3)
+
   #=======================================================
   # Generate 2nd DD data set and compare with QC version.
   #=======================================================
@@ -114,7 +194,7 @@ test_that("producing RTFs works", {
   SOCterms <- aesum %>% dplyr::distinct(AEBODSYS,AEDECOD)
   SOCcnts <- table(SOCterms$AEBODSYS)
   repfun::ru_list(aesum %>% dplyr::filter(!(AEBODSYS %in% names(SOCcnts[SOCcnts>=20]))),
-                  display='N',
+                  display='Y',
                   columns=c('AEBODSYS','AEDECOD','tt_01','tt_02','tt_03','tt_99'),
                   nowidowvar='AEBODSYS',
                   widths=c(5.5,4.5,1.75,1.9,1.9,1.75),
@@ -156,6 +236,28 @@ test_that("producing RTFs works", {
   # Test 2: Compare.
   #==================
   testthat::expect_equal(prod2, qc2)
+
+  #====================================================================================
+  # Test 4: Generate figure using ru_list.  Check for size and existence of rtf file.
+  #====================================================================================
+  setup(4)
+  assign("G_HEIGHT", rfenv$G_HEIGHT-.16 ,envir=rfenv)
+  myplot1 <- ggplot(iris, aes(Sepal.Length, Sepal.Width)) + geom_point()
+  myplot2 <- ggplot(iris, aes(Species, Sepal.Length)) + geom_boxplot()
+  myplots <- list('Gender: Male'=myplot1, 'Gender: Female'=myplot2)
+  repfun::ru_list(dsetin=myplots,
+                  dddatasetlabel='DD Dataframe for Figure 4')
+
+  figfil <- paste0(tmpdr,"/t_ru_list_4.rtf")
+  if (file.exists(figfil)){
+     fsize <- file.size(figfil)/1024
+  } else {
+     fsize <- 0
+  }
+
+  if (fsize > 5) {fsize <- 1}
+
+  testthat::expect_equal(1,fsize)
 
   unlink(tmpdr, recursive = TRUE)
 

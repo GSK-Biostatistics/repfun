@@ -6,8 +6,6 @@ test_that("generating rtf column widths works", {
   suppressMessages(library(tibble))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #========================================================================================================================
   # Create a dataframe where labels and variable value length are identical for each column and sum to 100 across columns.
   #========================================================================================================================

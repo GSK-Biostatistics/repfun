@@ -4,8 +4,6 @@ test_that("ru_libname works for rds and rda files", {
   suppressMessages(library(dplyr))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #==================================================
   # Read ADSL RDA file, restrict to SAFETY subjects.
   #==================================================

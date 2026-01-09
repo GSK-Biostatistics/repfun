@@ -3,8 +3,6 @@ test_that("converting data to codelist works", {
   suppressMessages(library(repfun))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #==============================================================================
   # Build a codelist style format off of a SAS data set containing a SAS format.
   #==============================================================================
