@@ -1,5 +1,5 @@
 Package: repfun
-Title: Create Tables, Listings and Figuress using Functions Styled after SAS™ Macros
+Title: Create Tables, Listings and Figures using Functions Styled after SAS™ Macros
 Version: 0.1.0
 Authors@R: 
     c(person("Chris", "Rook", , "cr883296@gmail.com", role = c("aut", "cre")),

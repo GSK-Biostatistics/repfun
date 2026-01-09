@@ -5,8 +5,6 @@ test_that("adding big N works", {
   suppressMessages(library(testthat))
   suppressMessages(library(tibble))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #=======
   # SETUP
   #=======

@@ -4,8 +4,6 @@ test_that("get data function works", {
   suppressMessages(library(dplyr))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #=========================
   # Set up the environment.
   #=========================

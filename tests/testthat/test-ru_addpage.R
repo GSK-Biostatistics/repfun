@@ -4,8 +4,6 @@ test_that("adding page numbers works", {
   suppressMessages(library(dplyr))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #==================================================
   # Setup reporting environment and read in AE data.
   #==================================================

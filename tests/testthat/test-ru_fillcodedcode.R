@@ -4,9 +4,6 @@ test_that("populating a decode variable works", {
   suppressMessages(library(dplyr))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-  #rfenv$G_DEBUG <<- 0
-
   #========================================
   # Create decode for SEX using function.
   #========================================

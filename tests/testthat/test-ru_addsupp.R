@@ -5,8 +5,6 @@ test_that("combining SDTM with its supplemental data works", {
   suppressMessages(library(tidyr))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   ######
   # DM #
   ######

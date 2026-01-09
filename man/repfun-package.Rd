@@ -4,7 +4,7 @@
 \name{repfun-package}
 \alias{repfun}
 \alias{repfun-package}
-\title{repfun: Create Tables, Listings and Figuress using Functions Styled after SAS™ Macros}
+\title{repfun: Create Tables, Listings and Figures using Functions Styled after SAS™ Macros}
 \description{
 Mimic the style of traditional reporting macros for clinical trials. The purpose is to generate tables, listings and figures that support clinical research. This package is well suited for firms or individuals who wish to incorporate R without changing their ways of working as it follows a traditional clinical research workflow. Invoke functions (instead of macros) to summarize data and produce formatted reports. This package differs from others in that it includes tools (wrappers) for both analyzing and reporting data.
 }

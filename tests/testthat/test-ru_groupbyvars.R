@@ -3,8 +3,6 @@ test_that("multiplication works", {
   suppressMessages(library(repfun))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #===================================
   # Add decode variables to the list.
   #===================================

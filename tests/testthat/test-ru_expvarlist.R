@@ -3,8 +3,6 @@ test_that("expanding variable list works", {
   suppressMessages(library(repfun))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #========
   # Test 1
   #========

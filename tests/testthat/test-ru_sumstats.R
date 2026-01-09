@@ -8,8 +8,6 @@ test_that("generating summary statistics works", {
 
   options(dplyr.summarise.inform = FALSE)
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #====================
   # Environment setup.
   #====================

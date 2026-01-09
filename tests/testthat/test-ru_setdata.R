@@ -4,8 +4,6 @@ test_that("appending data sets works", {
   suppressMessages(library(dplyr))
   suppressMessages(library(testthat))
 
-  repfun::setpath(paste0(rfenv$PATH,'/tests/testthat'))
-
   #=======================================================
   # Append mtcars and airquality using package function.
   #=======================================================
