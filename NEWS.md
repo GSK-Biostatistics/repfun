@@ -6,9 +6,9 @@
 
 * FIXED Found the following (possibly) invalid file URI
 
-* FIXED Flavor: r-devel-windows-x86_64. Check: tests, Result: ERROR
+* FIXED tests ERROR
 
-* FIXED Flavor: r-devel-linux-x86_64-debian-gcc, r-devel-windows-x86_64. Check: HTML version of manual, Result: NOTE
+* FIXED HTML NOTES
 
 # repfun 0.1.0
 
