@@ -23,7 +23,7 @@ the [Vignettes/Articles](https://gsk-biostatistics.github.io/repfun/).
 ## How to Use This Package
 
 1.  Download and install the package from CRAN (see below), or using the
-    zip file repfun_0.1.0.tar.gz (in “misc” branch), or via library
+    zip file repfun_0.1.1.tar.gz (in “misc” branch), or via library
     remotes (see below).
 2.  Load the library in an R session.
 3.  Review the function documentation under References  
@@ -44,15 +44,15 @@ the [Vignettes/Articles](https://gsk-biostatistics.github.io/repfun/).
   <https://gsk-biostatistics.github.io/repfun/reference/index.html>
 - Install the package using: Via CRAN: install.packages(“repfun”)
   library(remotes); install_github(“GSK-Biostatistics/repfun”) or
-  install.packages(‘/your/path/repfun_0.1.0.tar.gz’,repos=NULL,type=‘source’)
+  install.packages(‘/your/path/repfun_0.1.1.tar.gz’,repos=NULL,type=‘source’)
   (see “misc” branch for latest tarball) or download the following zip
   file and install as above:
-  <https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.1.0.tar.gz>
+  <https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.1.1.tar.gz>
 - Use the package by loading it: library(repfun)
 - View use cases at:
   <https://gsk-biostatistics.github.io/repfun/articles/>
 - View package documentation at:
-  <https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.1.0.pdf>
+  <https://github.com/GSK-Biostatistics/repfun/blob/misc/repfun_0.1.1.pdf>
 
 ([back to top](#readme-top))
 
