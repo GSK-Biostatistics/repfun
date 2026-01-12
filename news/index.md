@@ -6,7 +6,7 @@
 
 - FIXED Possibly misspelled words in DESCRIPTION
 
-- FIXED Found the following (possibly) invalid file URI
+- FIXED Found the following (possibly) invalid file reference
 
 - FIXED tests ERROR
 
