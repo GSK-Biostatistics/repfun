@@ -27,16 +27,19 @@ library(repfun)
 ## Generate a Proc Contents style report of a data frame in R
 
 ```{r contents2file}
-fnam <- paste0(base::tempdir(),"/test-ru_contents.txt")
-sink(fnam)
-  repfun::ru_contents(airquality)
-sink()
+#fnam <- paste0(base::tempdir(),"/test-ru_contents.txt")
+#sink(fnam)
+ret <- repfun::ru_contents(airquality)
+#sink()
 ```
 
 ## Display the result
 
 ```{r contents2out}
-cat(readLines(fnam), sep = '\n')
+#cat(readLines(fnam), sep = '\n')
+base::cat("\n", ret$s_data_info)
+base::cat(ret$fmt_str)
+base::cat("\n", ret$s_var_info_1)
 ```
 
 

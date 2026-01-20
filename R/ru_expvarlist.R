@@ -22,7 +22,6 @@
 #' @export
 #'
 ru_expvarlist <- function (dsetin, varsin=NULL, keepnotexist=FALSE) {
-  # print(paste0("RU_EXPVARLIST: ", "Start or RU_EXPVARLIST"))
   d.names <- sort(names(dsetin))
   d.cnames <- d.names[sapply(dsetin, is.character)]
   d.nnames <- d.names[sapply(dsetin, is.numeric)]

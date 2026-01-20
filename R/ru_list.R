@@ -97,7 +97,7 @@
 #' # Set up the reporting environment.
 #' #===================================
 #' setup <- function(tlfid){
-#'   repfun::rs_setup(
+#'   myenv <- repfun::rs_setup(
 #'     D_DATADATE=Sys.Date(),
 #'     D_DSPLYNUM=tlfid,
 #'     D_FOOT1='1.) Only treatment emergent events related to lipids are displayed.',
@@ -117,17 +117,19 @@
 #'     D_OUTFILE=paste0(outdir,"/t_ru_list_",tlfid,".rtf"),
 #'     D_PGMPTH="/path/to/code/ru_list.R",
 #'     R_DDDATA=paste0(outdir,'/t_ru_list_',tlfid,'.rds'),
-#'     R_ADAMDATA=datdir)
+#'     R_ADAMDATA=datdir,
+#'     RetEnv=TRUE)
+#'   return(myenv)
 #' }
 #'
 #' #============================================
 #' # Process ADAE - derive counts and percents.
 #' #============================================
-#' setup(1)
-#' aesum <- repfun::ru_freq(repfun:::rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>%
-#'                  repfun::ru_getdata(repfun:::rfenv$G_POPDATA, c("STUDYID", "USUBJID"),
+#' rfenv <- setup(1)
+#' aesum <- repfun::ru_freq(rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>%
+#'                  repfun::ru_getdata(rfenv$G_POPDATA, c("STUDYID", "USUBJID"),
 #'                  keeppopvars=c("TRT01AN", "TRT01A")),
-#'                  dsetindenom=repfun:::rfenv$G_POPDATA,
+#'                  dsetindenom=rfenv$G_POPDATA,
 #'                  countdistinctvars=c('STUDYID','USUBJID'),
 #'                  groupbyvarsnumer=c('TRT01AN','TRT01A','AEBODSYS','AEDECOD'),
 #'                  anyeventvars = c('AEBODSYS','AEDECOD'),
@@ -148,7 +150,7 @@
 #' # Table 2:  Summary of Adverse Events using NOWIDOWVAR (remove SOCs that
 #' # will not fit on 1 page with 10pt font)
 #' #==========================================================================
-#' setup(2)
+#' rfenv <- setup(2)
 #' SOCterms <- aesum %>% dplyr::distinct(AEBODSYS,AEDECOD)
 #' SOCcnts <- table(SOCterms$AEBODSYS)
 #' repfun::ru_list(aesum %>% dplyr::filter(!(AEBODSYS %in% names(SOCcnts[SOCcnts>=20]))),
@@ -165,7 +167,7 @@
 #'         acrossVar="TRT01AN",
 #'         acrossVarLabel="TRT01A",
 #'         acrossColVarPrefix='tt_',
-#'         dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM),
+#'         dddatasetlabel=paste0('DD Dataframe for AE Table ',rfenv$G_DSPLYNUM),
 #'         lpp=24)
 #'
 #' @importFrom Hmisc label
@@ -287,7 +289,7 @@ ru_list <- function(dsetin,                               ## Input domain datase
   globfile <- paste0(gsub("\\","/",tempdir(),fixed=TRUE),'/GLOBALS.txt')
   if (file.exists(globfile)){source(globfile,local=TRUE)}
 
-  if (G_DEBUG>0) print(paste0("RU_LIST: ", "Start of RU_LIST"))
+  if (G_DEBUG>0) {message(paste0("RU_LIST: ", "Start of RU_LIST"))}
 
   ##=====================
   ## Parameter checking.
@@ -330,11 +332,11 @@ ru_list <- function(dsetin,                               ## Input domain datase
   ##=================================
   if (!is.null(pagevars)){
     if (!is.vector(pagevars)){pagevars <- c(pagevars)}
-    if (rfenv$G_DEBUG>0) {print('RTNOTE:  Parameter pagevars converted to a vector.')}
+    #if (rfenv$G_DEBUG>0) {message('RTNOTE:  Parameter pagevars converted to a vector.')}
   }
   if (!is.null(byvars)){
     if (!is.vector(byvars)){byvars <- c(byvars)}
-    if (rfenv$G_DEBUG>0) {print('RTNOTE:  Parameter byvars converted to a vector.')}
+    #if (rfenv$G_DEBUG>0) {message('RTNOTE:  Parameter byvars converted to a vector.')}
   }
 
   ##===============================================================================================================================================================
@@ -343,8 +345,10 @@ ru_list <- function(dsetin,                               ## Input domain datase
   if (!is.null(byvars) & is.null(pagevars)){
     pagevars <- byvars
   } else if (!is.null(byvars) && !is.null(pagevars)){
-    if (rfenv$G_DEBUG>0) {print('RTNOTE:  Both byvars and pagevars have been specified.  They will be combined (pagevars first).  Use computebeforepagelines to label both.')
-      print(paste0('The following byvars have been added to pagevars: ',setdiff(byvars,pagevars)))}
+    if (rfenv$G_DEBUG>0) {
+      message('RTNOTE:  Both byvars and pagevars have been specified.  They will be combined (pagevars first).  Use computebeforepagelines to label both.')
+      message(paste0('The following byvars have been added to pagevars: ',setdiff(byvars,pagevars)))
+      }
     pagevars <- c(pagevars, setdiff(byvars,pagevars))
   }
 
@@ -353,7 +357,7 @@ ru_list <- function(dsetin,                               ## Input domain datase
   ##============================================================================================================================================
   if (is.list(dsetin) && !ggplot2::is_ggplot(dsetin) && !is.data.frame(dsetin)){
 
-    if (rfenv$G_DEBUG>0) {print('RTNOTE:  Parameter dsetin contains a list of dataframes and will be processed as a page-by-variable with list names as the final title.')}
+    if (rfenv$G_DEBUG>0) {message('RTNOTE:  Parameter dsetin contains a list of dataframes and will be processed as a page-by-variable with list names as the final title.')}
 
     ##================================================================
     ## Save original outfile, dddata locations and number of titles.
@@ -374,7 +378,7 @@ ru_list <- function(dsetin,                               ## Input domain datase
     ##===========================================================================================================
     for (dfx in 1:length(dsetin)){
 
-      if (rfenv$G_DEBUG>0) {print(paste0('RTNOTE:  Processing pages dataframe # ',dfx))}
+      if (rfenv$G_DEBUG>0) {message(paste0('RTNOTE:  Processing pages dataframe # ',dfx))}
 
       ##==============================================================================================================
       ## For this page-by value, add new title, update both tlf filename and dddata data set to include page number.
@@ -505,7 +509,7 @@ ru_list <- function(dsetin,                               ## Input domain datase
     }
 
     ##===================================================================
-    ## Reset global environment variables to what they were originally.
+    ## Reset environment variables to what they were originally.
     ##===================================================================
     assign('G_OUTFILE',OG_OUTFILE,envir=rfenv)
     assign('G_DDDATA',OG_DDDATA,envir=rfenv)
@@ -520,7 +524,7 @@ ru_list <- function(dsetin,                               ## Input domain datase
       if (toupper(xptyn)=='Y'){
         haven::write_xpt(readRDS(rfenv$G_DDDATA), gsub('rds','xpt',rfenv$G_DDDATA))
       }
-      if (rfenv$G_DEBUG>0) {print(paste0('DD Dataframe written to file: ',rfenv$G_DDDATA))}
+      if (rfenv$G_DEBUG>0) {message(paste0('DD Dataframe written to file: ',rfenv$G_DDDATA))}
     }
     if (rfenv$G_DEBUG>0){
       return('***** Multi-page report processed. *****')
@@ -530,19 +534,11 @@ ru_list <- function(dsetin,                               ## Input domain datase
   #===============================
   # Prep for reporting function.
   #===============================
-  if (display == 'Y'){
-    if (!("r2rtf" %in% rownames(utils::installed.packages()))) {utils::install.packages("r2rtf")}
-  }
-
-
-
   if (rfenv$G_JUSTIFICATION=="landscape"){
 
   } else if (rfenv$G_JUSTIFICATION=="portrait"){
 
   }
-
-
 
   ##============================================
   ## Set page sizes and orientations defaults.
@@ -628,7 +624,7 @@ ru_list <- function(dsetin,                               ## Input domain datase
   ##================================
   if (display=='Y' && ggplot2::is_ggplot(dsetin)){
 
-    if (rfenv$G_DEBUG>0) {print('RTNOTE:  A ggplot object is being processed.')}
+    if (rfenv$G_DEBUG>0) {message('RTNOTE:  A ggplot object is being processed.')}
 
     #===============================================================
     # Retrieve data from ggplot object and write to DD dataframe.
@@ -641,7 +637,7 @@ ru_list <- function(dsetin,                               ## Input domain datase
       if (toupper(xptyn)=='Y'){
         haven::write_xpt(readRDS(rfenv$G_DDDATA), gsub('rds','xpt',rfenv$G_DDDATA))
       }
-      if (rfenv$G_DEBUG>0) {print(paste0('DD Dataframe written to file: ',rfenv$G_DDDATA))}
+      if (rfenv$G_DEBUG>0) {message(paste0('DD Dataframe written to file: ',rfenv$G_DDDATA))}
     }
 
     ##==================================================
@@ -863,8 +859,8 @@ ru_list <- function(dsetin,                               ## Input domain datase
   chk4dups <- tmpdf[do.call(order, tmpdf), ]
   drs <- duplicated(chk4dups) | duplicated(chk4dups, fromLast = TRUE)
   if (any(drs)){
-    print(paste0('***** W','ARNING: Duplicate rows detected. *****'))
-    print(chk4dups[drs,])
+    message(paste0('***** W','ARNING: Duplicate rows detected. *****'))
+    # chk4dups[drs,]
   }
 
   ##=====================##
@@ -895,8 +891,8 @@ ru_list <- function(dsetin,                               ## Input domain datase
     for (s in skipvars){
 
       if (rfenv$G_DEBUG>0) {
-        print('Value of s is:')
-        print(s)
+        message('Value of s is:')
+        message(s)
       }
 
       #============================================================================================================
@@ -906,8 +902,8 @@ ru_list <- function(dsetin,                               ## Input domain datase
       skipafter <- newcols[1:inw]
 
       if (rfenv$G_DEBUG>0) {
-        print('Value of skipafter is:')
-        print(skipafter)
+        message('Value of skipafter is:')
+        message(skipafter)
       }
 
       #=================================================
@@ -1259,7 +1255,7 @@ ru_list <- function(dsetin,                               ## Input domain datase
   ##============================
   if (!is.null(dddatasetlabel)){attr(tmpdf, "label") <- dddatasetlabel}
   saveRDS(tmpdf, rfenv$G_DDDATA)
-  if (rfenv$G_DEBUG>0) {print(paste0('DD Dataframe written to file: ',rfenv$G_DDDATA))}
+  if (rfenv$G_DEBUG>0) {message(paste0('DD Dataframe written to file: ',rfenv$G_DDDATA))}
 
   ##==================================================
   ## Labels list must only be for columns variables.
@@ -1304,25 +1300,25 @@ ru_list <- function(dsetin,                               ## Input domain datase
   # Invoke reporting function.
   #============================
   if (rfenv$G_DEBUG>0) {
-    print(paste('columns: ',paste(columns,collapse=', ')))
-    print(paste('noprintvars: ',paste(noprintvars,collapse=', ')))
-    print(paste('grpvars: ',paste(grpvars,collapse=', ')))
-    print(paste('pagevars: ', paste(pagevars,collapse=', ')))
-    print(paste('pgvar: ', paste(pgvar,collapse=', ')))
-    print(paste('newpage: ', paste(newpage,collapse=', ')))
-    print(paste('widths: ' ,paste(widths,collapse=', ')))
-    print(paste('widths2: ' ,paste(widths2,collapse=', ')))
-    print(paste('ncols1: ', ncols1))
-    print(paste('ncols2: ', ncols2))
-    print(paste('ntitles: ', ntitles))
-    print(paste('nftnotes: ', nftnotes))
-    print(paste('coljust: ', paste(coljust,collapse=', ')))
-    print(paste('collabls: ',paste(collabls,collapse='|')))
-    print(paste0('rpp: ',rpp))
-    print(paste('spanlbls: ', spanlbls))
-    print(paste('spanwidths: ', paste(spanwidths,collapse=', ')))
-    print(paste('spanjust: ', paste(spanjust,collapse=', ')))
-    print(paste('spanbbord: ', paste(spanbbord,collapse=', ')))
+    message(paste('columns: ',paste(columns,collapse=', ')))
+    message(paste('noprintvars: ',paste(noprintvars,collapse=', ')))
+    message(paste('grpvars: ',paste(grpvars,collapse=', ')))
+    message(paste('pagevars: ', paste(pagevars,collapse=', ')))
+    message(paste('pgvar: ', paste(pgvar,collapse=', ')))
+    message(paste('newpage: ', paste(newpage,collapse=', ')))
+    message(paste('widths: ' ,paste(widths,collapse=', ')))
+    message(paste('widths2: ' ,paste(widths2,collapse=', ')))
+    message(paste('ncols1: ', ncols1))
+    message(paste('ncols2: ', ncols2))
+    message(paste('ntitles: ', ntitles))
+    message(paste('nftnotes: ', nftnotes))
+    message(paste('coljust: ', paste(coljust,collapse=', ')))
+    message(paste('collabls: ',paste(collabls,collapse='|')))
+    message(paste0('rpp: ',rpp))
+    message(paste('spanlbls: ', spanlbls))
+    message(paste('spanwidths: ', paste(spanwidths,collapse=', ')))
+    message(paste('spanjust: ', paste(spanjust,collapse=', ')))
+    message(paste('spanbbord: ', paste(spanbbord,collapse=', ')))
   }
 
   if (is.null(pgvar) && is.null(pagevars)){rpp <- rpp-1}
@@ -1408,6 +1404,6 @@ ru_list <- function(dsetin,                               ## Input domain datase
     }
   }
 
-  if (G_DEBUG>0) print(paste0("RU_LIST: ", "End of RU_LIST"))
+  if (G_DEBUG>0) message(paste0("RU_LIST: ", "End of RU_LIST"))
   return(invisible(NULL))
 }

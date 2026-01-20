@@ -29,19 +29,20 @@
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir");
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
-#' repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
+#' rfenv <- repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
 #'                  D_SUBJID=c("STUDYID","USUBJID"),
 #'                  R_DICTION=NULL,
 #'                  R_OTHERDATA=NULL,
 #'                  R_INPUTDATA=NULL,
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
-#'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=
+#'                  R_ADAMDATA=datdir,
+#'                  RetEnv=TRUE)
+#' G_POPDATA <- rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=
 #'                                          ifelse(TRT01A=='Placebo',1,
 #'                                          ifelse(TRT01A=='Xanomeline Low Dose',2,3)))
 #' attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
-#' adae <- tibble::as_tibble(repfun:::rfenv$adamdata$adae.rda()) %>%
+#' adae <- tibble::as_tibble(rfenv$adamdata$adae.rda()) %>%
 #'         dplyr::inner_join(G_POPDATA,
 #'                           by=c('STUDYID','USUBJID','SAFFL','TRT01A')) %>%
 #'         dplyr::filter(TRTEMFL=='Y')
@@ -74,8 +75,6 @@ ru_addbignvar <- function (dsetintoaddbign,
                            addbigntovarvalue=TRUE,
                            splitchar=" ") {
 
-  #print(paste0("RU_ADDBIGNVAR: ", "Start of RU_ADDBIGNVAR"))
-
   bignvarname <- "tt_bnnm"
   df_sub_2 <- ru_freq(dsetintocount, dsetindenom=NULL, countdistinctvars=countdistinctvars, groupbyvarsnumer=groupbyvars,
                       groupbyvarsdenom=NULL, resultstyle="NUMER", totalforvar=totalforvar, totalid=totalid, totaldecode=totaldecode,
@@ -93,7 +92,6 @@ ru_addbignvar <- function (dsetintoaddbign,
   this_labels <- lapply(dsetintoaddbign,function(x){attr(x,"label")})
   this_labels[["tt_bnnm"]] <- "N"
   df_out <- ru_labels(df_out, this_labels)
-  #print(paste0("RU_ADDBIGNVAR: ", "End or RU_ADDBIGNVAR"))
 
   as.data.frame(df_out)
 }

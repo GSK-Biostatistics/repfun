@@ -28,7 +28,8 @@ test_that("producing RTFs works", {
       D_SUBJID=c("STUDYID","USUBJID"),
       D_TITLE1=paste0('Table ',tlfid,': Summary of Treatment Emergent Adverse Events'),
       R_DDDATA=paste0(tmpdr,'/t_ru_list_',tlfid,'.rds'),
-      R_ADAMDATA=".")
+      R_ADAMDATA=".",
+      D_DEBUG=1)
   }
 
   #============================================
@@ -253,6 +254,25 @@ test_that("producing RTFs works", {
      fsize <- file.size(figfil)/1024
   } else {
      fsize <- 0
+  }
+
+  if (fsize > 5) {fsize <- 1}
+
+  testthat::expect_equal(1,fsize)
+
+  #====================================================================================
+  # Test 5: Generate figure using ru_list.  Check for size and existence of rtf file.
+  #====================================================================================
+  setup(5)
+  myplot <- ggplot(iris, aes(Sepal.Length, Sepal.Width)) + geom_point()
+  repfun::ru_list(dsetin=myplot,
+                  dddatasetlabel='DD Dataframe for Figure 4')
+
+  figfil <- paste0(tmpdr,"/t_ru_list_5.rtf")
+  if (file.exists(figfil)){
+    fsize <- file.size(figfil)/1024
+  } else {
+    fsize <- 0
   }
 
   if (fsize > 5) {fsize <- 1}

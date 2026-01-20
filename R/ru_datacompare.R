@@ -19,20 +19,16 @@
 #' @export
 #'
 ru_datacompare <- function (dsetinbase, dsetincomp, idvars, maxprint=50) {
-  #print(paste0("RU_DATACOMPARE: ", "Start of RU_DATACOMPARE"))
-  #suppressMessages(require(dplyr))
   rtn <- list()
   # Check if column names match
   col_diff_1 <- dplyr::setdiff(names(dsetinbase), names(dsetincomp))
   if (length(col_diff_1) > 0) {
-    cat("Columns in BASE, but not in COMP:\n")
-    print(col_diff_1)
+    #cat("Columns in BASE, but not in COMP:\n")
   }
 
   col_diff_2 <- dplyr::setdiff(names(dsetincomp), names(dsetinbase))
   if (length(col_diff_2) > 0) {
-    cat("Columns in COMP, but not in BASE:\n")
-    print(col_diff_2)
+    #cat("Columns in COMP, but not in BASE:\n")
   }
 
   rtn <- base::append(rtn, list(
@@ -54,8 +50,7 @@ ru_datacompare <- function (dsetinbase, dsetincomp, idvars, maxprint=50) {
   # Report differing column types
   type_diff <- type_diff[!is.na(type_diff)]
   if (length(type_diff) > 0) {
-    cat("\nDifferent column types:\n")
-    print(type_diff)
+    #cat("\nDifferent column types:\n")
   }
 
   # Check for factor level differences (if any column is a factor)
@@ -73,8 +68,7 @@ ru_datacompare <- function (dsetinbase, dsetincomp, idvars, maxprint=50) {
 
   factor_diff <- factor_diff[!sapply(factor_diff, is.null)]
   if (length(factor_diff) > 0) {
-    cat("\nDifferent factor levels:\n")
-    print(factor_diff)
+    #cat("\nDifferent factor levels:\n")
   }
 
   rtn <- base::append(rtn, list(
@@ -134,6 +128,5 @@ ru_datacompare <- function (dsetinbase, dsetincomp, idvars, maxprint=50) {
     }
   }
 
-  #print(paste0("RU_DATACOMPARE: ", "End of RU_DATACOMPARE"))
   return(rtn)
 }

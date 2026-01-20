@@ -24,7 +24,7 @@
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir")
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
-#' repfun::rs_setup(D_POP="SAFFL",
+#' rfenv <- repfun::rs_setup(D_POP="SAFFL",
 #'                  D_POPLBL="Safety",
 #'                  D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
 #'                  D_SUBJID=c("STUDYID","USUBJID"),
@@ -33,12 +33,13 @@
 #'                  R_INPUTDATA=NULL,
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
-#'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=
+#'                  R_ADAMDATA=datdir,
+#'                  RetEnv=TRUE)
+#' G_POPDATA <- rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=
 #'                      ifelse(TRT01A=='Placebo',1,
 #'                      ifelse(TRT01A=='Xanomeline Low Dose',2,3)))
 #' attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
-#' adae <- repfun:::rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>%
+#' adae <- rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL) %>%
 #'         repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"),
 #'         keeppopvars=c("TRT01AN", "TRT01A"))
 #' aesum_t <- repfun::ru_freq(adae,
@@ -70,7 +71,7 @@
 #' #===========================
 #' # Baseline Characteristics
 #' #===========================
-#' repfun::rs_setup(D_POP="SAFFL",
+#' rfenv <- repfun::rs_setup(D_POP="SAFFL",
 #'                  D_POPLBL="Safety",
 #'                  D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
 #'                  D_SUBJID=c("STUDYID","USUBJID"),
@@ -79,8 +80,9 @@
 #'                  R_INPUTDATA=NULL,
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
-#'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+#'                  R_ADAMDATA=datdir,
+#'                  RetEnv=TRUE)
+#' G_POPDATA <- rfenv$G_POPDATA %>%
 #'              dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'                             ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
 #'   repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
@@ -112,8 +114,6 @@ ru_align <- function (dsetin,
                       alignment="Right",
                       compresschryn="Y",
                       ncspaces=1) {
-
-  #if (G_DEBUG>0) print(paste0("RU_ALIGN: ", "Start or RU_ALIGN"))
 
   if (nrow(dsetin) < 1) return(as.data.frame(dsetin))
   alignment <- tolower(alignment)
@@ -179,7 +179,6 @@ ru_align <- function (dsetin,
 
     # d.all_rows <- ru_fillna(d.all_rows)
     d.width.1 <- merge(x = d.width, y = d.all_rows, by = c("seq__"), all.x = TRUE, all.y=TRUE)
-    # print(d.width.1)
     if (nobyvars) selectvars.1 <- c("seq__", v.this.var)
     else selectvars.1 <- c(byvars, "seq__", v.this.var)
     d.width.1 <- d.width.1 %>% dplyr::mutate(var__=ifelse(! is.na(w1__) & w1__ > 0, stringr::str_pad(p1__, w1__, "left"), ""),
@@ -197,8 +196,5 @@ ru_align <- function (dsetin,
   d.out <- merge(x = dsetin.1, y = d.out, by = c(byvars, "seq__"), all.x = TRUE, all.y=FALSE) %>% dplyr::select(-seq__)
   #d.out <- ru_labels(d.out, base::labels(dsetin))
   d.out <- ru_labels(d.out, lapply(dsetin,function(x){attr(x,"label")}))
-
-  #if (G_DEBUG>0) print(paste0("RU_ALIGN: ", "End of RU_ALIGN"))
-
   return(as.data.frame(d.out))
 }

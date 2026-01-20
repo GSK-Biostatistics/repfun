@@ -22,7 +22,6 @@
 #' @export
 #'
 ru_libname <- function(datapath) {
-  #print(paste0("RU_LIBNAME: ", "Start or RU_LIBNAME"))
   data_list <- list()
   dataname_list <- list()
   datasets <- list.files(path=datapath, pattern="\\.sas7bdat$")
@@ -98,7 +97,7 @@ ru_libname <- function(datapath) {
     }
     this_list <- get(this_list_name)
     if (! (this_name%in% names(this_list))){
-      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <<- function(x=",
+      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <- function(x=",
                                base::toString(shQuote(this_full_name)), ") { haven::read_xpt(x) }")
       base::eval(base::parse(text=this_statement))
     }
@@ -114,7 +113,7 @@ ru_libname <- function(datapath) {
     base::saveRDS(dsetin, file = this_full_name, compress = TRUE)
     this_list <- get(this_list_name)
     if (! (this_name%in% names(this_list))){
-      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <<- function(x=",
+      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <- function(x=",
                                base::toString(shQuote(this_full_name)), ") { base::readRDS(x) }")
       base::eval(base::parse(text=this_statement))
     }
@@ -129,7 +128,7 @@ ru_libname <- function(datapath) {
     base::save(dsetin, file = this_full_name, compress = "bzip2")
     this_list <- get(this_list_name)
     if (! (this_name%in% names(this_list))){
-      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <<- function(x=",
+      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <- function(x=",
                                base::toString(shQuote(this_full_name)), ") { base::load(x) }")
       base::eval(base::parse(text=this_statement))
     }
@@ -144,7 +143,7 @@ ru_libname <- function(datapath) {
     jsonlite::write_json(dsetin, this_full_name, pretty = TRUE)
     this_list <- get(this_list_name)
     if (! (this_name%in% names(this_list))){
-      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <<- function(x=",
+      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <- function(x=",
                                base::toString(shQuote(this_full_name)), ") { jsonlite::fromJSON(x) }")
       base::eval(base::parse(text=this_statement))
     }
@@ -159,7 +158,7 @@ ru_libname <- function(datapath) {
     arrow::write_parquet(dsetin, this_full_name)
     this_list <- get(this_list_name)
     if (! (this_name%in% names(this_list))){
-      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <<- function(x=",
+      this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <- function(x=",
                                base::toString(shQuote(this_full_name)), ") { arrow::read_parquet(x) }")
       base::eval(base::parse(text=this_statement))
     }
@@ -180,7 +179,7 @@ ru_libname <- function(datapath) {
           if (file.exists(this_full_name)) {
             file.remove(this_full_name)
           }
-          this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <<- NULL")
+          this_statement <- paste0(this_list_name, "[[", shQuote(this_name), "]] <- NULL")
           base::eval(base::parse(text=this_statement))
         }
       }

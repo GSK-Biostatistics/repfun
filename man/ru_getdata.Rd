@@ -42,7 +42,7 @@ dir.create(outdir,showWarnings=FALSE)
 fmtdir <- file.path(gsub("\\\\","/",tempdir(),fixed=TRUE),"fmtdir")
 dir.create(fmtdir,showWarnings=FALSE)
 repfun::copydata(datdir)
-repfun::rs_setup(D_POP="SAFFL",
+rfenv <- repfun::rs_setup(D_POP="SAFFL",
                  D_POPLBL="Safety",
                  D_POPDATA=repfun::adsl,
                  D_SUBJID=c("STUDYID","USUBJID"),
@@ -51,14 +51,15 @@ repfun::rs_setup(D_POP="SAFFL",
                  R_INPUTDATA=NULL,
                  R_RAWDATA=NULL,
                  R_SDTMDATA=NULL,
-                 R_ADAMDATA=datdir)
-G_POPDATA <- repfun:::rfenv$G_POPDATA \%>\%
+                 R_ADAMDATA=datdir,
+                 RetEnv=TRUE)
+G_POPDATA <- rfenv$G_POPDATA \%>\%
   dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
                  ifelse(TRT01A=='Xanomeline Low Dose',2,3)),
          SAFFL=ifelse((row_number() \%\% 10) == 0,'N',SAFFL))
 attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
 attr(G_POPDATA$SAFFL,"label") <- 'Safety Population Flag'
-adae <- repfun:::rfenv$adamdata$adae.rda() \%>\% dplyr::select(-SAFFL)
+adae <- rfenv$adamdata$adae.rda() \%>\% dplyr::select(-SAFFL)
 adae2 <- repfun::ru_getdata(adae, G_POPDATA, c("STUDYID", "USUBJID"),
                     keeppopvars=c("TRT01AN", "TRT01A"))
 

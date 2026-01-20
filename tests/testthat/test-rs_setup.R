@@ -10,7 +10,7 @@ test_that("environment setup works", {
   #======================
   tmpdr <- tempdir()
   suppressMessages(
-    repfun::rs_setup(
+    rfchk <- repfun::rs_setup(
       D_CENTID="SITEID",
       D_DATADATE=Sys.Date(),
       D_DSPLYNUM=1,
@@ -37,7 +37,8 @@ test_that("environment setup works", {
       R_SDTMDATA=".",
       R_ADAMDATA=".",
       D_RTFYN="Y",
-      D_DEBUG=0)
+      D_DEBUG=1,
+      RetEnv=TRUE)
   )
 
   #=========================================================

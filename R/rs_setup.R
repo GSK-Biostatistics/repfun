@@ -45,6 +45,7 @@
 #' @param D_USERID User name.
 #' @param D_RTFYN Y or N to generate RTf output.
 #' @param D_DEBUG Level of debugging to show in log files.
+#' @param RetEnv Return environment variable containing current settings.
 #'
 #' @return 'NULL' because variables defined for use with the reporting tools.
 #'
@@ -136,7 +137,8 @@ rs_setup <- function(
     D_FOOT9=NULL,
     D_USERID=Sys.getenv("USERNAME"),
     D_RTFYN="N",
-    D_DEBUG=0
+    D_DEBUG=0,
+    RetEnv=FALSE
 ) {
 
   #==============================
@@ -337,5 +339,9 @@ rs_setup <- function(
        }
     }
   }
-  return(invisible(NULL))
+  if (RetEnv){
+      return(rfenv)
+  } else{
+      return(invisible(NULL))
+  }
 }

@@ -38,19 +38,20 @@
 #' fmtdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"fmtdir")
 #' dir.create(fmtdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
-#' repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
+#' rfenv <- repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
 #'                  D_SUBJID=c("STUDYID","USUBJID"),
 #'                  R_DICTION=NULL,
 #'                  R_OTHERDATA=NULL,
 #'                  R_INPUTDATA=NULL,
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
-#'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+#'                  R_ADAMDATA=datdir,
+#'                  RetEnv=TRUE)
+#' G_POPDATA <- rfenv$G_POPDATA %>%
 #'   dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'                  ifelse(TRT01A=='Xanomeline Low Dose',2,3)))
 #' attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
-#' adae <- repfun:::rfenv$adamdata$adae.rda() %>%
+#' adae <- rfenv$adamdata$adae.rda() %>%
 #'   dplyr::inner_join(G_POPDATA, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
 #' aesum <- repfun::ru_freq(adae,
 #'                  dsetindenom=G_POPDATA,
@@ -76,8 +77,6 @@ ru_freq <- function (dsetin, dsetindenom=NULL, countdistinctvars=NULL, groupbyva
                      codedecodevarpairs=NULL, varcodelistpairs=NULL, codelistnames=list(),
                      groupminmaxvar=NULL, resultpctdps=0) {
 
-  #print(paste0("RU_FREQ: ", "Start of RU_FREQ"))
-
   resultvarname <- "tt_result"
   resultstyle <- toupper(resultstyle)
 
@@ -94,7 +93,6 @@ ru_freq <- function (dsetin, dsetindenom=NULL, countdistinctvars=NULL, groupbyva
     anyeventvars <-base::intersect(str_groupbyvarsnumer, anyeventvars)
   }
 
-  #print(paste0("RU_FREQ: ", "Check GROUPBYVARSDENOM"))
   if (is.null(str_groupbyvarsdenom) || str_groupbyvarsdenom[1] == "") {
     if (is.null(countdistinctvars) || countdistinctvars[1] == "") {v_vars2 <- ""}
     else {v_vars2 <- c(countdistinctvars)}
@@ -107,7 +105,6 @@ ru_freq <- function (dsetin, dsetindenom=NULL, countdistinctvars=NULL, groupbyva
   }
   v_vars2 <- unlist(v_vars2)
 
-  #print(paste0("RU_FREQ: ", "Calculate Denorm"))
   if (is.null(countdistinctvars) || countdistinctvars[1] == "") {
     df_sub_2 <- this_dsetindenom
   } else {
@@ -144,13 +141,13 @@ ru_freq <- function (dsetin, dsetindenom=NULL, countdistinctvars=NULL, groupbyva
         df_sub_1 <- dsetin
       } else {
         if (toupper(str_minmaxvar[1]) == "MIN") {
-          df_sub_1 <- df_dsetin %>% 
+          df_sub_1 <- df_dsetin %>%
             dplyr::arrange(!! rlang::sym(str_minmaxvar[2])) %>%
-            dplyr::slice_head(n=1) 
+            dplyr::slice_head(n=1)
         } else {
-          df_sub_1 <- df_dsetin %>% 
+          df_sub_1 <- df_dsetin %>%
             dplyr::arrange(!! rlang::sym(str_minmaxvar[2])) %>%
-            dplyr::slice_tail(n=1) 
+            dplyr::slice_tail(n=1)
         }
       }
     } else {
@@ -219,6 +216,5 @@ ru_freq <- function (dsetin, dsetindenom=NULL, countdistinctvars=NULL, groupbyva
     this_labels <- lapply(dsetin[, this_vars],function(x){attr(x,"label")})
     df_all_3 <- ru_labels(df_all_3, this_labels)
   }
-  #print(paste0("RU_FREQ: ", "End of RU_FREQ"))
   return(df_all_3)
 }

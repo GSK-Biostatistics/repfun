@@ -21,7 +21,6 @@
 #' @export
 #'
 ru_addsupp <- function(dsetin, dsetinsupp) {
-  #message("RU_ADDSUPP: Start of RU_ADDSUPP")
   # Get unique QNAM values
   s_qnames <- unique(dsetinsupp$QNAM)
   d_dsetout <- dsetin
@@ -56,7 +55,6 @@ ru_addsupp <- function(dsetin, dsetinsupp) {
 
       if (nrow(d_dup_rows) > 0) {
         message(paste0("Duplicate rows found for QNAM=", qname, " and IDVAR=", idvar))
-        print(d_dup_rows[this_byvars])
       }
       # Merge with main dataset
       d_dsetout <- dplyr::left_join(d_dsetout, d_suppid, by = this_byvars) %>%

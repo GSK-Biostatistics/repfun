@@ -24,7 +24,7 @@
 #' fmtdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"fmtdir")
 #' dir.create(fmtdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
-#' repfun::rs_setup(D_POP="SAFFL",
+#' rfenv <- repfun::rs_setup(D_POP="SAFFL",
 #'                  D_POPLBL="Safety",
 #'                  D_POPDATA=repfun::adsl,
 #'                  D_SUBJID=c("STUDYID","USUBJID"),
@@ -33,14 +33,15 @@
 #'                  R_INPUTDATA=NULL,
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
-#'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+#'                  R_ADAMDATA=datdir,
+#'                  RetEnv=TRUE)
+#' G_POPDATA <- rfenv$G_POPDATA %>%
 #'   dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'                  ifelse(TRT01A=='Xanomeline Low Dose',2,3)),
 #'          SAFFL=ifelse((row_number() %% 10) == 0,'N',SAFFL))
 #' attr(G_POPDATA$TRT01AN,"label") <- 'Actual Treatment for Period 01 (n)'
 #' attr(G_POPDATA$SAFFL,"label") <- 'Safety Population Flag'
-#' adae <- repfun:::rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL)
+#' adae <- rfenv$adamdata$adae.rda() %>% dplyr::select(-SAFFL)
 #' adae2 <- repfun::ru_getdata(adae, G_POPDATA, c("STUDYID", "USUBJID"),
 #'                     keeppopvars=c("TRT01AN", "TRT01A"))
 #'
@@ -52,8 +53,6 @@ ru_getdata <- function(dsetin,
                        subpop=rfenv$G_SUBPOP,
                        pop=rfenv$G_POP,
                        keeppopvars=rfenv$G_KEEPPOPVARS) {
-  #print(paste0("RU_GETDATA: ", "Start or RU_GETDATA"))
-
   rfenv$an.error.occured <- FALSE
   tryCatch( { force(dsetinpop) }
             , error = function(e) {rfenv$an.error.occured <- TRUE})
@@ -88,7 +87,6 @@ ru_getdata <- function(dsetin,
   }
 
   if (!is.null(subpop)) {
-    # print(paste0("base::subset(df_pop_data,", substitute(subpop), ")"))
     df_pop_data <- eval(parse(text=paste0("base::subset(df_pop_data,", substitute(subpop), ")")))
   }
 
@@ -98,9 +96,6 @@ ru_getdata <- function(dsetin,
     var_pop_vars <- base::unique(c(unlist(subjidvars), unlist(var_pop_vars)))
     df_pop_data <- df_pop_data %>% dplyr::select(dplyr::all_of(var_pop_vars))
     df_gdata <- base::merge(df_gdata, df_pop_data, by=subjidvars, all.x=FALSE, all.y=FALSE)
-
-    #df_gdata <- ru_labels(df_gdata, base::labels(dsetin))
-    #df_gdata <- ru_labels(df_gdata, base::labels(df_pop_data))
 
     df_gdata <- ru_labels(df_gdata, lapply(dsetin,function(x){attr(x,"label")}))
     df_gdata <- ru_labels(df_gdata, lapply(df_pop_data,function(x){attr(x,"label")}))

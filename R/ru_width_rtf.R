@@ -18,20 +18,21 @@
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir");
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
-#' repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
+#' rfenv <- repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
 #'          D_SUBJID=c("STUDYID","USUBJID"),
 #'          R_DICTION=NULL,
 #'          R_OTHERDATA=NULL,
 #'          R_INPUTDATA=NULL,
 #'          R_RAWDATA=NULL,
 #'          R_SDTMDATA=NULL,
-#'          R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+#'          R_ADAMDATA=datdir,
+#'          RetEnv=TRUE)
+#' G_POPDATA <- rfenv$G_POPDATA %>%
 #'     dplyr::mutate(
 #'          TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'                  ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
 #'     repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
-#' adae <- repfun:::rfenv$adamdata$adae.rda() %>%
+#' adae <- rfenv$adamdata$adae.rda() %>%
 #'         dplyr::inner_join(G_POPDATA, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
 #' aesum_p <- repfun::ru_freq(adae,
 #'                    dsetindenom=G_POPDATA,
@@ -69,8 +70,6 @@
 #' @export
 #'
 ru_width_rtf <- function (dsetin, varsin=list(), widths=list(), type="PCT") {
-
-  #if (G_DEBUG>0) print(paste0("RU_WIDTH_RTF: ", "Start of RU_WIDTH_RTF"))
 
   n.totalwidth <- 0
   n.totaldefaultwidth <- 0
@@ -111,7 +110,6 @@ ru_width_rtf <- function (dsetin, varsin=list(), widths=list(), type="PCT") {
     if (i == 1) n.widths <- n.this_width
     else n.widths <- c(n.widths, n.this_width)
   }
-  #print(c("RU_WIDTH_RTF: TYPE: ", type))
   if (base::toupper(type) == "PCT") {
     for (k in 1:length(n.widths)) {
       if (n.totaldefaultwidth >= n.totalwidth ) {
@@ -129,6 +127,5 @@ ru_width_rtf <- function (dsetin, varsin=list(), widths=list(), type="PCT") {
     n.widths.1 <- n.widths
   }
   names(n.widths.1) <- varsin
-  #if (G_DEBUG>0) print(paste0("RU_WIDTH_RTF: ", "End of RU_WIDTH_RTF"))
   return(n.widths.1)
 }

@@ -18,8 +18,6 @@
 #' @export
 #'
 ru_contents <- function (dsetin) {
-  #print(paste0("RU_CONTENTS: ", "Start of RU_CONTENTS"))
-
   if (typeof(dsetin) == "character") {
     if (base::file.exists(dsetin) && ! base::dir.exists(dsetin)) {
       df.1 <- haven::read_sas(dsetin)
@@ -31,7 +29,7 @@ ru_contents <- function (dsetin) {
         Created=f_info$ctime,
         LastModified=f_info$mtime,
         Label=ifelse(is.null(base::attr(df.1, "label")), "", base::attr(df.1, "label")),
-        Observatrions=nrow(df.1),
+        Observations=nrow(df.1),
         Variables=length(names(df.1)),
         FileName=as.character(dsetin),
         FileSize=paste0(round(f_info$size/(10^6), digits=1), " MB"),
@@ -42,8 +40,6 @@ ru_contents <- function (dsetin) {
     }
   } else {
 
-    print("MADE IT HERE ...")
-
     df.1 <- dsetin
     f.info <- NULL
     data_info <- list(
@@ -52,7 +48,7 @@ ru_contents <- function (dsetin) {
       Created=NA,
       LastModified=NA,
       Label=ifelse(is.null(base::attr(df.1, "label")), "", base::attr(df.1, "label")),
-      Observatrions=base::nrow(df.1),
+      Observations=base::nrow(df.1),
       Variables=length(names(df.1)),
       FileName=deparse(substitute(dsetin)),
       FileSize=paste0(round(utils::object.size(dsetin)/(10^6), digits=0), " MB"),
@@ -66,7 +62,7 @@ ru_contents <- function (dsetin) {
     Created="Created",
     LastModified="Last Modified",
     Label="Label",
-    Observatrions="Observations",
+    Observations="Observations",
     Variables="Variables",
     FileName="Filename",
     FileSize="File Size",
@@ -82,7 +78,6 @@ ru_contents <- function (dsetin) {
   })
 
   base::names(s_data_info) <- NULL
-  base::cat("\n", s_data_info)
 
   n_nobs <- base::nrow(df.1)
   s_names <- base::names(df.1)
@@ -112,9 +107,6 @@ ru_contents <- function (dsetin) {
   names(s_var_info_1) <- NULL
 
   fmt_str <- base::sprintf("\n\n%-4s %-10s%-11s%-3s %-12s%-12s%-50s\n", "  ", "Variable", "Type", "Len", "Class", "Format", "Label")
-  base::cat(fmt_str)
-  base::cat("\n", s_var_info_1)
 
-  #print(paste0("RU_CONTENTS: ", "End of RU_CONTENTS"))
-  return(invisible(NULL))
+  return(list('s_data_info'=s_data_info,'fmt_str'=fmt_str,'s_var_info_1'=s_var_info_1))
 }

@@ -1,5 +1,13 @@
 # cran-comments.md
 
+## Second Resubmission updates
+
+* Second Revised CRAN submission.
+* FIXED: Examples with unexported functions.
+* FIXED: Stopped writing to the console. Instead create object and return it. 
+* FIXED: Stopped writing to the global environment. Removed all instances of "<<" in R code.
+* FIXED: Stopped installing packages within all R code.  
+
 ## Resubmission updates
 
 * FIXED Possibly misspelled words in DESCRIPTION
@@ -32,7 +40,7 @@ There are currently no reverse dependencies for this package.
 
 ## Submission
 
-This is the first resubmission.
+This is the second resubmission.
 
 
 Thank you very much in advance,

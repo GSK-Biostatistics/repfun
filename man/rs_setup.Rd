@@ -48,7 +48,8 @@ rs_setup(
   D_FOOT9 = NULL,
   D_USERID = Sys.getenv("USERNAME"),
   D_RTFYN = "N",
-  D_DEBUG = 0
+  D_DEBUG = 0,
+  RetEnv = FALSE
 )
 }
 \arguments{
@@ -139,6 +140,8 @@ rs_setup(
 \item{D_RTFYN}{Y or N to generate RTf output.}
 
 \item{D_DEBUG}{Level of debugging to show in log files.}
+
+\item{RetEnv}{Return environment variable containing current settings.}
 }
 \value{
 'NULL' because variables defined for use with the reporting tools.

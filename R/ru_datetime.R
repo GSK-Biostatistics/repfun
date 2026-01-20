@@ -20,8 +20,6 @@
 #' @export
 #'
 ru_datetime <- function (dsetin, includevars=NULL) {
-  #suppressMessages(require(dplyr))
-  #print(paste0("RU_DATETIME: ", "Start or RU_DATETIME"))
   s_names <- base::names(dsetin)
   if (is.character(includevars) && all(grepl("^ *$", includevars))) includevars <- NULL
   s_datecolnames <- NULL

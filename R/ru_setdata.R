@@ -17,8 +17,6 @@
 #' @export
 #'
 ru_setdata <- function (..., keeprownames = TRUE) {
-  #print(paste0("RU_SETDATA: ", "Start of RU_SETDATA"))
-  #suppressMessages(require(dplyr))
   argg <- c(as.list(environment()), list(...))
   for (i in 2:length(argg)) {
     this.data <- argg[[i]] %>% dplyr::mutate(seq___ := !! i, seq2___=dplyr::row_number())

@@ -31,15 +31,16 @@
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir");
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
-#' rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
+#' rfenv <- repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
 #'          D_SUBJID=c("STUDYID","USUBJID"),
 #'          R_DICTION=NULL,
 #'          R_OTHERDATA=NULL,
 #'          R_INPUTDATA=NULL,
 #'          R_RAWDATA=NULL,
 #'          R_SDTMDATA=NULL,
-#'          R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>% dplyr::mutate(
+#'          R_ADAMDATA=datdir,
+#'          RetEnv=TRUE)
+#' G_POPDATA <- rfenv$G_POPDATA %>% dplyr::mutate(
 #'    TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'            ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
 #'            ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
@@ -69,8 +70,6 @@ ru_sumstats <- function (dsetin, analysisvars=NULL,
                          totalid=NULL,
                          totaldecode=c('Total')
 ) {
-
-  if (rfenv$G_DEBUG>0) {print(paste0("RU_SUMSTATS: ", "Start or RU_SUMSTATS"))}
 
   if (is.null(analysisvars)) analysisvars <- NA
 
@@ -323,7 +322,7 @@ ru_sumstats <- function (dsetin, analysisvars=NULL,
       }
     }
 
-    if (rfenv$G_DEBUG>0) {print(paste0("RU_SUMSTATS: ", "Fill missing categories"))}
+    if (rfenv$G_DEBUG>0) {message(paste0("RU_SUMSTATS: ", "Fill missing categories"))}
     if ("n" %in% base::names(df_sumall_1))  {
       #message('MADE IT HERE ... 2')
       df_sumall_1 <- ru_fillcodedcode(df_sumall_1, codedecodevarpairs=codedecodevarpairs, varcodelistpairs=varcodelistpairs,
@@ -348,7 +347,7 @@ ru_sumstats <- function (dsetin, analysisvars=NULL,
     }
 
     if (toupper(statsinrowsyn) == "Y") {
-      if (rfenv$G_DEBUG>0) {print(paste0("RU_SUMSTATS: ", "Transform summary results from column to rows"))}
+      if (rfenv$G_DEBUG>0) {message(paste0("RU_SUMSTATS: ", "Transform summary results from column to rows"))}
       for (i in 1:length(str_ori_statslist)) {
         df_sumall_1.1 <- dplyr::mutate(df_sumall_1, tt_svid=!! i, tt_svnm=!!  unlist(l.statslabels[str_ori_statslist[i]]),
                                        tt_result := !! unlist(df_sumall_1[str_ori_statslist_c[i]]), tt_result_num := !! unlist(df_sumall_1[str_ori_statslist[i]]))
@@ -362,7 +361,7 @@ ru_sumstats <- function (dsetin, analysisvars=NULL,
         else {df_sumall_2 <- rbind(df_sumall_2, df_sumall_1.2)}
       }
     } else {
-      if (rfenv$G_DEBUG>0) {print(paste0("RU_SUMSTATS: ", "Add tt_avid and tt_avnm"))}
+      if (rfenv$G_DEBUG>0) {message(paste0("RU_SUMSTATS: ", "Add tt_avid and tt_avnm"))}
       if (is.null(groupbyvars) || is.na(groupbyvars[1]) || groupbyvars[1] == "") {
         df_sumall_2 <- dplyr::select(df_sumall_1, dplyr::all_of(c(str_ori_statslist, str_ori_statslist_c))) %>% dplyr::mutate(tt_avid=!! j, tt_avnm=!! str_this_label)
       } else {
@@ -384,6 +383,5 @@ ru_sumstats <- function (dsetin, analysisvars=NULL,
     this_labels <- lapply(dsetin[, this_vars],function(x){attr(x,"label")})
     df_sumall <- ru_labels(df_sumall, this_labels)
   }
-  if (rfenv$G_DEBUG>0) {print(paste0("RU_SUMSTATS: ", "End of RU_SUMSTATS"))}
   df_sumall
 }

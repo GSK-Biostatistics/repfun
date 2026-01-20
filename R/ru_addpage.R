@@ -25,19 +25,20 @@
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir");
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
-#' repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
+#' rfenv <- repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
 #'                  D_SUBJID=c("STUDYID","USUBJID"),
 #'                  R_DICTION=NULL,
 #'                  R_OTHERDATA=NULL,
 #'                  R_INPUTDATA=NULL,
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
-#'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+#'                  R_ADAMDATA=datdir,
+#'                  RetEnv=TRUE)
+#' G_POPDATA <- rfenv$G_POPDATA %>%
 #'  dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'                 ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
 #'  repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 001 (n)'))
-#' adae <- repfun:::rfenv$adamdata$adae.rda() %>%
+#' adae <- rfenv$adamdata$adae.rda() %>%
 #'         dplyr::inner_join(G_POPDATA, by=c('STUDYID','USUBJID','SAFFL','TRT01A'))
 #' aesum_t <- repfun::ru_freq(
 #'              adae,
@@ -99,12 +100,12 @@ ru_addpage <- function(dsetin,
   ## Count number of iterations.
   ##==============================
   if (rfenv$PAGING_ITERATIONS>200){
-      if (rfenv$G_DEBUG>0) {print('***** MAXIMUM NUMBER OF PAGING ITERATIONS REACHED (200).  REQUEST DOES NOT FIT ON A PAGE.  HINT: REMOVE NOWIDOWVAR. *****')}
+      #if (rfenv$G_DEBUG>0) {# ***** MAXIMUM NUMBER OF PAGING ITERATIONS REACHED (200).  REQUEST DOES NOT FIT ON A PAGE. HINT: REMOVE NOWIDOWVAR. *****}
       return(dsetin)
   } else {
       rfenv$PAGING_ITERATIONS <- rfenv$PAGING_ITERATIONS + 1
       if (rfenv$PAGING_ITERATIONS>200){
-        if (rfenv$G_DEBUG>0) {print('***** MAXIMUM NUMBER OF PAGING ITERATIONS REACHED (200).  REQUEST DOES NOT FIT ON A PAGE. HINT: NOWIDOWVAR HAS BEEN DISABLED. *****')}
+        #if (rfenv$G_DEBUG>0) {# ***** MAXIMUM NUMBER OF PAGING ITERATIONS REACHED (200).  REQUEST DOES NOT FIT ON A PAGE. HINT: NOWIDOWVAR HAS BEEN DISABLED. *****}
         dsetin %>% select(-c(PAGEVAR,catid,catn,widow)) -> dsetin
         df <- repfun::ru_addpage(dsetin,
                          grpvars=grpvars,

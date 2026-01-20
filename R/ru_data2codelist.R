@@ -18,8 +18,8 @@
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir")
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
-#' repfun::rs_setup(R_RFMTDIR=datdir)
-#' list <- repfun::ru_data2codelist(repfun:::rfenv$rfmtdata$formats.rda())
+#' rfenv <- repfun::rs_setup(R_RFMTDIR=datdir,RetEnv=TRUE)
+#' list <- repfun::ru_data2codelist(rfenv$rfmtdata$formats.rda())
 #' list$SEXS$START[[1]] # Code value 1
 #' list$SEXS$LABEL[[1]] # Decode value 1
 #' list$SEXS$START[[2]] # Code value 2
@@ -32,7 +32,6 @@ ru_data2codelist <- function (dsetin,
                               codevarname="START",
                               decodevarname="LABEL",
                               typevarname="TYPE") {
-  #print(paste0("RU_DATA2CODELIST: ", "Start of RU_DATA2CODELIST"))
 
   # df_dsetin <- data.table::data.table(dsetin)
   # data.table::setkeyv(df_dsetin, codelistvarname)
