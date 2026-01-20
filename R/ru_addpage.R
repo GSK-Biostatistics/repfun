@@ -100,16 +100,12 @@ ru_addpage <- function(dsetin,
   ## Count number of iterations.
   ##==============================
   if (rfenv$PAGING_ITERATIONS>200){
-      if (rfenv$G_DEBUG>0) {
-           # ***** MAXIMUM NUMBER OF PAGING ITERATIONS REACHED (200).  REQUEST DOES NOT FIT ON A PAGE. HINT: REMOVE NOWIDOWVAR. *****
-        }
+      #if (rfenv$G_DEBUG>0) {# ***** MAXIMUM NUMBER OF PAGING ITERATIONS REACHED (200).  REQUEST DOES NOT FIT ON A PAGE. HINT: REMOVE NOWIDOWVAR. *****}
       return(dsetin)
   } else {
       rfenv$PAGING_ITERATIONS <- rfenv$PAGING_ITERATIONS + 1
       if (rfenv$PAGING_ITERATIONS>200){
-        if (rfenv$G_DEBUG>0) {
-             # ***** MAXIMUM NUMBER OF PAGING ITERATIONS REACHED (200).  REQUEST DOES NOT FIT ON A PAGE. HINT: NOWIDOWVAR HAS BEEN DISABLED. *****
-          }
+        #if (rfenv$G_DEBUG>0) {# ***** MAXIMUM NUMBER OF PAGING ITERATIONS REACHED (200).  REQUEST DOES NOT FIT ON A PAGE. HINT: NOWIDOWVAR HAS BEEN DISABLED. *****}
         dsetin %>% select(-c(PAGEVAR,catid,catn,widow)) -> dsetin
         df <- repfun::ru_addpage(dsetin,
                          grpvars=grpvars,

@@ -122,7 +122,7 @@ ru_denorm <- function (dsetin,
     dplyr::filter(dplyr::n() > 1) %>% dplyr::select(dplyr::all_of(c(groupbyvars, varstodenorm, acrossvar, acrossvarlabel)))
 
   if (nrow(df_check_1)) {
-    message("RTERROR: RU_DENORM: Duplicated records are found for each denominazation group")
+    #message("RTERROR: RU_DENORM: Duplicated records are found for each denominazation group")
     return()
   }
 
