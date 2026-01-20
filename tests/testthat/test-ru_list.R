@@ -260,6 +260,25 @@ test_that("producing RTFs works", {
 
   testthat::expect_equal(1,fsize)
 
+  #====================================================================================
+  # Test 5: Generate figure using ru_list.  Check for size and existence of rtf file.
+  #====================================================================================
+  setup(5)
+  myplot <- ggplot(iris, aes(Sepal.Length, Sepal.Width)) + geom_point()
+  repfun::ru_list(dsetin=myplot,
+                  dddatasetlabel='DD Dataframe for Figure 4')
+
+  figfil <- paste0(tmpdr,"/t_ru_list_5.rtf")
+  if (file.exists(figfil)){
+    fsize <- file.size(figfil)/1024
+  } else {
+    fsize <- 0
+  }
+
+  if (fsize > 5) {fsize <- 1}
+
+  testthat::expect_equal(1,fsize)
+
   unlink(tmpdr, recursive = TRUE)
 
 })
