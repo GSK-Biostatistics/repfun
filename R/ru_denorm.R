@@ -26,7 +26,7 @@
 #' datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir")
 #' dir.create(datdir,showWarnings=FALSE)
 #' repfun::copydata(datdir)
-#' repfun::rs_setup(D_POP="SAFFL",
+#' rfenv <- repfun::rs_setup(D_POP="SAFFL",
 #'                  D_POPLBL="Safety",
 #'                  D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
 #'                  D_SUBJID=c("STUDYID","USUBJID"),
@@ -35,12 +35,13 @@
 #'                  R_INPUTDATA=NULL,
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
-#'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+#'                  R_ADAMDATA=datdir,
+#'                  RetEnv=TRUE)
+#' G_POPDATA <- rfenv$G_POPDATA %>%
 #'   dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
 #'                  ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
 #'   repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
-#' adae <- repfun:::rfenv$adamdata$adae.rda() %>% select(-SAFFL) %>%
+#' adae <- rfenv$adamdata$adae.rda() %>% select(-SAFFL) %>%
 #'         repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"),
 #'                    keeppopvars=c("TRT01AN", "TRT01A"))
 #' aesum_t <- repfun::ru_freq(adae,
@@ -77,7 +78,7 @@
 #'                  R_RAWDATA=NULL,
 #'                  R_SDTMDATA=NULL,
 #'                  R_ADAMDATA=datdir)
-#' G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+#' G_POPDATA <- rfenv$G_POPDATA %>%
 #'               dplyr::mutate(TRT01AN=
 #'                      ifelse(TRT01A=='Placebo',1,
 #'                      ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
@@ -106,10 +107,6 @@ ru_denorm <- function (dsetin,
                        acrossvarprefix="tt_",
                        acrossvarsuffix=NULL) {
 
-  # print(paste0("RU_DENORM: ", "Start of RU_DENORM"))
-  # dsetin <- df_art.5; varstodenorm <- c("CMDECOD"); groupbyvars <- c("STUDYID", "USUBJID", "SVISIT");  acrossvar <- NULL
-  # acrossvarlabel <- NULL; acrossvarprefix <- "TT_AC"
-
   if (nrow(dsetin) == 0) {
     return(dsetin)
   }
@@ -125,8 +122,7 @@ ru_denorm <- function (dsetin,
     dplyr::filter(dplyr::n() > 1) %>% dplyr::select(dplyr::all_of(c(groupbyvars, varstodenorm, acrossvar, acrossvarlabel)))
 
   if (nrow(df_check_1)) {
-    print("RTERROR: RU_DENORM: Duplicated records are found for each denominazation group")
-    print(df_check_1)
+    message("RTERROR: RU_DENORM: Duplicated records are found for each denominazation group")
     return()
   }
 
@@ -140,7 +136,6 @@ ru_denorm <- function (dsetin,
     dplyr::arrange(!!! rlang::syms(c(acrossvar, acrossvarlabel))) %>%
     dplyr::mutate(name__ := base::paste(!!! glue::trim(rlang::syms(acrossvarlabel)), sep="~")) %>% dplyr::select("name__")
 
-  # print(var_thisacrossvar)
   for (i in 1:ncol(var_thisacrossvar)) {
     if (is.numeric(var_thisacrossvar[[i]])) this_len <- base::nchar(base::max(var_thisacrossvar[[i]], na.rm=TRUE))
     else this_len <- 0
@@ -190,6 +185,5 @@ ru_denorm <- function (dsetin,
   df_d1 <- ru_labels(df_d1, lapply(dsetin,function(x){attr(x,"label")}))
 
   df_dsetout <- as.data.frame(df_d1)
-  #print(paste0("RU_DENORM: ", "End of RU_DENORM"))
   return(df_dsetout)
 }

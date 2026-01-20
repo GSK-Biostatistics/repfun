@@ -34,7 +34,7 @@ ru_fillcodedcode <- function (dsetin,
                               codelistnames=list(),
                               groupbyvars=NULL,
                               completetypes=TRUE) {
-  if (rfenv$G_DEBUG>0) {print(paste0("RU_FILLCODEDECODE: ", "Start of RU_FILLCODEDECODE"))}
+  if (rfenv$G_DEBUG>0) {message(paste0("RU_FILLCODEDECODE: ", "Start of RU_FILLCODEDECODE"))}
 
   if (nrow(dsetin) < 1) return(as.data.frame(dsetin))
   df_out <- dsetin
@@ -160,7 +160,7 @@ ru_fillcodedcode <- function (dsetin,
         df_decode_1 <- dsetin %>% dplyr::select(dplyr::all_of(c(var_codevarname))) %>% dplyr::distinct()
 
       if (length(l_codelistnames) == 0 || var_this_codelistname == "") {
-        if (rfenv$G_DEBUG>0) {print(paste0("RU_FILLCODEDECODE: ", "Get Code-Decode Var Pair Values from Data. ", var_codevarname, "-", var_decodevarname))}
+        if (rfenv$G_DEBUG>0) {message(paste0("RU_FILLCODEDECODE: ", "Get Code-Decode Var Pair Values from Data. ", var_codevarname, "-", var_decodevarname))}
         if (var_decodevarname != var_codevarname) str_groupbydecodevars <- c(str_groupbydecodevars, var_decodevarname)
       } else {
         l_codelistname <- l_codelistnames[[var_this_codelistname]]
@@ -196,6 +196,6 @@ ru_fillcodedcode <- function (dsetin,
   #df_out <- ru_labels(df_out, base::labels(dsetin))
   df_out <- ru_labels(df_out, lapply(dsetin,function(x){attr(x,"label")}))
 
-  if (rfenv$G_DEBUG>0) {print(paste0("RU_FILLCODEDECODE: ", "End of RU_FILLCODEDECODE"))}
+  if (rfenv$G_DEBUG>0) {message(paste0("RU_FILLCODEDECODE: ", "End of RU_FILLCODEDECODE"))}
   return(as.data.frame(df_out))
 }

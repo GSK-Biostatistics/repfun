@@ -25,8 +25,6 @@
 #' @export
 #'
 ru_groupbyvars <- function(groupbyvars, codedecodevarpairs, adddecode=TRUE) {
-  #print(paste0("RU_GROUPBYVARS: ", "Start off RU_GROUPBYVARS"))
-
   s.groupbyvars1 <- NULL
   if (adddecode) {
     s.groupbyvars <- ru_groupbyvars(groupbyvars, codedecodevarpairs, adddecode = FALSE)
@@ -50,6 +48,5 @@ ru_groupbyvars <- function(groupbyvars, codedecodevarpairs, adddecode=TRUE) {
       else s.groupbyvars1 <- c(s.groupbyvars1, s.groupbyvar)
     }
   }
-  #print(paste0("RU_GROUPBYVARS: ", "End off RU_GROUPBYVARS"))
   s.groupbyvars1
 }

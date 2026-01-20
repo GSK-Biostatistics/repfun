@@ -255,7 +255,7 @@ dir.create(outdir,showWarnings=FALSE)
 # Set up the reporting environment.
 #===================================
 setup <- function(tlfid){
-  repfun::rs_setup(
+  myenv <- repfun::rs_setup(
     D_DATADATE=Sys.Date(),
     D_DSPLYNUM=tlfid,
     D_FOOT1='1.) Only treatment emergent events related to lipids are displayed.',
@@ -275,17 +275,19 @@ setup <- function(tlfid){
     D_OUTFILE=paste0(outdir,"/t_ru_list_",tlfid,".rtf"),
     D_PGMPTH="/path/to/code/ru_list.R",
     R_DDDATA=paste0(outdir,'/t_ru_list_',tlfid,'.rds'),
-    R_ADAMDATA=datdir)
+    R_ADAMDATA=datdir,
+    RetEnv=TRUE)
+  return(myenv)
 }
 
 #============================================
 # Process ADAE - derive counts and percents.
 #============================================
-setup(1)
-aesum <- repfun::ru_freq(repfun:::rfenv$adamdata$adae.rda() \%>\% dplyr::select(-SAFFL) \%>\%
-                 repfun::ru_getdata(repfun:::rfenv$G_POPDATA, c("STUDYID", "USUBJID"),
+rfenv <- setup(1)
+aesum <- repfun::ru_freq(rfenv$adamdata$adae.rda() \%>\% dplyr::select(-SAFFL) \%>\%
+                 repfun::ru_getdata(rfenv$G_POPDATA, c("STUDYID", "USUBJID"),
                  keeppopvars=c("TRT01AN", "TRT01A")),
-                 dsetindenom=repfun:::rfenv$G_POPDATA,
+                 dsetindenom=rfenv$G_POPDATA,
                  countdistinctvars=c('STUDYID','USUBJID'),
                  groupbyvarsnumer=c('TRT01AN','TRT01A','AEBODSYS','AEDECOD'),
                  anyeventvars = c('AEBODSYS','AEDECOD'),
@@ -306,7 +308,7 @@ repfun::ru_align("tt_result")
 # Table 2:  Summary of Adverse Events using NOWIDOWVAR (remove SOCs that
 # will not fit on 1 page with 10pt font)
 #==========================================================================
-setup(2)
+rfenv <- setup(2)
 SOCterms <- aesum \%>\% dplyr::distinct(AEBODSYS,AEDECOD)
 SOCcnts <- table(SOCterms$AEBODSYS)
 repfun::ru_list(aesum \%>\% dplyr::filter(!(AEBODSYS \%in\% names(SOCcnts[SOCcnts>=20]))),
@@ -323,7 +325,7 @@ repfun::ru_list(aesum \%>\% dplyr::filter(!(AEBODSYS \%in\% names(SOCcnts[SOCcnt
         acrossVar="TRT01AN",
         acrossVarLabel="TRT01A",
         acrossColVarPrefix='tt_',
-        dddatasetlabel=paste0('DD Dataframe for AE Table ',repfun:::rfenv$G_DSPLYNUM),
+        dddatasetlabel=paste0('DD Dataframe for AE Table ',rfenv$G_DSPLYNUM),
         lpp=24)
 
 }

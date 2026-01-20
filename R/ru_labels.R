@@ -20,10 +20,8 @@
 #' @export
 #'
 ru_labels <- function (dsetin, varlabels=list(), style=c("base", "Hmisc")) {
-  # print(paste0("RU_LABESL: ", "Start or RU_LABELS"))
   df_out <- dsetin
   v_var_labels <- list()
-  #var_ori_labels <- base::labels(dsetin)
   var_ori_labels <- lapply(dsetin,function(x){attr(x,"label")})
   var_var_names <- base::names(df_out)
   for (i in 1:length(var_var_names)) {
@@ -63,7 +61,5 @@ ru_labels <- function (dsetin, varlabels=list(), style=c("base", "Hmisc")) {
   } else {
     Hmisc::label(df_out) <- v_var_labels
   }
-  #print(paste0("RU_LABESL: ", "End of RU_LABELS"))
-
   return(as.data.frame(df_out))
 }
