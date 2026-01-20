@@ -28,7 +28,8 @@ test_that("producing RTFs works", {
       D_SUBJID=c("STUDYID","USUBJID"),
       D_TITLE1=paste0('Table ',tlfid,': Summary of Treatment Emergent Adverse Events'),
       R_DDDATA=paste0(tmpdr,'/t_ru_list_',tlfid,'.rds'),
-      R_ADAMDATA=".")
+      R_ADAMDATA=".",
+      D_DEBUG=1)
   }
 
   #============================================
