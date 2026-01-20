@@ -28,31 +28,32 @@ Chris Rook, <cr883296@gmail.com>
 ``` r
 library(repfun)
 repfun::ru_contents(mtcars)
-#> [1] "MADE IT HERE ..."
+#> $s_data_info
+#>  [1] "Data Set Name       mtcars                                            \n"
+#>  [2] "Member Type         Data                                              \n"
+#>  [3] "Created             NA                                                \n"
+#>  [4] "Last Modified       NA                                                \n"
+#>  [5] "Label                                                                 \n"
+#>  [6] "Observations        32                                                \n"
+#>  [7] "Variables           11                                                \n"
+#>  [8] "Filename            mtcars                                            \n"
+#>  [9] "File Size           0 MB                                              \n"
+#> [10] "File Size (bytes)   7208                                              \n"
 #> 
-#>  Data Set Name       mtcars                                            
-#>  Member Type         Data                                              
-#>  Created             NA                                                
-#>  Last Modified       NA                                                
-#>  Label                                                                 
-#>  Observations        32                                                
-#>  Variables           11                                                
-#>  Filename            mtcars                                            
-#>  File Size           0 MB                                              
-#>  File Size (bytes)   7208                                              
+#> $fmt_str
+#> [1] "\n\n     Variable  Type       Len Class       Format      Label                                             \n"
 #> 
+#> $s_var_info_1
+#>  [1] "  9 am        double       9                                                                           \n"
+#>  [2] " 11 carb      double       9                                                                           \n"
+#>  [3] "  2 cyl       double       9                                                                           \n"
+#>  [4] "  3 disp      double       9                                                                           \n"
+#>  [5] "  5 drat      double       9                                                                           \n"
+#>  [6] " 10 gear      double       9                                                                           \n"
+#>  [7] "  4 hp        double       9                                                                           \n"
+#>  [8] "  1 mpg       double       9                                                                           \n"
+#>  [9] "  7 qsec      double       9                                                                           \n"
+#> [10] "  8 vs        double       9                                                                           \n"
+#> [11] "  6 wt        double       9                                                                           \n"
 #> 
-#>      Variable  Type       Len Class       Format      Label                                             
-#> 
-#>    9 am        double       9                                                                           
-#>   11 carb      double       9                                                                           
-#>    2 cyl       double       9                                                                           
-#>    3 disp      double       9                                                                           
-#>    5 drat      double       9                                                                           
-#>   10 gear      double       9                                                                           
-#>    4 hp        double       9                                                                           
-#>    1 mpg       double       9                                                                           
-#>    7 qsec      double       9                                                                           
-#>    8 vs        double       9                                                                           
-#>    6 wt        double       9                                                                           
 ```

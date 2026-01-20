@@ -75,7 +75,7 @@ library(dplyr)
 datdir <- file.path(gsub("\\","/",tempdir(),fixed=TRUE),"datdir")
 dir.create(datdir,showWarnings=FALSE)
 repfun::copydata(datdir)
-repfun::rs_setup(D_POP="SAFFL",
+rfenv <- repfun::rs_setup(D_POP="SAFFL",
                  D_POPLBL="Safety",
                  D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'),
                  D_SUBJID=c("STUDYID","USUBJID"),
@@ -84,12 +84,13 @@ repfun::rs_setup(D_POP="SAFFL",
                  R_INPUTDATA=NULL,
                  R_RAWDATA=NULL,
                  R_SDTMDATA=NULL,
-                 R_ADAMDATA=datdir)
-G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+                 R_ADAMDATA=datdir,
+                 RetEnv=TRUE)
+G_POPDATA <- rfenv$G_POPDATA %>%
   dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,
                  ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
   repfun::ru_labels(varlabels=list('TRT01AN'='Actual Treatment for Period 01 (n)'))
-adae <- repfun:::rfenv$adamdata$adae.rda() %>% select(-SAFFL) %>%
+adae <- rfenv$adamdata$adae.rda() %>% select(-SAFFL) %>%
         repfun::ru_getdata(G_POPDATA, c("STUDYID", "USUBJID"),
                    keeppopvars=c("TRT01AN", "TRT01A"))
 aesum_t <- repfun::ru_freq(adae,
@@ -126,7 +127,7 @@ repfun::rs_setup(D_POP="SAFFL",
                  R_RAWDATA=NULL,
                  R_SDTMDATA=NULL,
                  R_ADAMDATA=datdir)
-G_POPDATA <- repfun:::rfenv$G_POPDATA %>%
+G_POPDATA <- rfenv$G_POPDATA %>%
               dplyr::mutate(TRT01AN=
                      ifelse(TRT01A=='Placebo',1,
                      ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%

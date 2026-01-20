@@ -4,7 +4,7 @@
 
 ``` r
 message(paste0('Datetime: ',Sys.Date(),':',Sys.time()))
-#> Datetime: 2026-01-12:2026-01-12 15:00:57.770317
+#> Datetime: 2026-01-20:2026-01-20 22:22:19.314866
 ```
 
 ``` r
@@ -14,17 +14,17 @@ library(repfun)
 ## Generate a Proc Contents style report of a data frame in R
 
 ``` r
-fnam <- paste0(base::tempdir(),"/test-ru_contents.txt")
-sink(fnam)
-  repfun::ru_contents(airquality)
-sink()
+#fnam <- paste0(base::tempdir(),"/test-ru_contents.txt")
+#sink(fnam)
+ret <- repfun::ru_contents(airquality)
+#sink()
 ```
 
 ## Display the result
 
 ``` r
-cat(readLines(fnam), sep = '\n')
-#> [1] "MADE IT HERE ..."
+#cat(readLines(fnam), sep = '\n')
+base::cat("\n", ret$s_data_info)
 #> 
 #>  Data Set Name       airquality                                        
 #>  Member Type         Data                                              
@@ -35,10 +35,12 @@ cat(readLines(fnam), sep = '\n')
 #>  Variables           6                                                 
 #>  Filename            airquality                                        
 #>  File Size           0 MB                                              
-#>  File Size (bytes)   5632                                              
+#>  File Size (bytes)   5632
+base::cat(ret$fmt_str)
 #> 
 #> 
-#>      Variable  Type       Len Class       Format      Label                                             
+#>      Variable  Type       Len Class       Format      Label
+base::cat("\n", ret$s_var_info_1)
 #> 
 #>    6 Day       integer      4                                                                           
 #>    5 Month     integer      4                                                                           

@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">repfun</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +100,7 @@
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">'Datetime: '</span>,<span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">':'</span>,<span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Datetime: 2026-01-12:2026-01-12 15:00:57.770317</span></span></code></pre></div>
+<span><span class="co">#&gt; Datetime: 2026-01-20:2026-01-20 22:22:19.314866</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gsk-biostatistics.github.io/repfun/">repfun</a></span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -108,17 +108,17 @@
 <h2 id="generate-a-proc-contents-style-report-of-a-data-frame-in-r">Generate a Proc Contents style report of a data frame in R<a class="anchor" aria-label="anchor" href="#generate-a-proc-contents-style-report-of-a-data-frame-in-r"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">fnam</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"/test-ru_contents.txt"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sink.html" class="external-link">sink</a></span><span class="op">(</span><span class="va">fnam</span><span class="op">)</span></span>
-<span>  <span class="fu">repfun</span><span class="fu">::</span><span class="fu"><a href="../reference/ru_contents.html">ru_contents</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sink.html" class="external-link">sink</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#fnam &lt;- paste0(base::tempdir(),"/test-ru_contents.txt")</span></span>
+<span><span class="co">#sink(fnam)</span></span>
+<span><span class="va">ret</span> <span class="op">&lt;-</span> <span class="fu">repfun</span><span class="fu">::</span><span class="fu"><a href="../reference/ru_contents.html">ru_contents</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span></span>
+<span><span class="co">#sink()</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="display-the-result">Display the result<a class="anchor" aria-label="anchor" href="#display-the-result"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">fnam</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">'\n'</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "MADE IT HERE ..."</span></span>
+<code class="sourceCode R"><span><span class="co">#cat(readLines(fnam), sep = '\n')</span></span>
+<span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\n"</span>, <span class="va">ret</span><span class="op">$</span><span class="va">s_data_info</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Data Set Name       airquality                                        </span></span>
 <span><span class="co">#&gt;  Member Type         Data                                              </span></span>
@@ -129,10 +129,12 @@
 <span><span class="co">#&gt;  Variables           6                                                 </span></span>
 <span><span class="co">#&gt;  Filename            airquality                                        </span></span>
 <span><span class="co">#&gt;  File Size           0 MB                                              </span></span>
-<span><span class="co">#&gt;  File Size (bytes)   5632                                              </span></span>
+<span><span class="co">#&gt;  File Size (bytes)   5632</span></span>
+<span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">ret</span><span class="op">$</span><span class="va">fmt_str</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;      Variable  Type       Len Class       Format      Label                                             </span></span>
+<span><span class="co">#&gt;      Variable  Type       Len Class       Format      Label</span></span>
+<span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\n"</span>, <span class="va">ret</span><span class="op">$</span><span class="va">s_var_info_1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;    6 Day       integer      4                                                                           </span></span>
 <span><span class="co">#&gt;    5 Month     integer      4                                                                           </span></span>

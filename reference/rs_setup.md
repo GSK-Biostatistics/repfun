@@ -50,7 +50,8 @@ rs_setup(
   D_FOOT9 = NULL,
   D_USERID = Sys.getenv("USERNAME"),
   D_RTFYN = "N",
-  D_DEBUG = 0
+  D_DEBUG = 0,
+  RetEnv = FALSE
 )
 ```
 
@@ -236,6 +237,10 @@ rs_setup(
 - D_DEBUG:
 
   Level of debugging to show in log files.
+
+- RetEnv:
+
+  Return environment variable containing current settings.
 
 ## Value
 
