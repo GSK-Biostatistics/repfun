@@ -332,11 +332,11 @@ ru_list <- function(dsetin,                               ## Input domain datase
   ##=================================
   if (!is.null(pagevars)){
     if (!is.vector(pagevars)){pagevars <- c(pagevars)}
-    if (rfenv$G_DEBUG>0) {message('RTNOTE:  Parameter pagevars converted to a vector.')}
+    #if (rfenv$G_DEBUG>0) {message('RTNOTE:  Parameter pagevars converted to a vector.')}
   }
   if (!is.null(byvars)){
     if (!is.vector(byvars)){byvars <- c(byvars)}
-    if (rfenv$G_DEBUG>0) {message('RTNOTE:  Parameter byvars converted to a vector.')}
+    #if (rfenv$G_DEBUG>0) {message('RTNOTE:  Parameter byvars converted to a vector.')}
   }
 
   ##===============================================================================================================================================================

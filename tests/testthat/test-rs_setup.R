@@ -37,7 +37,8 @@ test_that("environment setup works", {
       R_SDTMDATA=".",
       R_ADAMDATA=".",
       D_RTFYN="Y",
-      D_DEBUG=1)
+      D_DEBUG=1,
+      RetEnv=TRUE)
   )
 
   #=========================================================
