@@ -8,7 +8,6 @@ test_that("adding big N works", {
   #=======
   # SETUP
   #=======
-  suppressMessages(require(dplyr))
   options(dplyr.summarise.inform = FALSE)
   repfun::rs_setup(D_POPDATA=repfun::adsl %>% dplyr::filter(SAFFL =='Y'), D_SUBJID=c("STUDYID","USUBJID"), R_ADAMDATA=".")
   rfenv$G_POPDATA %>% dplyr::mutate(TRT01AN=ifelse(TRT01A=='Placebo',1,ifelse(TRT01A=='Xanomeline Low Dose',2,3))) %>%
