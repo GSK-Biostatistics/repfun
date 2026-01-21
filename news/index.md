@@ -4,6 +4,8 @@
 
 - Second Revised CRAN submission.
 
+- Note: There are no references appropriate for the DESCRIPTION file.
+
 - FIXED: Examples with unexported functions.
 
 - FIXED: Stopped writing to the console. Instead create object and
