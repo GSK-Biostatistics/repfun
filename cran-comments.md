@@ -2,9 +2,9 @@
 
 ## Second Resubmission updates
 
-* Second Revised CRAN submission.
-* FIXED: Examples with unexported functions.
-* FIXED: Stopped writing to the console. Instead create object and return it. 
+* Note: There are no references appropriate for the DESCRIPTION file.
+* FIXED: Code Examples and *.Rd documentation files no longer use unexported functions.
+* FIXED: Stopped writing to the console for code in /R folder (except for debugging). Instead create object and return it. Also, use message() in place of print()/cat(). 
 * FIXED: Stopped writing to the global environment. Removed all instances of "<<" in R code.
 * FIXED: Stopped installing packages within all R code.  
 
