@@ -12,7 +12,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/GSK-Biostatistics/repfun/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/GSK-Biostatistics/repfun/blob/v0.1.2/DESCRIPTION)
 
 Rook C, Wang Y (2026). *repfun: Create Tables, Listings and Figures
 using Functions Styled after SAS™ Macros*. R package version 0.1.2,

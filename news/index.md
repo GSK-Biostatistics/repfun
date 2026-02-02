@@ -2,6 +2,8 @@
 
 ## repfun 0.1.2
 
+CRAN release: 2026-01-26
+
 - Second Revised CRAN submission.
 
 - Note: There are no references appropriate for the DESCRIPTION file.
